@@ -1,71 +1,13 @@
-@import "bourbon"
-
-
-
-// ------------------------------ COLORS STYLE HERE ------------------------------ //
-
+// colors
 $default-color: #000
 $accent: #f1ad00
+$default-placeholder-color: #666
+$default-input-border-color: #c0c0c0
 
-
-
-// ------------------------------ TYPOGRAFY STYLE HERE ------------------------------ //
-
+// typografy
 $default-font-size: 16px
-$h1-font-size: 2em
-$h2-font-size: 2em
-$h3-font-size: 2em
-$h4-font-size: 2em
-$h5-font-size: 2em
-$h6-font-size: 2em
-
-
+$default-input-font-size: 14px
 $default-font: "RobotoRegular", sans-serif
 $font-bold: "RobotoBold", sans-serif
 $font-light: "RobotoLight", sans-serif
 $font-medium: "RobotoMedium", sans-serif
-
-
-
-// ------------------------------ INPUT STYLE HERE ------------------------------ //
-
-$default-placeholder-color: #666
-$default-input-border-color: #c0c0c0
-$default-input-font-size: 14px
-
-
-
-// ------------------------------ BUTTONS STYLE HERE ------------------------------ //
-
-$btn-default-color: #333
-
-
-
-// ------------------------------ MIXINS HERE ------------------------------ //
-
-// add transition
-=transition($time)
-	transition: all $time ease
-
-// add link
-=link($fz, $color)
-	font-size: $fz
-	color: $color
-	&:hover
-		color: $color
-	&:focus
-		color: $color
-
-// add overlay
-=overlay($color, $opa, $zindex)
-	&::after
-		content: ''
-		display: block
-		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		height: 100%
-		background-color: $color
-		z-index: $zindex
-		opacity: $opa

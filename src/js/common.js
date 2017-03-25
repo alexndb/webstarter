@@ -15,8 +15,9 @@ $(document).ready(function() {
 	// selects
 	var selects = $("select");
 	selects.each(function(){
-		var dataPlaceholder = $(this).attr('data-placeholder');
-		$(this).select2({
+		var select = $(this);
+		var dataPlaceholder = select.attr('data-placeholder');
+		select.select2({
 			minimumResultsForSearch: Infinity,
 			placeholder: dataPlaceholder
 		});
@@ -80,8 +81,6 @@ $(document).ready(function() {
 		 	// 		}, 2000);
 				// });
 
-				
-
 			}
 
 		});
@@ -98,7 +97,6 @@ $(document).ready(function() {
 	} else {
 		console.log('меньше 992')
 	}
-
 
 	// resize events
 	$(window).resize(function() {

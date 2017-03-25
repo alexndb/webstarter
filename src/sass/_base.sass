@@ -1,8 +1,7 @@
-@import "bourbon"
+@import "mixins"
 @import "vars"
 
-// ------------------------------ CUSTOM STYLE HERE ------------------------------ //
-
+// base
 body
 	min-width: 320px
 	min-height: 100vh
@@ -12,8 +11,11 @@ body
 	font-family: $default-font
 	font-size: $default-font-size
 	color: $default-color
+	opacity: 1
 
 .container
+	max-width: 1200px
+	width: 100%
 	margin-right: auto
 	margin-left: auto
 	padding-left: 15px
@@ -57,10 +59,7 @@ img
 .hidden
 	display: none
 
-
-
-// ------------------------------ BUTTONS STYLE HERE ------------------------------ //
-
+// buttons
 .c-btn
 	text-decoration: none
 	display: inline-block
@@ -77,43 +76,40 @@ img
 
 .c-btn-default
 	background-color: $accent
-	color: $btn-default-color
 	padding: 15px 50px
 	font-family: $font-bold
+	+link($default-font-size, #000)
 	&:hover
 		background-color: lighten($accent, 3)
 
-
-
-// ------------------------------ FORM ELEMENTS STYLE HERE ------------------------------ //
-
+// form elements
 *
 	outline: none !important
 	&::-webkit-input-placeholder
 		color: $default-placeholder-color
 		opacity: 1
+		+dt(.3s)
 	&:-moz-placeholder
 		color: $default-placeholder-color
 		opacity: 1
+		+dt(.3s)
 	&::-moz-placeholder
 		color: $default-placeholder-color
 		opacity: 1
+		+dt(.3s)
 	&:-ms-input-placeholder
 		color: $default-placeholder-color
 		opacity: 1
+		+dt(.3s)
 	&:focus
 		&::-webkit-input-placeholder
 			opacity: 0
-			+transition(.3s)
 		&::-moz-placeholder
 			opacity: 0
-			+transition(.3s)
 		&:-moz-placeholder
 			opacity: 0
-			+transition(.3s)
 		&:-ms-input-placeholder
 			opacity: 0
-			+transition(.3s)
 
 .c-form-item
 	position: relative
@@ -127,30 +123,6 @@ input[type=email]
 	padding: 12px 10px
 	font-size: $default-input-font-size
 	border: 1px solid $default-input-border-color
-
-textarea
-	display: inline-block
-	width: 100%
-	min-height: 100px
-	resize: none
-	vertical-align: top
-	font-size: $default-input-font-size
-	padding: 12px 10px
-	margin-bottom: 15px
-	border: 1px solid $default-input-border-color
-
-select
-	display: inline-block
-	width: 100%
-	font-size: $default-input-font-size
-	border: 1px solid $default-input-border-color
-	padding: 12px 10px
-	margin-bottom: 15px
-	cursor: pointer
-	color: $default-placeholder-color
-	appearance: none!important
-	&::-ms-expand
-		display: none
 
 input[type=checkbox]
 	width: 0.1px
@@ -233,10 +205,31 @@ input[type=radio]
 input.c-error
 	border-color: red
 
+textarea
+	display: inline-block
+	width: 100%
+	min-height: 100px
+	resize: none
+	vertical-align: top
+	font-size: $default-input-font-size
+	padding: 12px 10px
+	margin-bottom: 15px
+	border: 1px solid $default-input-border-color
 
+select
+	display: inline-block
+	width: 100%
+	font-size: $default-input-font-size
+	border: 1px solid $default-input-border-color
+	padding: 12px 10px
+	margin-bottom: 15px
+	cursor: pointer
+	color: $default-placeholder-color
+	appearance: none!important
+	&::-ms-expand
+		display: none
 
-// ------------------------------ POPUPS STYLE HERE ------------------------------ //
-
+// popups
 .c-popup-default
 	position: relative
 	max-width: 500px

@@ -10,7 +10,6 @@ notify = require('gulp-notify'), // Вывод ошибк SASS
 gulpif = require('gulp-if'), // Задает условия в Gulp
 uglify = require('gulp-uglify'), // Сжатие JS
 minifyCss = require('gulp-clean-css'), // Сжатие CSS
-bourbon = require('node-bourbon'), // Подключение Bourbone
 wiredep = require('wiredep').stream, // Автоматическая вставка ссылок на используемые в проекте библиотеки Bower
 browserSync = require('browser-sync').create(), // Запуск сервера
 rename = require('gulp-rename'), // Переименование файлов
@@ -62,7 +61,7 @@ gulp.task('markup', function() {
 gulp.task('styles', function() {
 	return gulp.src('src/sass/*.sass')
 	.pipe(plumber({errorHandler: notify.onError(function(err) {return {title: 'Styles', message: err.message}})})) // Отслеживаем и выводим ошибки
-	.pipe(sass({includePaths: bourbon.includePaths})) // Компиляция SASS, подключение библиотеки bourbone 
+	.pipe(sass()) // Компиляция SASS
 	.pipe(autoprefixer({browsers: ['last 15 versions']})) // Добавление autoprefix
 	//.pipe(minifyCss()) // Минификация CSS стилей
 	//.pipe(rename('main.min.css')) // Переименование CSS стилей
@@ -73,7 +72,7 @@ gulp.task('styles', function() {
 gulp.task('headerstyles', function() {
 	return gulp.src('src/*.sass')
 	.pipe(plumber({errorHandler: notify.onError(function(err) {return {title: 'Styles', message: err.message}})})) // Отслеживаем и выводим ошибки
-	.pipe(sass({includePaths: bourbon.includePaths})) // Компиляция SASS, подключение библиотеки bourbone 
+	.pipe(sass()) // Компиляция SASS
 	.pipe(autoprefixer(['last 15 versions'])) // Добавление autoprefix
 	.pipe(minifyCss()) // Минификация CSS стилей
 	.pipe(rename('header.min.css'))  // Переименование CSS стилей
@@ -95,7 +94,7 @@ gulp.task('fonts', function() {
 
 // Работа с изображениями
 gulp.task('img', function() {
-	return del('app/img');
+	del('app/img');
 	return gulp.src('src/img/**/*.*')
 	.pipe(gulp.dest('app/img'));
 });
@@ -108,13 +107,13 @@ gulp.task('assets', function() {
 
 // Очистка папки app
 gulp.task('clean', function() {
-	return del('app');
+	del('app');
 	return cache.clearAll();
 });
 
 // Очистка файла стилей шапки
 gulp.task('cleancss', function() {
-	return del('app/*.css');
+	del('app/*.css');
 });
 
 // Удаляет стили из шапки для оптимизации и помещает в js
@@ -130,5 +129,6 @@ gulp.task('watch', function() {
 	gulp.watch('src/**/*.sass', ['styles', 'headerstyles']); // Слежка за изменением SASS
 	gulp.watch('src/js/*.js', ['scripts']); // Слежка за изменением JS
 	gulp.watch('src/img/**/*.*', ['img']); // Слежка за изменением изобрежений
+	gulp.watch('src/fonts/**/*.*', ['fonts']); // Слежка за изменением шрифтов
 	gulp.watch('app/**/*.*').on('change', browserSync.reload); // Перезапуск browserSynс при изменениях в файлах
 });
