@@ -5,8 +5,7 @@ gulp = require('gulp'), // Подключение Gulp
 sass = require('gulp-sass'), // Компиляция SASS
 useref = require('gulp-useref'), // Объединение всех скриптов из index.html в указанные файлы и подключени ссылок на них
 autoprefixer = require('gulp-autoprefixer'), // Автопрефиксы
-plumber = require('gulp-plumber'), // Отслеживание ошибк SASS
-notify = require('gulp-notify'), // Вывод ошибк SASS
+notify = require('gulp-notify'), // Вывод уведомлений об ошибках
 gulpif = require('gulp-if'), // Задает условия в Gulp
 uglify = require('gulp-uglify'), // Сжатие JS
 minifyCss = require('gulp-clean-css'), // Сжатие CSS
@@ -18,15 +17,6 @@ del = require('del'), // Удаление файлов
 fileinclude = require('gulp-file-include'), // Вставка кусков кода в файл
 cache = require('gulp-cache'), // Работа с кэшем
 gulpRemoveHtml = require('gulp-remove-html'); // Удаляет строки HTML
-
-// Задачи по умолчанию
-gulp.task('default', function() {runSequence('clean', 'headerstyles', 'watch', 'scripts', 'fonts', 'styles', 'markup', 'img', 'assets', 'browserSync');}); // Последовательное выполнение задач, слева направо
-
-// Сборка проекта
-gulp.task('build', function() {runSequence('clean', 'headerstyles', 'scripts', 'fonts', 'styles', 'markup', 'img', 'assets');}); // Синхронное выполнение задач, слева направо
-
-// Завершение проекта
-gulp.task('prod', function() {runSequence('cleancss', 'stylejs');}); // Синхронное выполнение задач, слева направо
 
 // Запуск сервера HTML
 gulp.task('browserSync', function() {
@@ -60,9 +50,8 @@ gulp.task('markup', function() {
 // Работа с CSS
 gulp.task('styles', function() {
 	return gulp.src('src/sass/*.sass')
-	.pipe(plumber({errorHandler: notify.onError(function(err) {return {title: 'Styles', message: err.message}})})) // Отслеживаем и выводим ошибки
-	.pipe(sass()) // Компиляция SASS
-	.pipe(autoprefixer({browsers: ['last 15 versions']})) // Добавление autoprefix
+	.pipe(sass()).on('error', notify.onError({title: 'Styles'})) // Компиляция SASS, отслеживаем и выводим ошибки
+	.pipe(autoprefixer({browsers: ['last 10 versions']})) // Добавление autoprefix
 	//.pipe(minifyCss()) // Минификация CSS стилей
 	//.pipe(rename('main.min.css')) // Переименование CSS стилей
 	.pipe(gulp.dest('app/css'));
@@ -71,9 +60,8 @@ gulp.task('styles', function() {
 // CSS для первого экрана
 gulp.task('headerstyles', function() {
 	return gulp.src('src/*.sass')
-	.pipe(plumber({errorHandler: notify.onError(function(err) {return {title: 'Styles', message: err.message}})})) // Отслеживаем и выводим ошибки
-	.pipe(sass()) // Компиляция SASS
-	.pipe(autoprefixer(['last 15 versions'])) // Добавление autoprefix
+	.pipe(sass()).on('error', notify.onError({title: 'Header Styles'})) // Компиляция SASS, отслеживаем и выводим ошибки
+	.pipe(autoprefixer(['last 10 versions'])) // Добавление autoprefix
 	.pipe(minifyCss()) // Минификация CSS стилей
 	.pipe(rename('header.min.css'))  // Переименование CSS стилей
 	.pipe(gulp.dest('app'));
@@ -121,6 +109,21 @@ gulp.task('stylejs', function () {
 	return gulp.src('app/*.html')
 	.pipe(gulpRemoveHtml())
 	.pipe(gulp.dest('app'));
+});
+
+// Задачи по умолчанию
+gulp.task('default', function(callback) {
+	runSequence('clean', ['headerstyles', 'scripts', 'fonts', 'styles', 'markup', 'img', 'assets'], 'watch', 'browserSync', callback); // Последовательное выполнение задач
+});
+
+// Сборка проекта
+gulp.task('build', function(callback) {
+	runSequence('clean', ['headerstyles', 'scripts', 'fonts', 'styles', 'markup', 'img', 'assets'], callback); // Последовательное выполнение задач
+});
+
+// Завершение проекта
+gulp.task('prod', function(callback) {
+	runSequence('cleancss', ['stylejs'], callback); // Последовательное выполнение задач
 });
 
 //Слежка за изменениями в проекте
