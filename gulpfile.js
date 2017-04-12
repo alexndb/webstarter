@@ -2,6 +2,7 @@
 
 var
 gulp = require('gulp'), // Подключение Gulp
+pug = require('gulp-pug'), // jade
 sass = require('gulp-sass'), // Компиляция SASS
 useref = require('gulp-useref'), // Объединение всех скриптов из index.html в указанные файлы и подключени ссылок на них
 autoprefixer = require('gulp-autoprefixer'), // Автопрефиксы
@@ -18,6 +19,34 @@ fileinclude = require('gulp-file-include'), // Вставка кусков ко�
 cache = require('gulp-cache'), // Работа с кэшем
 gulpRemoveHtml = require('gulp-remove-html'); // Удаляет строки HTML
 
+// paths
+var paths = {
+	pug: {
+		src: 'src/templates/*.pug',
+		app: 'app/templates'
+	},
+	html: {
+		src: 'src/*.html',
+		app: 'app'
+	},
+	sass: {
+		src: 'src/sass/*.sass',
+		app: 'app/css'
+	},
+	js: {
+		src: 'src/js/*.js',
+		app: 'app/js'
+	},
+	fonts: {
+		src: 'src/fonts/**/*.*',
+		app: 'app/fonts'
+	},
+	img: {
+		src: 'src/img/**/*.*',
+		app: 'app/img'
+	}
+}
+
 // Запуск сервера HTML
 gulp.task('browserSync', function() {
 	browserSync.init({
@@ -25,71 +54,72 @@ gulp.task('browserSync', function() {
 	});	
 });
 
-// Запуск сервера PHP
-//gulp.task('browserSync', function() {
-//	browserSync.init({
-//		proxy: "localhost.dev"
-//	});
-//});
-
-// Работа с HTML и PHP
-gulp.task('markup', function() {
-	return gulp.src(['src/*.html', 'src/**/*.php'])
+// pug
+gulp.task('pug', function() {
+	gulp.src(paths.pug.src)
 	.pipe(wiredep({directory: 'bower_components'})) // Автоматическая вставка ссылок на используемые в проекте библиотеки bower
-	.pipe(gulp.dest('app'))
+	.pipe(pug({pretty: '\t'}))
+	.pipe(gulp.dest(paths.pug.app));
+});
+
+// html
+gulp.task('markup', function() {
+	gulp.src(paths.html.src)
+	// .pipe(wiredep({directory: 'bower_components'})) // Автоматическая вставка ссылок на используемые в проекте библиотеки bower
+	.pipe(gulp.dest(paths.html.app))
 	.on('end', function() { // Задача после подключения библиотек bower
-		return gulp.src(['app/*.html', 'app/**/*.php'])
+		gulp.src(paths.html.app)
 		.pipe(useref()) // Объединение файлов всех используемых библиотек bower в файлы libs.css + libs.js
 		.pipe(gulpif('*.js', uglify())) // Сжатие libs.js
 		.pipe(gulpif('*.css', minifyCss())) // Сжатие libs.css
-		.pipe(fileinclude({prefix: '@@'})) // Вставка инлайн стилей для первого экрана в HTML
-		.pipe(gulp.dest('app'));
+		.pipe(gulp.dest(paths.html.app));
 	});
 });
 
-// Работа с CSS
+// sass
 gulp.task('styles', function() {
-	return gulp.src('src/sass/*.sass')
+	gulp.src(paths.sass.src)
 	.pipe(sass()).on('error', notify.onError({title: 'Styles'})) // Компиляция SASS, отслеживаем и выводим ошибки
 	.pipe(autoprefixer({browsers: ['last 10 versions']})) // Добавление autoprefix
 	//.pipe(minifyCss()) // Минификация CSS стилей
 	//.pipe(rename('main.min.css')) // Переименование CSS стилей
-	.pipe(gulp.dest('app/css'));
+	.pipe(gulp.dest(paths.sass.app));
 });
 
-// CSS для первого экрана
-gulp.task('headerstyles', function() {
-	return gulp.src('src/*.sass')
-	.pipe(sass()).on('error', notify.onError({title: 'Header Styles'})) // Компиляция SASS, отслеживаем и выводим ошибки
-	.pipe(autoprefixer(['last 10 versions'])) // Добавление autoprefix
-	.pipe(minifyCss()) // Минификация CSS стилей
-	.pipe(rename('header.min.css'))  // Переименование CSS стилей
-	.pipe(gulp.dest('app'));
-});
-
-// Работа с JS
+// js
 gulp.task('scripts', function() {
-	return gulp.src('src/js/*.js')
+	gulp.src(paths.js.src)
 	//.pipe(uglify()) // Минификация скриптов
-	.pipe(gulp.dest('app/js'));
+	.pipe(gulp.dest(paths.js.app));
 });
 
 // Работа со шрифтами
 gulp.task('fonts', function() {
-	return gulp.src('src/fonts/**/*.*')
-	.pipe(gulp.dest('app/fonts'));
+	gulp.src(paths.fonts.src)
+	.pipe(gulp.dest(paths.fonts.app));
 });
 
-// Работа с изображениями
+// img, png, svg, gif, ico
 gulp.task('img', function() {
-	del('app/img');
-	return gulp.src('src/img/**/*.*')
-	.pipe(gulp.dest('app/img'));
+	del(paths.img.app);
+	gulp.src(paths.img.src)
+	.pipe(gulp.dest(paths.img.app));
 });
 
 //Работа с прочими файлами
 gulp.task('assets', function() {
-	return gulp.src('src/.htaccess')
+	gulp.src('src/.htaccess')
+	.pipe(gulp.dest('app'));
+});
+
+// CSS для первого экрана
+gulp.task('headerstyles', function() {
+	gulp.src('src/*.sass')
+	.pipe(sass()).on('error', notify.onError({title: 'Header Styles'})) // Компиляция SASS, отслеживаем и выводим ошибки
+	.pipe(autoprefixer(['last 10 versions'])) // Добавление autoprefix
+	.pipe(minifyCss()) // Минификация CSS стилей
+	.pipe(rename('header.min.css'))  // Переименование CSS стилей
+	.pipe(fileinclude({prefix: '@@'})), // Вставка инлайн стилей для первого экрана в HTML
 	.pipe(gulp.dest('app'));
 });
 
@@ -106,7 +136,7 @@ gulp.task('cleancss', function() {
 
 // Удаляет стили из шапки для оптимизации и помещает в js
 gulp.task('stylejs', function () {
-	return gulp.src('app/*.html')
+	gulp.src('app/*.html')
 	.pipe(gulpRemoveHtml())
 	.pipe(gulp.dest('app'));
 });
@@ -128,6 +158,7 @@ gulp.task('prod', function(callback) {
 
 //Слежка за изменениями в проекте
 gulp.task('watch', function() {
+	gulp.watch(paths.pug.src, ['pug']); // Слежка за изменением pug
 	gulp.watch(['bower.json', 'src/*.html', 'src/**/*.php'], ['markup']); // Слежка за изменением HTML
 	gulp.watch('src/**/*.sass', ['styles', 'headerstyles']); // Слежка за изменением SASS
 	gulp.watch('src/js/*.js', ['scripts']); // Слежка за изменением JS
