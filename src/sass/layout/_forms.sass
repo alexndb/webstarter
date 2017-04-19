@@ -1,88 +1,4 @@
-@import "mixins"
-@import "vars"
-
-// base
-body
-	min-width: 320px
-	min-height: 100vh
-	position: relative
-	overflow-x: hidden
-	background-color: #fff
-	font-family: $default-font
-	font-size: $default-font-size
-	color: $default-color
-	opacity: 1
-
-.container
-	max-width: 1200px
-	width: 100%
-	margin-right: auto
-	margin-left: auto
-	padding-left: 15px
-	padding-right: 15px
-
-.container-fluid
-	margin-right: auto
-	margin-left: auto
-	padding-left: 15px
-	padding-right: 15px
-
-h1, h2, h3, h4, h5, h6
-	font-weight: normal
-
-a
-	text-decoration: none
-	display: inline-block
-	&:hover
-		text-decoration: none
-	&:focus
-		text-decoration: none
-		&:hover
-			text-decoration: none
-
-img
-	display: inline-block
-	max-width: 100%
-	max-height: 100%
-
-.c-wrapper
-	max-width: 1920px
-	width: 100%
-	margin: 0 auto
-
-.c-unlist
-	margin: 0
-	padding: 0
-	list-style-type: none
-	list-style: none
-
-.hidden
-	display: none
-
-// buttons
-.c-btn
-	text-decoration: none
-	display: inline-block
-	text-align: center
-	border: none
-	background: none
-	cursor: pointer
-	&:hover
-		text-decoration: none
-	&:focus
-		text-decoration: none
-		&:hover
-			text-decoration: none
-
-.c-btn-default
-	background-color: $accent
-	padding: 15px 50px
-	font-family: $font-bold
-	+link($default-font-size, #000)
-	&:hover
-		background-color: lighten($accent, 3)
-
-// form elements
+/* forms */
 *
 	outline: none !important
 	&::-webkit-input-placeholder
@@ -113,13 +29,14 @@ img
 
 .c-form-item
 	position: relative
+	margin-bottom: 15px
 
 input[type=text], 
 input[type=tel], 
-input[type=email]
+input[type=email],
+input[type=password]
 	display: inline-block
 	width: 100%
-	margin-bottom: 15px
 	padding: 12px 10px
 	font-size: $default-input-font-size
 	border: 1px solid $default-input-border-color
@@ -202,9 +119,6 @@ input[type=radio]
 			&::after
 				display: block
 
-input.c-error
-	border-color: red
-
 textarea
 	display: inline-block
 	width: 100%
@@ -213,7 +127,6 @@ textarea
 	vertical-align: top
 	font-size: $default-input-font-size
 	padding: 12px 10px
-	margin-bottom: 15px
 	border: 1px solid $default-input-border-color
 
 select
@@ -222,33 +135,19 @@ select
 	font-size: $default-input-font-size
 	border: 1px solid $default-input-border-color
 	padding: 12px 10px
-	margin-bottom: 15px
 	cursor: pointer
 	color: $default-placeholder-color
 	appearance: none!important
 	&::-ms-expand
 		display: none
 
-// popups
-.c-popup-default
-	position: relative
-	max-width: 500px
-	width: 100%
-	margin: 0 auto
+input, textarea,
+	&.c-error
+		// border-color: red
 
-.c-popup-default-inner
-	background-color: #fff
-	padding: 30px 25px 30px
-	position: relative
-
-.c-popup-default-title
-	font-size: 24px
-	margin-bottom: 20px
-
-.c-popup-thankyou
-	text-align: center
-	font-size: 22px
-	p
-		line-height: 1.3
-	span
-		font-family: $font-bold
+.c-form-error-message
+	font-size: 11px
+	color: red
+	position: absolute
+	left: 10px
+	bottom: 2px

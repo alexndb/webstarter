@@ -1,0 +1,25 @@
+/* buttons */
+.c-btn
+	text-decoration: none
+	display: inline-block
+	text-align: center
+	border: none
+	background: none
+	cursor: pointer
+	&:hover
+		text-decoration: none
+	&:focus
+		text-decoration: none
+		&:hover
+			text-decoration: none
+	&:disabled
+		opacity: 0.5
+		cursor: not-allowed
+
+.c-btn-default
+	background-color: $accent
+	padding: 15px 50px
+	font-family: $font-bold
+	+link($default-font-size, #000)
+	&:hover
+		background-color: lighten($accent, 3)
