@@ -89,8 +89,6 @@ $(document).ready(function() {
 		var form                = $(this), // берем текущую форму
 			inputs              = form.find('[data-validate="true"]'), // выбираем внутри нее элементы с [data-validate="true"]
 
-			
-
 			// patterns
 			namePattern         = /^[А-Яа-яЁё\s]+$/, // pattern для поля name
 			emailPattern        = /^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/, // pattern для поля email
