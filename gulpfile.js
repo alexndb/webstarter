@@ -202,5 +202,6 @@ gulp.task('watch', function() {
 	gulp.watch(paths.js.src, ['scripts']); // scripts watch
 	gulp.watch(paths.img.src, ['img']); // img watch
 	gulp.watch(paths.fonts.src, ['fonts']); // fonts watch
+	gulp.watch(['src/.htaccess', 'src/mail.php'], ['assets']); // assets watch
 	gulp.watch(SRC_DIR + '/**/*.*').on('change', browserSync.reload); // reload browsers on change
 });
