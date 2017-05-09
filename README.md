@@ -8,6 +8,7 @@ Start instruction:
 3. run bower i
 4. run gulp
 
-Plugins:
+<h1>Plugins:</h1>
 
-<a href="http://www.growlforwindows.com/gfw/">Growl for Windows</a> - Красивые уведомления для Windows
+<h2>Helpers:</h2>
+<a href="http://www.growlforwindows.com/gfw/" target="_blank">Growl for Windows</a> - Красивые уведомления для Windows
