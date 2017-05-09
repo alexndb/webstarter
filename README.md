@@ -11,9 +11,9 @@ Start instruction:
 ## Plugins:
 
 ### Markup:
-[pug](https://www.npmjs.com/package/gulp-pug) - Шаблонизатор разметки Pug
+[gulp-pug](https://www.npmjs.com/package/gulp-pug) - Шаблонизатор разметки Pug
 
-[useref](https://www.npmjs.com/package/gulp-useref) - Объединение css и js файлов всех используемых библиотек bower в файлы libs.css + libs.js
+[gulp-useref](https://www.npmjs.com/package/gulp-useref) - Объединение css и js файлов всех используемых библиотек bower в файлы libs.css + libs.js
 
 ### Styles:
 
