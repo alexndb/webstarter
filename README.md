@@ -12,6 +12,7 @@ Start instruction:
 
 ### Markup:
 [pug](https://www.npmjs.com/package/gulp-pug) - Шаблонизатор разметки Pug
+
 [useref](https://www.npmjs.com/package/gulp-useref) - Объединение css и js файлов всех используемых библиотек bower в файлы libs.css + libs.js
 
 ### Styles:
@@ -21,4 +22,5 @@ Start instruction:
 
 ### Helpers:
 [growl for Windows](http://www.growlforwindows.com/gfw/) - Красивые уведомления для Windows.
+
 [gulp-if](https://www.npmjs.com/package/gulp-if) - Условия в Gulp
