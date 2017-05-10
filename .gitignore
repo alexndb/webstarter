@@ -2,3 +2,5 @@ node_modules/
 bower_components/
 app/
 .idea/
+.git/
+debug.log

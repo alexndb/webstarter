@@ -2,10 +2,11 @@
 my starting template for web
 
 Start instruction:
-
-1. clone this template to project
-2. run npm i && bower i
-3. run gulp
+1. install Node.js from https://nodejs.org/en/
+2. run npm install -g bower
+3. clone this template to project
+4. run npm i && bower i
+5. run gulp
 
 ## Plugins:
 

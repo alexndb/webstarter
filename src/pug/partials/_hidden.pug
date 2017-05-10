@@ -1,0 +1,18 @@
+//hidden
+.hidden
+	#popup-default.c-popup-default
+		.c-popup-default-inner
+			h2.c-popup-default-title Заголовок попапа
+			form
+				+input('text', 'name', 'Имя', '', 'true')
+				+input('text', 'email', 'Email', '', 'true')
+				+input('tel', 'phone', 'Телефон', '', 'true')
+				+textarea('text', 'Сообщение', 'true')
+				+select('select', 'Выберите', select1)
+				+checkbox('checkbox1-name', 'checkbox1-value', '#checkbox1', 'Метка чекбокса 1', 'checked')
+				+checkbox('checkbox2-name', 'checkbox2-value', '#checkbox2', 'Метка чекбокса 2')
+				+radio('radio-name', 'radio1-value', '#radio1', 'Метка радикнопки 1', 'checked')
+				+radio('radio-name', 'radio2-value', '#radio2', 'Метка радикнопки 2')
+				+input-hidden('form_name', 'Стандартная форма заявки')
+				button.c-btn.c-btn-default Отправить
+//hidden end

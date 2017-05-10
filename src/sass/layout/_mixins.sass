@@ -12,9 +12,11 @@
 			src: url('#{$file-path}.eot')
 			src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'), url('#{$file-path}.woff') format('woff'), url('#{$file-path}.ttf') format('truetype')
 
+// transition
 =dt($time)
-	transition: all $time ease
+	transition: all $time + 's' ease
 
+// link
 =link($fz, $color)
 	font-size: $fz
 	color: $color
@@ -23,6 +25,7 @@
 	&:focus
 		color: $color
 
+// overlay
 =overlay($color, $opa, $zindex)
 	&::after
 		content: ''
@@ -35,6 +38,24 @@
 		background-color: $color
 		z-index: $zindex
 		opacity: $opa
+
+// square
+=sqr($side)
+	width: $side
+	height: $side
+
+// round
+=round($side)
+	width: $side
+	height: $side
+	overflow: hidden
+	border-radius: 50%
+
+// background image center cover
+=bgi($src)
+	background-image: url('../' + $src)
+	background-size: cover
+	background-position: 50%
 
 // media queries
 =bp($width) // breakpoint max-width

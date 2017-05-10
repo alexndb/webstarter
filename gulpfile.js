@@ -2,7 +2,7 @@
 
 var
 gulp = require('gulp'), // Подключение Gulp
-pug = require('gulp-pug'), // jade
+pug = require('gulp-pug'), // pug
 sass = require('gulp-sass'), // Компиляция SASS
 useref = require('gulp-useref'), // Объединение всех скриптов из index.html в указанные файлы и подключени ссылок на них
 autoprefixer = require('gulp-autoprefixer'), // Автопрефиксы
@@ -21,6 +21,12 @@ sourcemaps = require('gulp-sourcemaps'), // сохраняет оригинал�
 spritesmith = require('gulp.spritesmith'), // работа со спрайтами из картинок
 svgSprite = require("gulp-svg-sprites"), // работа с svg спрайтами
 gcmq = require('gulp-group-css-media-queries'), // склеивание всех медиа запросов в финальном файле стилей
+babel = require('gulp-babel'), // Компиляция ES5 из ES6/ES7
+concat = require('gulp-concat'), // Объединение файлов
+lazypipe = require('lazypipe'), // Необходим для подключения source map при минификации файлов сторонних плагинов
+imagemin = require('gulp-imagemin'), // Оптимизация изображений
+pngquant = require('imagemin-pngquant'), // Оптимизация изображений
+mozjpeg = require('imagemin-mozjpeg'),
 gulpRemoveHtml = require('gulp-remove-html'); // Удаляет строки HTML
 
 // paths
@@ -29,12 +35,12 @@ SRC_DIR = 'src',
 APP_DIR = 'app',
 paths = {
 	pug: {
-		srcAll: SRC_DIR + '/**/*.pug',
-		srcPages: SRC_DIR + '/*.pug',
+		srcAll: SRC_DIR + '/pug/**/*.pug',
+		srcPages: SRC_DIR + '/pug/pages/*.pug',
 		app: APP_DIR
 	},
 	sass: {
-		srcAll:SRC_DIR + '/sass/**/*.sass',
+		src:SRC_DIR + '/sass/**/*.sass',
 		app: APP_DIR + '/css'
 	},
 	js: {
@@ -70,34 +76,67 @@ gulp.task('browserSync', function() {
 
 // markup
 gulp.task('markup', function() {
+	var YOUR_LOCALS = require('./puglocals.json'); // подключить JSON с данными
 	gulp.src(paths.pug.srcPages)
-	.pipe(pug({pretty: '\t'})).on('error', notify.onError({title: 'Pug Error'})) // Компиляция pug, отслеживаем и выводим ошибки
-	.pipe(wiredep({directory: 'bower_components'})) // Автоматическая вставка и поиск ссылок на используемые в проекте библиотеки bower
-	.pipe(gulp.dest(paths.pug.app))
-	.pipe(useref()) // Объединение файлов всех используемых библиотек bower в файлы libs.css + libs.js
+	.pipe(pug({
+		pretty: '\t',
+		locals: YOUR_LOCALS
+	}).on('error', notify.onError({
+		title: 'Pug Error',
+		// message: '\nОшибка: ' + '<%= error.msg %>' + '\n' + 'в файле: <%= error.filename %>' + '\n' + 'строка: <%= error.line %>.' + '<%= error.column %>'
+	}))) // Компиляция pug, отслеживаем и выводим ошибки
+	.pipe(wiredep({directory: './bower_components'})) // Автоматическая вставка и поиск ссылок на используемые в проекте библиотеки bower
+	.pipe(notify({
+		title: 'Bower Success',
+		message: 'Bower libs inject'
+	}))
+    .pipe(useref({}, lazypipe().pipe(sourcemaps.init, { loadMaps: true }))) // Объединение файлов всех используемых библиотек bower в файлы libs.css + libs.js и создание source maps
+    .pipe(notify({
+    	title: 'Useref Success',
+    	message: 'Created libs.css + libs.js'
+    }))
 	.pipe(gulpif('*.js', uglify())) // Сжатие libs.js
 	.pipe(gulpif('*.css', minifyCss())) // Сжатие libs.css
-	.pipe(gulp.dest(paths.pug.app));
+	.pipe(sourcemaps.write()) // Записываем source maps в конец файла
+	.pipe(gulp.dest(paths.pug.app))
+	.pipe(browserSync.stream())
+	.pipe(notify({
+		title: 'Pug Success',
+		message: 'Pug - хорошая работа!'
+	}));
 });
 
 // styles
 gulp.task('styles', function() {
-	gulp.src(paths.sass.srcAll)
+	gulp.src(paths.sass.src)
 	.pipe(sourcemaps.init()) // Инициализируем source maps
-	.pipe(sass()).on('error', notify.onError({title: 'Sass Error'})) // Компиляция sass, отслеживаем и выводим ошибки
+	.pipe(sass().on('error', notify.onError({
+		title: 'Sass Error',
+		// message: '\nОшибка: ' + '<%= error.msg %>' + '\n' + 'в файле: <%= error.filename %>' + '\n' + 'строка: <%= error.line %>.' + '<%= error.column %>'
+	}))) // Компиляция sass, отслеживаем и выводим ошибки
 	.pipe(autoprefixer({browsers: ['last 10 versions']})) // Добавление autoprefix
 	.pipe(gcmq()) // Минифицируем повторяющиеся медиа запросы
-	//.pipe(minifyCss()) // Минификация CSS стилей
-	//.pipe(rename('main.min.css')) // Переименование CSS стилей
-	.pipe(sourcemaps.write()) // Записываем source maps в конец файла стилей
-	.pipe(gulp.dest(paths.sass.app));
+	.pipe(minifyCss()) // Минификация CSS стилей
+	.pipe(rename('main.min.css')) // Переименование CSS стилей
+	.pipe(sourcemaps.write()) // Записываем source maps в конец файла
+	.pipe(gulp.dest(paths.sass.app))
+	.pipe(browserSync.stream())
+	.pipe(notify({
+		title: 'Sass Success',
+		message: 'Sass - хорошая работа!'
+	}));
 });
 
 // scripts
 gulp.task('scripts', function() {
-	gulp.src(paths.js.src)
-	//.pipe(uglify()) // Минификация скриптов
-	.pipe(gulp.dest(paths.js.app));
+	return gulp.src(paths.js.src)
+	.pipe(sourcemaps.init()) // Инициализируем source maps
+	// .pipe(babel({presets: ['es2015']})) // babel компиляция из ES6/ES7 в ES5
+	.pipe(concat('common.js')) // Объединение всех скриптов в один файл
+	.pipe(uglify()) // Минификация скриптов
+	.pipe(sourcemaps.write()) // Записываем source maps в конец файла
+	.pipe(gulp.dest(paths.js.app))
+	.pipe(browserSync.stream());
 });
 
 // fonts
@@ -106,11 +145,16 @@ gulp.task('fonts', function() {
 	.pipe(gulp.dest(paths.fonts.app));
 });
 
-// img, png, svg, gif, ico
-gulp.task('img', function() {
-	return del(paths.img.app); // Удаляем папку с изображениями
+// images
+gulp.task('img', ['img:clean'], function() {
 	gulp.src(paths.img.src)
+	.pipe(imagemin([imagemin.gifsicle(), mozjpeg(), pngquant(), imagemin.svgo()], {verbose: true})) // Оптимизируем jpg, png, svg, gif
 	.pipe(gulp.dest(paths.img.app));
+});
+
+// images clean
+gulp.task('img:clean', function() {
+	del(paths.img.app); // Чистим папку с изображениями
 });
 
 // sprites rastr
@@ -196,12 +240,10 @@ gulp.task('prod', function(callback) {
 
 // watch
 gulp.task('watch', function() {
-	// gulp.watch(['bower.json', paths.pug.srcAll], ['markup']); // markup and bower watch
-	gulp.watch(paths.pug.srcAll, ['markup']); // markup and bower watch
-	gulp.watch(SRC_DIR + '/**/*.sass', ['styles']); // styles watch
+	gulp.watch([paths.pug.srcAll, 'bower.json'], ['markup']); // markup and bower watch
+	gulp.watch(paths.sass.src, ['styles']); // styles watch
 	gulp.watch(paths.js.src, ['scripts']); // scripts watch
 	gulp.watch(paths.img.src, ['img']); // img watch
 	gulp.watch(paths.fonts.src, ['fonts']); // fonts watch
 	gulp.watch(['src/.htaccess', 'src/mail.php'], ['assets']); // assets watch
-	gulp.watch(SRC_DIR + '/**/*.*').on('change', browserSync.reload); // reload browsers on change
 });

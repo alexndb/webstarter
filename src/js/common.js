@@ -2,14 +2,14 @@ $(document).ready(function() {
 
 	/* ================================================== ADD CSS LINKS TO HTML ================================================== */
 
-	$('<!-- Загрузка стилей CSS --><link rel="stylesheet" href="css/libs.min.css"><link rel="stylesheet" href="css/main.css"><!-- Загрузка стилей CSS конец -->').appendTo('head');
+	$('<!-- Загрузка стилей CSS --><link rel="stylesheet" href="css/libs.min.css"><link rel="stylesheet" href="css/main.min.css"><!-- Загрузка стилей CSS конец -->').appendTo('head');
 
 
 
 	/* ================================================== LIBS ================================================== */
 
 	// popups
-	$('.popup').magnificPopup();
+	$('.js-popup').magnificPopup();
 
 	// phone mask
 	$('input[type=tel]').mask("+7 (999) 999-9999", {autoclear: false});
