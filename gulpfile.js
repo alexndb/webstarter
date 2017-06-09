@@ -71,21 +71,6 @@ path = {
 	}
 }
 
-// minification
-var minification = {
-	styles: {
-		main: true, // Главные стили
-		libs: true // Стили плагинов
-	},
-	scripts: {
-		main: true, // Главные скрипты
-		libs: true // Скрипты плагинов
-	},
-	all: {
-		libs: true // Включить создание source map при минификации libs
-	}
-};
-
 // server
 gulp.task('browserSync', function() {
 	browserSync.init({server: ["./", APP_DIR]});
@@ -106,27 +91,37 @@ gulp.task('markup', function() {
 // markup:libs
 gulp.task('markup:libs', function() {
 	gulp.src('app/*.html')
-	.pipe(useref({}, lazypipe().pipe(sourcemaps.init, {loadMaps: true}))) // Объединение файлов всех используемых библиотек bower в файлы libs.css + libs.js и создание source maps
-	.pipe(gulpif(minification.styles.libs, gulpif('*.css', minifyCss()))) // Сжатие libs.css, если включена минификация
-	.pipe(gulpif(minification.scripts.libs, gulpif('*.js', uglify()))) // Сжатие libs.js, если включена минификация
-	.pipe(gulpif(minification.all.libs, sourcemaps.write())) // Записываем source maps в конец файла, если включена минификация
+	.pipe(useref()) // Объединение файлов всех используемых библиотек bower в файлы libs.css + libs.js и создание source maps
+	.pipe(gulpif('*.css', minifyCss())) // Сжатие libs.css
+	.pipe(gulpif('*.js', uglify())) // Сжатие libs.js
 	.pipe(gulp.dest(path.pug.app))
 	.pipe(notify({title: 'HTML injection libs.min.css + libs.min.js Completed', message: 'Useref - хорошая работа!'})); // Отслеживаем и выводим уведомление
 });
 
-// styles:main
-gulp.task('styles', function() {
+// styles
+gulp.task('styles', ['styles:min'], function() {
 	gulp.src(path.sass.srcMain)
-	.pipe(gulpif(minification.styles.main, sourcemaps.init())) // Инициализируем source maps, если включена минификация
 	.pipe(sass().on('error', notify.onError({title: 'Sass Error'}))) // Компиляция sass, отслеживаем и выводим ошибки
 	.pipe(autoprefixer({browsers: ['last 10 versions']})) // Добавление autoprefix
 	.pipe(gcmq()) // Минифицируем повторяющиеся медиа запросы
-	.pipe(gulpif(minification.styles.main, minifyCss())) // Минификация CSS стилей, если включена минификация
-	.pipe(gulpif(minification.styles.main, rename('main.min.css'))) // Переименование CSS стилей, если включена минификация
-	.pipe(gulpif(minification.styles.main, sourcemaps.write())) // Записываем source maps в конец файла, если включена минификация
 	.pipe(gulp.dest(path.sass.app))
 	.pipe(browserSync.stream())
-	.pipe(notify({title: 'Main CSS Completed', message: 'Sass - хорошая работа!'})); // Отслеживаем и выводим уведомление
+	.pipe(notify({title: 'main.css Completed', message: 'Sass - хорошая работа!'})); // Отслеживаем и выводим уведомление
+});
+
+// styles:min
+gulp.task('styles:min', function() {
+	gulp.src(path.sass.srcMain)
+	// .pipe(sourcemaps.init())
+	.pipe(sass().on('error', notify.onError({title: 'Sass Error'})))
+	.pipe(autoprefixer({browsers: ['last 10 versions']}))
+	.pipe(gcmq()) // Минифицируем повторяющиеся медиа запросы
+	.pipe(minifyCss())
+	.pipe(rename('main.min.css'))
+	// .pipe(sourcemaps.write())
+	.pipe(gulp.dest(path.sass.app))
+	.pipe(browserSync.stream())
+	.pipe(notify({title: 'main.min.css Completed', message: 'Sass - хорошая работа!'})); // Отслеживаем и выводим уведомление
 });
 
 // styles:critical
@@ -171,13 +166,19 @@ gulp.task('styles:links:remove', function() {
 });
 
 // scripts
-gulp.task('scripts', function() {
-	return gulp.src(path.js.src)
-	.pipe(gulpif(minification.scripts.main, sourcemaps.init())) // Инициализируем source maps, если включена минификация
-	// .pipe(babel({presets: ['es2015']})) // babel компиляция из ES6/ES7 в ES5
-	.pipe(concat('common.js')) // Объединение всех скриптов в один файл
-	.pipe(gulpif(minification.scripts.main, uglify())) // Минификация скриптов, если включена минификация
-	.pipe(gulpif(minification.scripts.main, sourcemaps.write())) // Записываем source maps в конец файла, если включена минификация
+gulp.task('scripts', ['scripts:min'], function() {
+	gulp.src(path.js.src)
+	.pipe(gulp.dest(path.js.app))
+	.pipe(browserSync.stream());
+});
+
+// scripts:min
+gulp.task('scripts:min', function() {
+	gulp.src(path.js.src)
+	// .pipe(sourcemaps.init())
+	.pipe(uglify())
+	.pipe(rename('common.min.js'))
+	// .pipe(sourcemaps.write())
 	.pipe(gulp.dest(path.js.app))
 	.pipe(browserSync.stream());
 });
@@ -199,7 +200,7 @@ gulp.task('img', ['img:clean'], function() {
 gulp.task('img:clean', function() {
 	return gulp.src(path.img.app)
 	.pipe(vinylPaths(del)) // Чистим папку с изображениями
-	.pipe(notify({title: 'critical.min.css remove Completed', message: 'vinylPaths(del) - хорошая работа!'}));
+	.pipe(notify({title: 'img cleaned', message: 'vinylPaths(del) - хорошая работа!'}));
 });
 
 // assets
@@ -264,7 +265,7 @@ gulp.task('prod2', function(callback) {
 
 // watch
 gulp.task('watch', function() {
-	gulp.watch([path.pug.srcAll, 'bower.json'], ['markup']); // markup and bower watch
+	gulp.watch([path.pug.srcAll, 'bower.json', 'puglocals.json'], ['markup']); // markup and bower watch
 	gulp.watch(path.sass.srcAll, ['styles']); // styles watch
 	gulp.watch(path.js.src, ['scripts']); // scripts watch
 	gulp.watch(path.img.src, ['img']); // img watch

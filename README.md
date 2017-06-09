@@ -11,7 +11,10 @@ My starting template for web
 ## Production instruction:
 1. run gulp build
 2. run gulp prod1
-3. run gulp prod2
+3. run gulp styles:critical:include
+4. run gulp styles:critical:clean
+5. run gulp styles:links:remove
+6. run gulp html:replace
 
 ## Working files:
 ### Manage:

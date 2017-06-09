@@ -14,12 +14,16 @@ $(document).ready(function() {
 	// phone mask
 	$('input[type=tel]').mask("+7 (999) 999-9999", {autoclear: false});
 
+
+
+	/* ================================================== FUNCTIONS ================================================== */
+
 	// no drag images and links
 	$("img, a").on('dragstart', function(e) { e.preventDefault(); });
 
 
 
-	/* ================================================== RESOLUTION EVENTS ================================================== */
+	/* ================================================== RESOLUTION EVENTS AND FUNCTION START ================================================== */
 
 	var ww = window.innerWidth;
 
@@ -170,15 +174,15 @@ $(document).ready(function() {
 					$.magnificPopup.close(); // закрытие попапа с формой при необходимости
 					$.magnificPopup.open({ // открытие попапа "Спасибо"
 						items: { // разметка попапа "Спасибо"
-							src:
-							'<div class="c-popup-default c-popup-thankyou" id="popup-thankyou">' +
-								'<div class="c-popup-default-inner">' +
-									'<h2 class="c-popup-default-title">Спасибо за заявку, ' + thankyouName + '!</h2>' +
-									'<p>Мы перезвоним вам в ближайшее время по номеру ' + '<span>' + thankyouPhoneNumber + '</span>' + '</p>' +
-								'</div>' +
-							'</div>',
-							type: 'inline'
-						},
+						src:
+						'<div class="c-popup-default c-popup-thankyou" id="popup-thankyou">' +
+						'<div class="c-popup-default-inner">' +
+						'<h2 class="c-popup-default-title">Спасибо за заявку ' + thankyouName + '!</h2>' +
+						'<p>Мы перезвоним вам в ближайшее время по номеру ' + '<span>' + thankyouPhoneNumber + '</span>' + '</p>' +
+						'</div>' +
+						'</div>',
+						type: 'inline'
+					},
 						showCloseBtn: false // отключаем кнопку закрыть в попапе "Спасибо"
 					});
 
