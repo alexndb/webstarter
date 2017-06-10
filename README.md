@@ -22,7 +22,7 @@ My starting template for web
 
 [bower](https://www.npmjs.com/package/bower) - Пакетный менеджер
 
-### Serer:
+### Server:
 [browser-sync](https://www.npmjs.com/package/browser-sync) - Запуск локального сервера и обновление при изменении файлов
 
 ### Markup:
