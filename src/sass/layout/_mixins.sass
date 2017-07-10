@@ -25,6 +25,12 @@
 	&:focus
 		color: $color
 
+=clearfix()
+	&::after
+		display: block
+		content: ""
+		clear: both
+
 // overlay
 =overlay($color, $opa, $zindex)
 	&::after

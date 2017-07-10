@@ -28,6 +28,8 @@ My starting template for web
 ### Markup:
 [gulp-pug](https://www.npmjs.com/package/gulp-pug) - Компилятор Pug
 
+[gulp-pug](https://www.npmjs.com/package/pug-php-filter) - Позволяет писать PHP в Pug
+
 [gulp-remove-html](https://www.npmjs.com/package/gulp-remove-html) - Удаление разметки из HTML
 
 [gulp-file-include](https://www.npmjs.com/package/gulp-file-include) - Вставка содержимого файла в HTML разметку

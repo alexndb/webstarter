@@ -29,6 +29,7 @@ imagemin = require('gulp-imagemin'), // Оптимизация изображе�
 pngquant = require('imagemin-pngquant'), // Оптимизация изображений
 mozjpeg = require('imagemin-mozjpeg'),
 replace = require('gulp-replace'),
+pugPHPFilter = require('pug-php-filter'), // работа с PHP
 gulpRemoveHtml = require('gulp-remove-html'); // Удаляет строки HTML
 
 // path
@@ -79,9 +80,10 @@ gulp.task('browserSync', function() {
 // markup
 gulp.task('markup', function() {
 	var YOUR_LOCALS = require('./puglocals.json'); // Подключаем JSON с данными проекта
-	gulp.src(path.pug.srcPages)
-	.pipe(pug({pretty: '\t', locals: YOUR_LOCALS}).on('error', notify.onError({title: 'Pug Error'}))) // Компиляция pug, отслеживаем и выводим ошибки
+	return gulp.src(path.pug.srcPages)
+	.pipe(pug({pretty: '\t', locals: YOUR_LOCALS, filters: {php: pugPHPFilter}}).on('error', notify.onError({title: 'Pug Error'}))) // Компиляция pug, отслеживаем и выводим ошибки
 	.pipe(wiredep({directory: './bower_components', ignorePath: '../../'})) // Автоматический поиск используемых в проекте библиотек bower и добавление ссылок на них в html 
+	// .pipe(rename(function (path) {path.extname = ".php"})) // включить, если необходимы файлы с разметкой PHP
 	.pipe(notify({title: 'Bower Components injection Completed', message: 'Bower - хорошая работа!'})) // Отслеживаем и выводим уведомление
 	.pipe(gulp.dest(path.pug.app))
 	.pipe(browserSync.stream())

@@ -25,6 +25,7 @@
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-pngquant": "^5.0.0",
     "lazypipe": "^1.0.1",
+    "pug-php-filter": "0.0.1",
     "run-sequence": "^1.2.2",
     "vinyl-paths": "^2.1.0",
     "wiredep": "^4.0.0"
