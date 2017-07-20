@@ -228,14 +228,6 @@ gulp.task('prod', function (callback) {
     ); // Последовательное выполнение задач
 });
 
-// prod1
-gulp.task('prod1', function (callback) {
-    runSequence(
-        'html:replace',
-        callback
-    ); // Последовательное выполнение задач
-});
-
 // watch
 gulp.task('watch', function () {
     gulp.watch([path.pug.srcAll, 'bower.json', 'puglocals.json'], ['markup']); // markup and bower watch
