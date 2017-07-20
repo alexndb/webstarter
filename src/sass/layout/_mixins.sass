@@ -31,6 +31,14 @@
 		content: ""
 		clear: both
 
+// size
+=size($width, $height)
+	width: $width
+	@if $height
+		height: $height
+	@else
+		height: $width
+
 // overlay
 =overlay($color, $opa, $zindex)
 	&::after
