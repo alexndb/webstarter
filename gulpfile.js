@@ -30,6 +30,8 @@ var
     mozjpeg = require('imagemin-mozjpeg'),
     replace = require('gulp-replace'),
     pugPHPFilter = require('pug-php-filter'), // работа с PHP
+    gulpWebpack = require('gulp-webpack'),
+    webpack = require('webpack'),
     gulpRemoveHtml = require('gulp-remove-html'); // Удаляет строки HTML
 
 // path
@@ -49,8 +51,9 @@ var
             app: APP_DIR + '/css'
         },
         js: {
-            src: SRC_DIR + '/js/*.js',
-            app: APP_DIR + '/js'
+            src: SRC_DIR + '/js/common.js',
+            app: APP_DIR + '/js',
+            watch: SRC_DIR + '/js/**/*.js'
         },
         fonts: {
             src: SRC_DIR + '/fonts/**/*.*',
@@ -125,27 +128,27 @@ gulp.task('styles:min', function () {
         .pipe(browserSync.stream());
 });
 
-// html:replace
-gulp.task('html:replace', function () {
-    gulp.src([APP_DIR + '/*.html'])
-        .pipe(replace('<script src="js/libs.min.js"></script>', '<script src="js/libs.min.js" defer></script>'))
-        .pipe(gulp.dest(APP_DIR));
-});
-
 // scripts
 gulp.task('scripts', ['scripts:min'], function () {
-    gulp.src(path.js.src)
+    return gulp.src(path.js.src)
+        .pipe(gulpWebpack({
+            output: {
+                filename: 'common.js'
+            }
+        }))
         .pipe(gulp.dest(path.js.app))
         .pipe(browserSync.stream());
 });
 
 // scripts:min
 gulp.task('scripts:min', function () {
-    gulp.src(path.js.src)
-    // .pipe(sourcemaps.init())
-        .pipe(uglify())
-        .pipe(rename('common.min.js'))
-        // .pipe(sourcemaps.write())
+    return gulp.src(path.js.src)
+        .pipe(gulpWebpack({
+            output: {
+                filename: 'common.min.js'
+            },
+            plugins: [new webpack.optimize.UglifyJsPlugin()]
+        }, webpack))
         .pipe(gulp.dest(path.js.app))
         .pipe(browserSync.stream());
 });
@@ -232,7 +235,7 @@ gulp.task('prod', function (callback) {
 gulp.task('watch', function () {
     gulp.watch([path.pug.srcAll, 'bower.json', 'puglocals.json'], ['markup']); // markup and bower watch
     gulp.watch(path.sass.srcAll, ['styles']); // styles watch
-    gulp.watch(path.js.src, ['scripts']); // scripts watch
+    gulp.watch(path.js.watch, ['scripts']); // scripts watch
     gulp.watch(path.img.src, ['img']); // img watch
     gulp.watch(path.fonts.src, ['fonts']); // fonts watch
     gulp.watch(['src/.htaccess', 'src/mail.php'], ['assets']); // assets watch

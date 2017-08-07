@@ -44,6 +44,10 @@ My starting template for web
 [gulp-group-css-media-queries](https://www.npmjs.com/package/gulp-group-css-media-queries) - Поиск и объединение дублирующихся медиа-запросов
 
 ### Scripts:
+[webpack](https://www.npmjs.com/package/webpack) - Модульный JS на Webpack
+
+[gulp-webpack](https://www.npmjs.com/package/gulp-webpack) - Интеграция Webpack в Gulp
+
 [gulp-uglify](https://www.npmjs.com/package/gulp-uglify) - Сжатие JS
 
 [gulp-babel](https://www.npmjs.com/package/gulp-babel) - Компиляция BABEL
