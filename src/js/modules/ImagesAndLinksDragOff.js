@@ -1,9 +1,9 @@
 function imagesAndLinksDragOff() {
-    $("img, a").on('dragstart', function (e) {
-        e.preventDefault();
-    });
+  $("img, a").on('dragstart', function (e) {
+    e.preventDefault();
+  });
 }
 
 export default {
-    imagesAndLinksDragOff: imagesAndLinksDragOff
+  imagesAndLinksDragOff: imagesAndLinksDragOff
 }

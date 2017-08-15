@@ -1,20 +1,20 @@
 {
-	"projectName" : "WebStarter",
-	"select1" : {
-		"Опция 1" : "Опция 1",
-		"Опция 2" : "Опция 2",
-		"Опция 3" : "Опция 3",
-		"Опция 4" : "Опция 4",
-		"Опция 5" : "Опция 5"
-	},
-	"mainNav": {
-		"Обо мне" : "about.html",
-		"Корзина" : "cart.html",
-		"Блог" : "blog.html"
-	},
-	"secondNav": {
-		"Обо мне2" : "about.html",
-		"Корзина2" : "cart.html",
-		"Блог2" : "blog.html"
-	}
+  "projectName": "WebStarter",
+  "select1": {
+    "Опция 1": "Опция 1",
+    "Опция 2": "Опция 2",
+    "Опция 3": "Опция 3",
+    "Опция 4": "Опция 4",
+    "Опция 5": "Опция 5"
+  },
+  "mainNav": {
+    "Обо мне": "about.html",
+    "Корзина": "cart.html",
+    "Блог": "blog.html"
+  },
+  "secondNav": {
+    "Обо мне2": "about.html",
+    "Корзина2": "cart.html",
+    "Блог2": "blog.html"
+  }
 }

@@ -8,12 +8,12 @@ import resolutionEvents from './modules/resolutionEvents'; // resolution events
 import resizeEvents from './modules/resizeEvents'; // resize events
 
 $(document).ready(function () {
-    popups.popups();
-    phoneMask.phoneMask();
-    imagesAndLinksDragOff.imagesAndLinksDragOff();
-    formSubmit.formSubmit();
-    inputs.inputs();
-    selects.selects();
-    resolutionEvents.resolutionEvents();
-    resizeEvents.resizeEvents();
+  popups.popups();
+  phoneMask.phoneMask();
+  imagesAndLinksDragOff.imagesAndLinksDragOff();
+  formSubmit.formSubmit();
+  inputs.inputs();
+  selects.selects();
+  resolutionEvents.resolutionEvents();
+  resizeEvents.resizeEvents();
 });

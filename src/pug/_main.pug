@@ -2,23 +2,20 @@ include mixins/_mixins
 
 doctype html
 html(lang='ru')
-	head
-		include partials/_meta
-		+title('Главная')
-		include partials/_favicon
-		include layout/_normalize
-		include layout/_preloader
-		include partials/_styles
+  head
+    include partials/_meta
+    +title('Главная')
+    include partials/_favicon
+    include partials/_normalize
+    include partials/_preloader
+    include partials/_styles
 
-	body
-		//main wrapper
-		.c-wrapper
-			include partials/_header
-			//main
-			main.c-main
-				block content
-			//main end
-			include partials/_footer
-		//main wrapper end
-		include partials/_hidden
-		include partials/_scripts
+  body
+    .c-wrapper
+      block top-panel
+      block header
+      main.c-main
+        block content
+      block footer
+    include partials/_hidden
+    include partials/_scripts

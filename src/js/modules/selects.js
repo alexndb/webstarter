@@ -1,17 +1,17 @@
 function selects() {
-    var selects = $("select");
+  let selects = $("select");
 
-    selects.each(function () {
-        var select = $(this);
-        var dataPlaceholder = select.attr('data-placeholder');
+  selects.each(function () {
+    let select = $(this);
+    let dataPlaceholder = select.attr('data-placeholder');
 
-        select.select2({
-            minimumResultsForSearch: Infinity,
-            placeholder: dataPlaceholder
-        });
+    select.select2({
+      minimumResultsForSearch: Infinity,
+      placeholder: dataPlaceholder
     });
+  });
 }
 
 export default {
-    selects: selects
+  selects: selects
 }
