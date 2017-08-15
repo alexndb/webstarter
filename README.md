@@ -24,11 +24,7 @@ My starting template for web
 ### Markup:
 [gulp-pug](https://www.npmjs.com/package/gulp-pug) - Компилятор Pug
 
-[gulp-pug](https://www.npmjs.com/package/pug-php-filter) - Позволяет писать PHP в Pug
-
-[gulp-remove-html](https://www.npmjs.com/package/gulp-remove-html) - Удаление разметки из HTML
-
-[gulp-file-include](https://www.npmjs.com/package/gulp-file-include) - Вставка содержимого файла в HTML разметку
+[pug-php-filter](https://www.npmjs.com/package/pug-php-filter) - Позволяет писать PHP в Pug
 
 [wiredep](https://www.npmjs.com/package/wiredep) - Автоматический поиск и подключение всех библиотек Bower к проекту
 
@@ -46,11 +42,9 @@ My starting template for web
 ### Scripts:
 [webpack](https://www.npmjs.com/package/webpack) - Модульный JS на Webpack
 
-[gulp-webpack](https://www.npmjs.com/package/gulp-webpack) - Интеграция Webpack в Gulp
+[webpack-stream](https://www.npmjs.com/package/webpack-stream) - Интеграция Webpack в Gulp
 
 [gulp-uglify](https://www.npmjs.com/package/gulp-uglify) - Сжатие JS
-
-[gulp-babel](https://www.npmjs.com/package/gulp-babel) - Компиляция BABEL
 
 ### Images:
 [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin) - Оптимизация изображений
@@ -59,18 +53,10 @@ My starting template for web
 
 [imagemin-mozjpeg](https://github.com/imagemin/imagemin-mozjpeg) - Оптимизация JPG
 
-[gulp.spritesmith](https://www.npmjs.com/package/gulp.spritesmith) - PNG спрайты
-
-[gulp-svg-sprites](https://www.npmjs.com/package/gulp-svg-sprites) - SVG спрайты
-
 ### Files:
 [gulp-rename](https://www.npmjs.com/package/gulp-rename) - Переименование файлов
 
 [del](https://www.npmjs.com/package/del) - Удаление файлов и папок
-
-[gulp-concat](https://www.npmjs.com/package/gulp-concat) - Объединение файлов
-
-[gulp-replace](https://www.npmjs.com/package/gulp-replace) - Замена текста в файле
 
 ### Helpers:
 [growl for Windows](http://www.growlforwindows.com/gfw/) - Красивые уведомления для Windows
@@ -84,7 +70,5 @@ My starting template for web
 [run-sequence](https://www.npmjs.com/package/run-sequence) - Синхронный запуск выполнения задач
 
 [gulp-if](https://www.npmjs.com/package/gulp-if) - Условие "Если"
-
-[lazypipe](https://www.npmjs.com/package/lazypipe) - Создание source map для useref
 
 [vinyl-paths](https://www.npmjs.com/package/vinyl-paths) - Позволяет включать del через поток .pipe(vinylPaths(del))
