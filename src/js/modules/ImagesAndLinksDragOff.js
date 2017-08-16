@@ -1,5 +1,5 @@
 function imagesAndLinksDragOff() {
-  $("img, a").on('dragstart', function (e) {
+  $('img, a').on('dragstart', function (e) {
     e.preventDefault();
   });
 }

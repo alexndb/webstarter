@@ -64,7 +64,7 @@ gulp.task('browserSync', function () {
 
 // markup
 gulp.task('markup', function () {
-  let YOUR_LOCALS = require('./puglocals.json'); // Подключаем JSON с данными проекта
+  let YOUR_LOCALS = require('./src/pug/_data/pugLocals.json'); // Подключаем JSON с данными проекта
   return gulp.src(path.pug.srcPages)
   .pipe(pug({
     pretty: '\t',

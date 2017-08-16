@@ -3,8 +3,8 @@ import ajaxError from './ajaxError';
 
 function ajaxOptions(form) {
   return {
-    type: "POST",
-    url: "mail.php",
+    type: 'POST',
+    url: 'mail.php',
     data: form.serialize(),
     success: function () {
       ajaxSuccess.ajaxSuccess(form);

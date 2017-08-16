@@ -1,0 +1,36 @@
+input[type=radio]
+  display: none
+  + label
+    font-size: $default-input-font-size
+    font-family: $default-font
+    position: relative
+    padding-left: 30px
+    margin-bottom: 15px
+    cursor: pointer
+    user-select: none
+  &:not(checked)
+    + label
+      &:before,
+      &:after
+        content: ''
+        position: absolute
+      &::before
+        top: 0
+        left: 0
+        display: block
+        width: 20px
+        height: 20px
+        border: 1px solid $default-input-border-color
+        border-radius: 50%
+      &::after
+        top: 5px
+        left: 5px
+        width: 10px
+        height: 10px
+        background-color: #666
+        border-radius: 50%
+        display: none
+  &:checked
+    + label
+      &:after
+        display: block

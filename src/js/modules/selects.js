@@ -1,5 +1,5 @@
 function selects() {
-  let selects = $("select");
+  let selects = $('select');
 
   selects.each(function () {
     let select = $(this);

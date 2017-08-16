@@ -5,12 +5,7 @@ function formSubmitThanks(form) {
   $.magnificPopup.close();
   $.magnificPopup.open({
     items: {
-      src: '<div class="c-popup-default c-popup-thankyou" id="popup-thanks">' +
-      '<div class="c-popup-default-inner">' +
-      '<h2 class="c-popup-default-title">Спасибо за заявку ' + thanksName + '!</h2>' +
-      '<p>Мы перезвоним вам в ближайшее время по номеру ' + '<span>' + thanksPhoneNumber + '</span>' + '</p>' +
-      '</div>' +
-      '</div>'
+      src: `<div class="c-popup-default c-popup-thanks" id="popup-thanks"><div class="c-popup-default-inner"><h2 class="c-popup-default-title">Спасибо за заявку ${thanksName}!</h2><p>Мы перезвоним вам в ближайшее время по номеру <span>${thanksPhoneNumber}</span></p></div></div>`
     },
     type: 'inline',
     showCloseBtn: false
