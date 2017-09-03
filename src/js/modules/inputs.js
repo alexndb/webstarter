@@ -1,4 +1,4 @@
-function inputs() {
+export default function inputs() {
   $('input').on('focus', function () {
     $(this).addClass('active');
   });
@@ -10,8 +10,4 @@ function inputs() {
       $(this).removeClass('active');
     }
   });
-}
-
-export default {
-  inputs: inputs
 }

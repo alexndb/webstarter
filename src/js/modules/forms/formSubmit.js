@@ -1,7 +1,7 @@
 import formValidate from './formValidate';
 import ajaxOptions from './ajax/ajaxOptions';
 
-function formSubmit() {
+export default function formSubmit() {
   let forms = $('form');
 
   forms.on('submit', function (e) {
@@ -9,14 +9,10 @@ function formSubmit() {
     let form = $(this);
     let inputs = form.find('[data-validate="true"]');
 
-    formValidate.formValidate(inputs);
+    formValidate(inputs);
 
     if ($('.c-error').length == 0) {
-      $.ajax(ajaxOptions.ajaxOptions(form));
+      $.ajax(ajaxOptions(form));
     }
   });
-}
-
-export default {
-  formSubmit: formSubmit
 }

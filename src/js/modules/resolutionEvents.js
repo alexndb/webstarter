@@ -1,4 +1,4 @@
-function resolutionEvents() {
+export default function resolutionEvents() {
   let ww = window.innerWidth;
 
   if (ww >= 992) {
@@ -6,8 +6,4 @@ function resolutionEvents() {
   } else {
     console.log('меньше 992')
   }
-}
-
-export default {
-  resolutionEvents: resolutionEvents
 }

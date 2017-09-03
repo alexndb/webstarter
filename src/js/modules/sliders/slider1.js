@@ -1,4 +1,4 @@
-function slider1() {
+export default function slider1() {
   let slider1 = $('.js-slider1');
   let slider1Options = {
     slidesToShow: 1,
@@ -19,8 +19,4 @@ function slider1() {
   };
 
   slider1.slick(slider1Options);
-}
-
-export default {
-  slider1: slider1
 }

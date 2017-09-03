@@ -1,0 +1,6 @@
+mixin inputFile(name, dataValidate)
+  .c-input-file.js-fileInput
+    .c-input-file-content
+      .c-input-file-text Файл не выбран
+      .c-btn.c-btn-fileInput Выбрать файл
+    input(type='file', name=name, data-validate=dataValidate)

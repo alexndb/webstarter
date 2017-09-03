@@ -1,20 +1,16 @@
 import ajaxSuccess from './ajaxSuccess';
 import ajaxError from './ajaxError';
 
-function ajaxOptions(form) {
+export default function ajaxOptions(form) {
   return {
     type: 'POST',
     url: 'mail.php',
     data: form.serialize(),
     success: function () {
-      ajaxSuccess.ajaxSuccess(form);
+      ajaxSuccess(form);
     },
     error: function () {
-      ajaxError.ajaxError();
+      ajaxError();
     }
   }
-}
-
-export default {
-  ajaxOptions: ajaxOptions
 }

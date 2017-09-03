@@ -1,4 +1,4 @@
-function resizeEvents() {
+export default function resizeEvents() {
   $(window).on('resize', function () {
     let ww = window.innerWidth;
 
@@ -8,8 +8,4 @@ function resizeEvents() {
       console.log('меньше 992')
     }
   });
-}
-
-export default {
-  resizeEvents: resizeEvents
 }

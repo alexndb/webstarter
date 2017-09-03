@@ -52,13 +52,14 @@ let
       app: APP_DIR + '/fonts'
     },
     img: {
-      src: SRC_DIR + '/img/**/*.*',
+      src: SRC_DIR + '/img/**/**/**/*.*',
       app: APP_DIR + '/img'
     }
   };
 
 // server
 gulp.task('browserSync', function () {
+  // browserSync.init({proxy: "example/" + APP_DIR});
   browserSync.init({server: ["./", APP_DIR]});
 });
 
@@ -79,7 +80,7 @@ gulp.task('markup', function () {
 
 // markup:libs
 gulp.task('markup:libs', function () {
-  gulp.src('app/*.html')
+  gulp.src([APP_DIR + '/*.html', APP_DIR + '/*.php'])
   .pipe(useref()) // Объединение файлов всех используемых библиотек bower в файлы libs.css + libs.js и создание source maps
   .pipe(gulpif('*.css', minifyCss())) // Сжатие libs.css
   .pipe(gulpif('*.js', uglify())) // Сжатие libs.js
@@ -172,7 +173,7 @@ gulp.task('img:clean', function () {
 
 // assets
 gulp.task('assets', function () {
-  gulp.src('src/*.*')
+  gulp.src(SRC_DIR + '/*.*')
   .pipe(gulp.dest(APP_DIR));
 });
 
@@ -206,5 +207,5 @@ gulp.task('watch', function () {
   gulp.watch(path.js.watch, ['scripts']); // scripts watch
   gulp.watch(path.img.src, ['img']); // img watch
   gulp.watch(path.fonts.src, ['fonts']); // fonts watch
-  gulp.watch('src/*.*', ['assets']); // assets watch
+  gulp.watch(SRC_DIR + '/*.*', ['assets']); // assets watch
 });

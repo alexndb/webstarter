@@ -1,4 +1,4 @@
-function formValidate(inputs) {
+export default function formValidate(inputs) {
   let namePattern = /^[А-Яа-яЁё\s]+$/;
   let emailPattern = /^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/;
   let phonePattern = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
@@ -30,8 +30,4 @@ function formValidate(inputs) {
       input.removeClass('c-error');
     }
   });
-}
-
-export default {
-  formValidate: formValidate
 }

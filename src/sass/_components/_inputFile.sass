@@ -1,0 +1,37 @@
+input[type=file]
+  display: none
+
+.c-input-file-content
+  max-width: 100%
+  display: flex
+
+.c-input-file-text
+  min-width: 250px
+  flex: auto
+  white-space: nowrap
+  overflow: hidden
+  padding: 13px 10px
+  font-size: $default-input-font-size
+  font-family: $default-font
+  line-height: 1
+  border: 1px solid $default-input-border-color
+  display: flex
+  align-items: center
+  position: relative
+  &:after
+    content: ''
+    display: block
+    width: 10px
+    height: 100%
+    position: absolute
+    top: 0
+    right: 0
+    background-color: #fff
+
+.c-input-file-info
+  width: 100%
+  font-size: 11px
+  font-family: $default-font
+  margin-top: 2px
+  span
+    font-weight: bold

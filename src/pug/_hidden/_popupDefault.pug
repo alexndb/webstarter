@@ -18,5 +18,7 @@
       .c-popup-default-form-item
         +radio('radio-name', 'radio1-value', 'radio1', 'Метка радикнопки 1', 'checked')
         +radio('radio-name', 'radio2-value', 'radio2', 'Метка радикнопки 2')
+      .c-popup-default-form-item
+        +inputFile('file-name', 'true')
       +input-hidden('form_name', 'Стандартная форма заявки', null)
       button.c-btn.c-btn-default Отправить

@@ -1,9 +1,5 @@
-function sliderStart(slider, sliderOptions) {
+export default function sliderStart(slider, sliderOptions) {
   if (!slider.hasClass('slick-initialized')) {
     slider.slick(sliderOptions);
   }
-}
-
-export default {
-  sliderStart: sliderStart
 }

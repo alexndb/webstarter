@@ -1,4 +1,4 @@
-function selects() {
+export default function selects() {
   let selects = $('select');
 
   selects.each(function () {
@@ -10,8 +10,4 @@ function selects() {
       placeholder: dataPlaceholder
     });
   });
-}
-
-export default {
-  selects: selects
 }
