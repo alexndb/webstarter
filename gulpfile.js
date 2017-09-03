@@ -173,7 +173,7 @@ gulp.task('img:clean', function () {
 
 // assets
 gulp.task('assets', function () {
-  gulp.src(SRC_DIR + '/*.*')
+  gulp.src([SRC_DIR + '/*.*', SRC_DIR + '/.htaccess'])
   .pipe(gulp.dest(APP_DIR));
 });
 
