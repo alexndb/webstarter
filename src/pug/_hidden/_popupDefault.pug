@@ -14,10 +14,12 @@
         +select('select', 'Выберите', select1, null)
       .c-popup-default-form-item
         +checkbox('checkbox1-name', 'checkbox1-value', 'checkbox1', 'Метка чекбокса 1', 'checked')
+      .c-popup-default-form-item
         +checkbox('checkbox2-name', 'checkbox2-value', 'checkbox2', 'Метка чекбокса 2')
       .c-popup-default-form-item
-        +radio('radio-name', 'radio1-value', 'radio1', 'Метка радикнопки 1', 'checked')
-        +radio('radio-name', 'radio2-value', 'radio2', 'Метка радикнопки 2')
+        +radio('radio-name', 'radio1-value', 'radio1', 'Метка радиокнопки 1', 'checked')
+      .c-popup-default-form-item
+        +radio('radio-name', 'radio2-value', 'radio2', 'Метка радиокнопки 2')
       .c-popup-default-form-item
         +inputFile('file-name', 'true')
       +input-hidden('form_name', 'Стандартная форма заявки', null)

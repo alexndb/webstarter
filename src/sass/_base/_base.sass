@@ -21,6 +21,7 @@ a
   &:hover,
   &:focus
     text-decoration: none
+  &:focus
     &:hover
       text-decoration: none
 
@@ -34,8 +35,15 @@ svg
   max-height: 100%
 
 .c-wrapper
+  display: flex
+  flex-direction: column
+  justify-content: space-between
   max-width: 1920px
+  min-height: 100vh
   margin: 0 auto
+
+.c-main
+  flex: auto
 
 .container
   max-width: 1230px
