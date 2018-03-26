@@ -1,7 +1,7 @@
 import formValidate from './formValidate';
 import ajaxOptions from './ajax/ajaxOptions';
 
-export default function formSubmit() {
+export default () => {
   let forms = $('form');
 
   forms.on('submit', function (e) {

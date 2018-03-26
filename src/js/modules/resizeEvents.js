@@ -1,7 +1,7 @@
-export default function resizeEvents() {
-  $(window).on('resize', function () {
+export default () => {
+  $(window).on('resize', () => {
     let ww = window.innerWidth;
-
+    
     if (ww >= 992) {
       console.log('больше 992')
     } else {

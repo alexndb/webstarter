@@ -1,4 +1,4 @@
-export default function popups() {
+export default () => {
   $('.js-popup').magnificPopup({
     fixedBgPos: true,
     fixedContentPos: true,

@@ -1,5 +1,5 @@
-export default function afterAjaxSuccess(form, timeOut) {
-  setTimeout(function () {
+export default (form, timeOut) => {
+  setTimeout(() => {
     form.trigger('reset');
     $.magnificPopup.close();
   }, timeOut);

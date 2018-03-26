@@ -1,7 +1,7 @@
 import formSubmitThanks from '../formSubmitThanks'
 import afterAjaxSuccess from './afterAjaxSuccess'
 
-export default function ajaxSuccess(form) {
+export default (form) => {
   formSubmitThanks(form);
   afterAjaxSuccess(form, 6000);
 }

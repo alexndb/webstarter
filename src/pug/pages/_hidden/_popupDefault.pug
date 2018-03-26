@@ -20,7 +20,7 @@
         +radio('radio-name', 'radio1-value', 'radio1', 'Метка радиокнопки 1', 'checked')
       .c-popup-default-form-item
         +radio('radio-name', 'radio2-value', 'radio2', 'Метка радиокнопки 2')
-      .c-popup-default-form-item
-        +inputFile('file-name', 'true')
+      //-.c-popup-default-form-item
+      //-  +inputFile('file-name', 'true')
       +input-hidden('form_name', 'Стандартная форма заявки', null)
-      button.c-btn.c-btn-default Отправить
+      button(type='submit').c-btn.c-btn-default Отправить

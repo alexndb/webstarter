@@ -1,4 +1,4 @@
-export default function formSubmitThanks(form) {
+export default (form) => {
   let thanksName = form.find($('input[name=name]')).val();
   let thanksPhoneNumber = form.find($('input[type=tel]')).val();
 

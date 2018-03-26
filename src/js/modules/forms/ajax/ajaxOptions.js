@@ -1,7 +1,7 @@
 import ajaxSuccess from './ajaxSuccess';
 import ajaxError from './ajaxError';
 
-export default function ajaxOptions(form) {
+export default (form) => {
   return {
     type: 'POST',
     url: 'mail.php',

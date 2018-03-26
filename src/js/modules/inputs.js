@@ -1,8 +1,8 @@
-export default function inputs() {
+export default () => {
   $('input').on('focus', function () {
     $(this).addClass('active');
   });
-
+  
   $('input').on('blur', function () {
     if ($(this).val() != '') {
       $(this).addClass('active');
