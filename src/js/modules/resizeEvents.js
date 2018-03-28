@@ -1,5 +1,5 @@
 export default () => {
-  $(window).on('resize', () => {
+  window.addEventListener('resize', () => {
     let ww = window.innerWidth;
     
     if (ww >= 992) {

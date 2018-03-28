@@ -1,3 +1,4 @@
 mixin checkbox(name, value, id, label, checked)
   input(type='checkbox', name=name, value=value, checked=checked, id=id)
-  label(for=id)= label
+  label(for=id)
+    span= label

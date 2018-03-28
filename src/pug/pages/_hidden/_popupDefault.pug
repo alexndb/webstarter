@@ -2,25 +2,25 @@
   .c-popup-default-inner
     h2.c-popup-default-title Заголовок попапа
     form
-      .c-popup-default-form-item
-        +input('text', 'name', 'Имя', '', 'true', null)
-      .c-popup-default-form-item
-        +input('text', 'email', 'Email', '', 'true', null)
-      .c-popup-default-form-item
-        +input('tel', 'phone', 'Телефон', '', 'true', null)
-      .c-popup-default-form-item
+      .c-form-item
+        +input('text', 'name', 'Имя', null, 'true', null)
+      .c-form-item
+        +input('text', 'email', 'Email', null, 'true', null)
+      .c-form-item
+        +input('tel', 'phone', 'Телефон', null, 'true', null)
+      .c-form-item
         +textarea('text', 'Сообщение', 'true')
-      .c-popup-default-form-item
+      .c-form-item
         +select('select', 'Выберите', select1, null)
-      .c-popup-default-form-item
+      .c-form-item
         +checkbox('checkbox1-name', 'checkbox1-value', 'checkbox1', 'Метка чекбокса 1', 'checked')
-      .c-popup-default-form-item
-        +checkbox('checkbox2-name', 'checkbox2-value', 'checkbox2', 'Метка чекбокса 2')
-      .c-popup-default-form-item
+      .c-form-item
+        +checkbox('checkbox2-name', 'checkbox2-value', 'checkbox2', 'Метка чекбокса 2', null)
+      .c-form-item
         +radio('radio-name', 'radio1-value', 'radio1', 'Метка радиокнопки 1', 'checked')
-      .c-popup-default-form-item
-        +radio('radio-name', 'radio2-value', 'radio2', 'Метка радиокнопки 2')
-      //-.c-popup-default-form-item
+      .c-form-item
+        +radio('radio-name', 'radio2-value', 'radio2', 'Метка радиокнопки 2', null)
+      //-.c-form-item
       //-  +inputFile('file-name', 'true')
       +input-hidden('form_name', 'Стандартная форма заявки', null)
       button(type='submit').c-btn.c-btn-default Отправить

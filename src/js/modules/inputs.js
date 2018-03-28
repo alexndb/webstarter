@@ -1,13 +1,15 @@
 export default () => {
-  $('input').on('focus', function () {
-    $(this).addClass('active');
-  });
-  
-  $('input').on('blur', function () {
-    if ($(this).val() != '') {
-      $(this).addClass('active');
-    } else {
-      $(this).removeClass('active');
-    }
+  Array.from(document.querySelectorAll('input')).forEach((e) => {
+    e.addEventListener('focus', (e) => {
+      e.target.classList.add('active');
+    });
+    
+    e.addEventListener('blur', (e) => {
+      if (e.target.value != '') {
+        e.target.classList.add('active');
+      } else {
+        e.target.classList.remove('active');
+      }
+    });
   });
 }

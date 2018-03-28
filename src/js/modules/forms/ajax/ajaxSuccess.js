@@ -3,5 +3,5 @@ import afterAjaxSuccess from './afterAjaxSuccess'
 
 export default (form) => {
   formSubmitThanks(form);
-  afterAjaxSuccess(form, 6000);
+  afterAjaxSuccess(form, 1000);
 }
