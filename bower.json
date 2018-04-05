@@ -1,12 +1,13 @@
 {
   "name": "webstarter",
-  "authors": ["Aleksandr <noz2008@mail.ru>"],
+  "authors": [
+    "Aleksandr <noz2008@mail.ru>"
+  ],
   "homepage": "https://github.com/alexndb/webstarter",
   "dependencies": {
-    "jquery.maskedinput": "^1.4.1",
     "magnific-popup": "^1.1.0",
     "select2": "^4.0.3",
     "jquery": "^3.2.1",
-    "slick-carousel": "^1.7.1"
+    "swiper": "^4.2.0"
   }
 }

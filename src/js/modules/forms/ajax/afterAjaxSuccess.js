@@ -1,6 +1,6 @@
 export default (form, timeOut) => {
   setTimeout(() => {
-    form.trigger('reset');
+    form.reset();
     $.magnificPopup.close();
   }, timeOut);
 }

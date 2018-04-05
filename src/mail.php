@@ -7,7 +7,6 @@ $c = true;
 
 foreach ($_POST as $key => $value) {
   if ($value != '' && $key != 'project_name' && $key != 'admin_email') {
-
     // russian language fields
     switch ($key) {
       case 'form_name':

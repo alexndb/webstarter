@@ -1,8 +1,9 @@
 export default (inputs) => {
   let namePattern = /^[а-яА-ЯёЁa-zA-Z\s]+$/;
   let emailPattern = /^([a-zA-Z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/;
-  let phonePattern = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
+  let phonePattern = /^((\+\d)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{9}$/;
   let errorsLang = 'ru';
+  let errorMessages = document.querySelectorAll('.c-form-error-message');
   let errors = {
     empty: {
       ru: 'Заполните поле',
@@ -22,8 +23,8 @@ export default (inputs) => {
       en: 'Format youremail@example.ru'
     },
     phone: {
-      ru: 'Формат +7 (999) 999-9999',
-      en: 'Format +7 (999) 999-9999'
+      ru: 'Формат +9 (999) 999-9999',
+      en: 'Format +9 (999) 999-9999'
     },
     textLength: {
       ru: 'Минимальная длина 10 символов',
@@ -32,30 +33,35 @@ export default (inputs) => {
     }
   };
   
-  $('.c-form-error-message').remove();
+  for (let message of errorMessages) {
+    message.remove();
+  }
   
-  inputs.each(function () {
-    let input = $(this);
-    let value = input.val();
+  for (let input of inputs) {
+    let value = input.value;
     let showError = (text) => {
-      input.addClass('c-error');
-      input.after(`<div class="c-form-error-message">${text[errorsLang]}</div>`);
+      let errorTemplate = document.createElement('div');
+      
+      errorTemplate.classList.add('c-form-error-message');
+      errorTemplate.innerHTML = `${text[errorsLang]}`;
+      input.classList.add('c-error');
+      input.parentNode.insertBefore(errorTemplate, input.parentNode.children[1]);
     };
     
     if (value == '') {
       showError(errors.empty);
-    } else if (input.attr('name') == 'name' && !namePattern.test(value)) {
+    } else if (input.getAttribute('name') == 'name' && !namePattern.test(value)) {
       showError(errors.name);
-    } else if (input.attr('name') == 'name' && input.val().length < errors.nameLength.length) {
+    } else if (input.getAttribute('name') == 'name' && value.length < errors.nameLength.length) {
       showError(errors.nameLength);
-    } else if (input.attr('name') == 'email' && !emailPattern.test(value)) {
+    } else if (input.getAttribute('name') == 'email' && !emailPattern.test(value)) {
       showError(errors.email);
-    } else if (input.attr('name') == 'phone' && !phonePattern.test(value)) {
+    } else if (input.getAttribute('name') == 'phone' && !phonePattern.test(value)) {
       showError(errors.phone);
-    } else if (input.attr('name') == 'text' && input.val().length < errors.textLength.length) {
+    } else if (input.getAttribute('name') == 'text' && value.length < errors.textLength.length) {
       showError(errors.textLength);
     } else {
-      input.removeClass('c-error');
+      input.classList.remove('c-error');
     }
-  });
+  }
 }

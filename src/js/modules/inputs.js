@@ -1,5 +1,5 @@
 export default () => {
-  Array.from(document.querySelectorAll('input')).forEach((e) => {
+  for (let e of document.querySelectorAll('input')) {
     e.addEventListener('focus', (e) => {
       e.target.classList.add('active');
     });
@@ -11,5 +11,5 @@ export default () => {
         e.target.classList.remove('active');
       }
     });
-  });
+  }
 }

@@ -1,29 +1,51 @@
 export default () => {
-  let inputsWrap = $('.js-fileInput');
+  let inputsWrap = document.querySelectorAll('.js-fileInput');
   
-  inputsWrap.each(function () {
-    let input = $(this).find('input[type=file]');
-    let inputText = $(this).find('.c-input-file-text');
-    let inputBtn = $(this).find('.c-btn-fileInput');
+  for (let e of inputsWrap) {
+    let input = e.childNodes[3];
+    let inputText = e.childNodes[1].childNodes[1];
+    let inputBtn = e.childNodes[1].childNodes[3];
+    let previewImagesContainer = e.childNodes[5].childNodes[1];
+    let onClick = () => {
+      input.dispatchEvent(new MouseEvent('click'));
+    };
+    let showImagesPreview = (images) => {
+      for (let image of images.files) {
+        let reader = new FileReader();
+        
+        reader.onload = (e) => {
+          let img = previewImagesContainer.appendChild(document.createElement('div'));
+          img.classList.add('c-input-file-content-preview-image');
+          img.style.backgroundImage = `url(${e.target.result})`;
+          img.addEventListener('click', (e) => {
+            e.target.remove();
+          });
+        };
+        reader.readAsDataURL(image);
+      }
+    };
     
-    inputBtn.on('click', function () {
-      input.trigger('click');
+    inputBtn.addEventListener('click', () => {
+      onClick();
     });
     
-    inputText.on('click', function () {
-      input.trigger('click');
+    inputText.addEventListener('click', () => {
+      onClick();
     });
     
-    input.on('change', function (e) {
-      $('.c-input-file-info').remove();
+    input.addEventListener('change', (e) => {
+      showImagesPreview(e.target);
       
-      if (e.target.files.length != 0) {
-        inputText.html(e.target.files[0].name);
-        inputBtn.text('Изменить файл');
+      if (e.target.files.length == 1) {
+        inputText.innerText = e.target.files[0].name;
+        inputBtn.innerText = 'Изменить файл';
+      } else if (e.target.files.length > 1) {
+        inputText.innerText = `Выбрано файлов: ${e.target.files.length}`;
+        inputBtn.innerText = 'Выбрать файл';
       } else {
-        inputText.html('Файл не выбран');
-        inputBtn.html('Выбрать файл');
+        inputText.innerText = 'Файл не выбран';
+        inputBtn.innerText = 'Выбрать файл';
       }
     });
-  })
+  }
 }

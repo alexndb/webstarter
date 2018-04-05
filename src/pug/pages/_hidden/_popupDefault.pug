@@ -1,13 +1,13 @@
 #popup-default.c-popup-default
   .c-popup-default-inner
     h2.c-popup-default-title Заголовок попапа
-    form
+    form(enctype='multipart/form-data')
       .c-form-item
         +input('text', 'name', 'Имя', null, 'true', null)
       .c-form-item
         +input('text', 'email', 'Email', null, 'true', null)
       .c-form-item
-        +input('tel', 'phone', 'Телефон', null, 'true', null)
+        +input('tel', 'phone', 'Телефон', null, 'true', 'js-phoneMask')
       .c-form-item
         +textarea('text', 'Сообщение', 'true')
       .c-form-item

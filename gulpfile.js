@@ -27,7 +27,7 @@ let
   webpack = require('webpack');
 
 // path
-let
+const
   SRC_DIR = 'src',
   APP_DIR = 'app',
   path = {
@@ -39,7 +39,6 @@ let
     sass: {
       srcAll: SRC_DIR + '/sass/**/*.sass',
       srcMain: SRC_DIR + '/sass/main.sass',
-      srcCritical: SRC_DIR + '/sass/critical.sass',
       app: APP_DIR + '/css'
     },
     js: {
@@ -59,8 +58,8 @@ let
 
 // server
 gulp.task('browserSync', function () {
-  // browserSync.init({proxy: "example/" + APP_DIR});
-  browserSync.init({server: ["./", APP_DIR]});
+  browserSync.init({proxy: "workflow/webstarter/" + APP_DIR});
+  // browserSync.init({server: ["./", APP_DIR]});
 });
 
 // markup
