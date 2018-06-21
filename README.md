@@ -9,8 +9,7 @@ My starting template for web
 5. run gulp
 
 ## Production instruction:
-1. run gulp build
-2. run gulp prod
+run gulp build
 
 ## Working files:
 ### Manage:
@@ -37,8 +36,6 @@ My starting template for web
 
 [gulp-clean-css](https://www.npmjs.com/package/gulp-clean-css) - Сжатие CSS
 
-[gulp-group-css-media-queries](https://www.npmjs.com/package/gulp-group-css-media-queries) - Поиск и объединение дублирующихся медиа-запросов
-
 ### Scripts:
 [webpack](https://www.npmjs.com/package/webpack) - Модульный JS на Webpack
 
@@ -59,15 +56,11 @@ My starting template for web
 [del](https://www.npmjs.com/package/del) - Удаление файлов и папок
 
 ### Helpers:
-[growl for Windows](http://www.growlforwindows.com/gfw/) - Красивые уведомления для Windows
-
-[gulp-notify](https://www.npmjs.com/package/gulp-notify) - Система уведомлений
+[node-notifier](https://github.com/mikaelbr/node-notifier) - Система уведомлений
 
 [gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) - Создание карт для работы с минифицированными стилями и скриптами
 
 [gulp-cache](https://www.npmjs.com/package/gulp-cache) - Очистка кэша
-
-[run-sequence](https://www.npmjs.com/package/run-sequence) - Синхронный запуск выполнения задач
 
 [gulp-if](https://www.npmjs.com/package/gulp-if) - Условие "Если"
 

@@ -1,4 +1,4 @@
-mixin select(name, placeholder, options, className)
-  select(name=name, data-placeholder=placeholder, class=className)
+mixin select(selectName, placeholder, options, dataValidate, className)
+  select(name=selectName, data-placeholder=placeholder, data-validate=dataValidate class=className)
     each text, value in options
       option(value=value)= text

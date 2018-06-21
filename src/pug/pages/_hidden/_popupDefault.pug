@@ -11,7 +11,7 @@
       .c-form-item
         +textarea('text', 'Сообщение', 'true')
       .c-form-item
-        +select('select', 'Выберите', select1, null)
+        +select('select', 'Выберите', select1, 'true', null)
       .c-form-item
         +checkbox('checkbox1-name', 'checkbox1-value', 'checkbox1', 'Метка чекбокса 1', 'checked')
       .c-form-item
@@ -24,3 +24,4 @@
       //-  +inputFile('file-name', 'true')
       +input-hidden('form_name', 'Стандартная форма заявки', null)
       button(type='submit').c-btn.c-btn-default Отправить
+      +agreement()

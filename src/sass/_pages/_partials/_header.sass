@@ -1,10 +1,23 @@
 .c-header
   background-color: #ccc
-//  &.sticky
-//    position: fixed
-//    left: 0
-//    width: 100%
-//    opacity: 0
-//    +dt(0.3s)
-//    &.show
-//      opacity: 1
+  //&.sticky
+  //  position: fixed
+  //  left: 0
+  //  width: 100%
+  //  opacity: 0
+  //  +dt(0.3s)
+  //  &.show
+  //    opacity: 1
+
+.c-btn-toggle
+  width: 20px
+  display: none
+  +bp($lg)
+    display: block
+  span
+    display: block
+    height: 3px
+    background-color: $default-color
+    margin-bottom: 3px
+    &:last-child
+      margin-bottom: 0

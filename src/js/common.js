@@ -1,16 +1,20 @@
+import "babel-polyfill";
+
 import dragOff from './modules/dragOff';
-import iMask from './modules/iMask';
+import iMask from './modules/libs/iMask';
 import formSubmit from './modules/forms/formSubmit';
-import slider1 from './modules/swiper/slider1';
-import magnificPopup from './modules/magnificPopup';
-import select2 from './modules/select2';
+import magnificPopup from './modules/libs/magnificPopup/popups';
+import select2 from './modules/libs/select2';
+import agreement from './modules/agreement';
+import mobileNav from './modules/mobileNav';
 
 dragOff();
 iMask();
 formSubmit();
-slider1();
+agreement();
 
 $(document).ready(() => {
   magnificPopup();
   select2();
+  mobileNav();
 });

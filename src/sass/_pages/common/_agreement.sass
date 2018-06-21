@@ -1,0 +1,28 @@
+.c-agreement
+  margin-top: 20px
+  input[type=checkbox]
+    + label
+      &:not(checked)
+        margin-right: 9px
+        &:before
+          margin-right: 0
+
+.c-agreement-top-text
+  font-size: 12px
+  line-height: 1.3
+  color: #000
+  margin-bottom: 6px
+
+.c-agreement-inner
+  display: flex
+  align-items: flex-start
+
+.c-agreement-text
+  font-size: 10px
+  line-height: 1.3
+  color: #000
+  a
+    +link(10px, #000)
+    text-decoration: underline
+    &:hover
+      text-decoration: none

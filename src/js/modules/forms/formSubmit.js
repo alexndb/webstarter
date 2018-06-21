@@ -1,4 +1,4 @@
-import formValidate from './formValidate';
+import formValidate from './validation/formValidate';
 import ajaxError from './ajax/ajaxError';
 import ajaxSuccess from './ajax/ajaxSuccess';
 
@@ -8,11 +8,11 @@ export default () => {
   for (let form of forms) {
     form.addEventListener('submit', (e) => {
       const form = e.target;
-      const inputs = form.querySelectorAll('[data-validate="true"]');
+      const validateElements = form.querySelectorAll('[data-validate="true"]');
       
       e.preventDefault();
       
-      formValidate(inputs);
+      formValidate(validateElements);
       
       if (form.querySelectorAll('.c-error').length == 0) {
         fetch('mail.php', {

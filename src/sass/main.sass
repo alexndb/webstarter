@@ -3,20 +3,23 @@
 @import "_base/_base"
 
 @import "_libs/select2"
-@import "_libs/swiper"
+@import "_libs/slickSlider"
 @import "_libs/_magnificPopup"
-
-@import "_components/_fonts"
 
 @import "_buttons/_btn"
 @import "_buttons/_btnDefault"
 
+@import "_components/_fonts"
 @import "_components/_input"
 @import "_components/_checkbox"
 @import "_components/_radio"
 @import "_components/_textarea"
 @import "_components/_select"
-@import "_components/_formError"
+
+@import "_pages/common/_titles"
+@import "_pages/common/_icons"
+@import "_pages/common/_formError"
+@import "_pages/common/_agreement"
 
 @import "_pages/_partials/_header"
 @import "_pages/_partials/_footer"
@@ -24,4 +27,12 @@
 @import "_pages/_elements/_block1"
 
 @import "_pages/_hidden/_popupDefault"
+@import "_pages/_hidden/_popupNav"
 @import "_pages/_hidden/_popupThanks"
+
+.js-form-step
+  &:not(:first-child)
+    display: none
+
+.js-form-step-hidden
+  display: none
