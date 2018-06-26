@@ -1,27 +1,13 @@
-import formValidate from './forms/validation/formValidate';
+import removeError from "./forms/validation/errors/removeError";
+import inputValidate from "./forms/validation/inputValidate";
 
 export default () => {
-  // for (let e of document.querySelectorAll('input')) {
-  //   e.addEventListener('focus', (e) => {
-  //     e.target.classList.add('active');
-  //   });
-  //  
-  //   e.addEventListener('blur', (e) => {
-  //     if (e.target.value != '') {
-  //       e.target.classList.add('active');
-  //     } else {
-  //       e.target.classList.remove('active');
-  //     }
-  //   });
-  // }
+  const inputs = document.querySelectorAll('input[data-validate="true"]');
   
-  $('body').on('blur', '[data-validate=true]', function () {
-    // if ($(this).val() != '') {
-    //   $(this).addClass('active');
-    // } else {
-    //   $(this).removeClass('active');
-    // }
-    formValidate($(this), 'current');
-  });
-  
+  for (let input of inputs) {
+    input.addEventListener('blur', (e) => {
+      removeError(e.target);
+      inputValidate(e.target);
+    });
+  }
 }

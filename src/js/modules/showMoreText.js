@@ -2,7 +2,7 @@ export default () => {
   let btns = document.querySelectorAll('.js-showMoreText');
   
   for (let btn of btns) {
-    let parent = btn.parentNode;
+    let parent = btn.parentElement;
     let textOriginalSelector = parent.querySelector('.c-block-type7-bottom-slider-slide-text');
     let textOriginal = textOriginalSelector.innerText;
     let textSliced = textOriginal.slice(0, 207) + '..';
