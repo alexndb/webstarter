@@ -1,5 +1,6 @@
 .git/
 .idea/
+.vscode/
 _material/
 app/
 bower_components/
