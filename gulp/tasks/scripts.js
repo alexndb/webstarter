@@ -19,7 +19,10 @@ export default () => {
             use: [{
               loader: 'babel-loader',
               query: {
-                presets: ['es2015']
+                presets: [
+                  'env',
+                  'stage-3'
+                ]
               }
             }]
           }]

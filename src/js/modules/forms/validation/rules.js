@@ -1,13 +1,13 @@
 import phonePattern from "./patterns/phone";
 import errors from "./errors/errorsList";
 import showError from "./errors/showError";
-import namePattern from "./patterns/name";
+import lettersOnly from "./patterns/lettersOnly";
 import emailPattern from "./patterns/email";
 
 export default (element) => {
   if (element.value == '') {
     showError(element, errors.empty);
-  } else if (element.getAttribute('name') == 'name' && !namePattern.test(element.value)) {
+  } else if (element.getAttribute('name') == 'name' && !lettersOnly.test(element.value)) {
     showError(element, errors.name);
   } else if (element.getAttribute('name') == 'name' && element.value.length < errors.nameLength.length) {
     showError(element, errors.nameLength);
