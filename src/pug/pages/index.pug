@@ -1,16 +1,18 @@
 extends ../_main
+include ./_partials/_header
+include ./_partials/_footer
 
 block title
   +title(null, null)
 
 block header
-  include _partials/_header
+  +header()
 
 block content
   include _elements/_block1
 
 block footer
-  include _partials/_footer
+  +footer()
 
 block hidden
   include _hidden/_popupDefault
