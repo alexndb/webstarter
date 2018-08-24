@@ -1,0 +1,12 @@
+mixin slider(className, mods)
+  -
+    var allMods = '';
+    if (typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' slider--' + modsList[i].trim();
+      }
+    }
+     
+  div(class=`${allMods}` + ` ${className}` + ` js-${className}`)&attributes(attributes)
+    block

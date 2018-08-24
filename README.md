@@ -11,6 +11,12 @@ My starting template for web
 ## Production instruction:
 run gulp build
 
+## Создание нового блока
+node ws blockName extensions
+
+1. blockName - имя создаваемого блока
+2. extensions - необходимые расширения файлов (js, img), если ничего не указывать - по дефолту берутся pug и sass из ws.config.json
+
 ## Working files:
 ### Manage:
 [gulp](https://www.npmjs.com/package/gulp) - Сборщик проектов

@@ -1,0 +1,37 @@
+include ../input/input
+include ../input-checkbox/input-checkbox
+include ../input-radio/input-radio
+include ../input-hidden/input-hidden
+include ../textarea/textarea
+include ../select/select
+include ../agreement/agreement
+include ../button/button
+
+mixin popup()
+  #popup.c-popup
+    .c-popup-inner
+      h2.c-popup-title Заголовок попапа
+      form(enctype='multipart/form-data')
+        .c-form-item
+          +input('text', 'name', 'Имя', null, 'true', null)
+        .c-form-item
+          +input('text', 'email', 'Email', null, 'true', null)
+        .c-form-item
+          +input('tel', 'phone', 'Телефон', null, 'true', 'js-phoneMask')
+        .c-form-item
+          +textarea('text', 'Сообщение', 'true')
+        .c-form-item
+          +select('select', 'Выберите', select1, 'true', null)
+        .c-form-item
+          +input-checkbox('checkbox1-name', 'checkbox1-value', 'checkbox1', 'Метка чекбокса 1', 'checked')
+        .c-form-item
+          +input-checkbox('checkbox2-name', 'checkbox2-value', 'checkbox2', 'Метка чекбокса 2', null)
+        .c-form-item
+          +input-radio('radio-name', 'radio1-value', 'radio1', 'Метка радиокнопки 1', 'checked')
+        .c-form-item
+          +input-radio('radio-name', 'radio2-value', 'radio2', 'Метка радиокнопки 2', null)
+        //-.c-form-item
+        //-  +inputFile('file-name', 'true')
+        +input-hidden('form_name', 'Стандартная форма заявки', null)
+        +button('Отправить', 'accent', '')(type='submit')
+        +agreement()

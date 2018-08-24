@@ -1,0 +1,34 @@
+.c-button
+  text-decoration: none
+  display: inline-block
+  text-align: center
+  line-height: 1
+  border: none
+  background: none
+  cursor: pointer
+  user-select: none
+  &:hover,
+  &:focus
+    text-decoration: none
+    &:hover
+      text-decoration: none
+  &:disabled
+    opacity: 0.5
+    cursor: not-allowed
+  
+  &--accent
+    background-color: $color-accent
+    padding: 15px
+    font-family: $font-bold
+    +link($font-size, #000)
+    &:not(:disabled)
+      &:hover
+        background-color: lighten($color-accent, 3)
+
+.c-btn-fileInput
+  background-color: $color-input-border
+  padding: 15px
+  white-space: nowrap
+  +link(14px, #000)
+  &:hover
+    background-color: lighten($color-input-border, 3)

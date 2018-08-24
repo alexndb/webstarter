@@ -1,0 +1,17 @@
+input[type=text],
+input[type=tel],
+input[type=email],
+input[type=number],
+input[type=search],
+input[type=password]
+  outline: none
+  display: inline-block
+  width: 100%
+  padding: 13px 10px
+  font-size: $font-size-input
+  font-family: $font
+  line-height: 1
+  border: 1px solid $color-input-border
+  +placeholder($color-placeholder)
+  &.c-error
+    border-color: $color-error

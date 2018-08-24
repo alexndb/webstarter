@@ -1,0 +1,15 @@
+mixin icon(name, type, mods)
+  -
+    var allMods = '';
+    if (typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' c-icon--' + modsList[i].trim();
+      }
+    }
+
+  if (type === 'svg')
+    svg(class="c-icon c-icon--" + name + allMods)
+      use(xlink:href="./img/sprites/sprite.svg#" + name)
+  else if (type === 'png')
+    i(class="c-icon c-icon--" + name + allMods)

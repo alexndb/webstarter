@@ -1,3 +1,6 @@
+import $ from 'jquery';
+import 'slick-carousel/slick/slick';
+
 export default () => {
   let slider = $('.js-slider1');
   let sliderOptions = {

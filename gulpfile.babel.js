@@ -1,32 +1,30 @@
 'use strict';
 
-import appClean from './gulp/tasks/appClean';
-import assets from './gulp/tasks/assets';
-import browserSync from './gulp/tasks/browserSync';
-import cacheClear from './gulp/tasks/cacheClear';
-import fonts from './gulp/tasks/fonts';
-import img from './gulp/tasks/img';
-import imgClean from './gulp/tasks/imgClean';
-import markup from './gulp/tasks/markup';
-import markupLibs from './gulp/tasks/markupLibs';
-import scripts from './gulp/tasks/scripts';
-import styles from './gulp/tasks/styles';
+import assets from './gulp/tasks/subtasks/assets';
+import browserSync from './gulp/tasks/subtasks/browserSync';
+import {cleanApp, cleanCache} from './gulp/tasks/subtasks/clean';
+import fonts from './gulp/tasks/subtasks/fonts';
+import img from './gulp/tasks/subtasks/img';
+import markup from './gulp/tasks/subtasks/markup';
+import scripts from './gulp/tasks/subtasks/scripts';
+import {spritePng, spriteSvg} from './gulp/tasks/subtasks/sprites';
+import styles from './gulp/tasks/subtasks/styles';
 
-import production from './gulp/tasks/build';
 import development from './gulp/tasks/default';
+import production from './gulp/tasks/build';
 import watch from './gulp/tasks/watch';
 
-appClean();
-cacheClear();
-browserSync();
-markup();
-markupLibs();
-styles();
-scripts();
-fonts();
-imgClean();
-img();
 assets();
+browserSync();
+cleanApp();
+cleanCache();
+fonts();
+img();
+markup();
+scripts();
+spriteSvg();
+spritePng();
+styles();
 
 watch();
 

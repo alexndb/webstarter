@@ -4,11 +4,15 @@ export default () => {
   return gulp.task(
     'build',
     gulp.series(
-      'appClean', 'cacheClear',
+      'clean:app',
+      'sprite:png',
       gulp.parallel(
-        gulp.series('markup', 'markupLibs'),
-        'styles', 'scripts', 'fonts',
-        gulp.series('imgClean', 'img'),
+        'markup',
+        'styles',
+        'scripts',
+        'fonts',
+        'img',
+        'sprite:svg',
         'assets'
       )
     ));

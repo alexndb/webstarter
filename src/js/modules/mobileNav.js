@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import popupDefaultOptions from './libs/magnificPopup/options/popupDefaultOptions';
 
 export default () => {

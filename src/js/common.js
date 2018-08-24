@@ -1,24 +1,27 @@
-import "babel-polyfill";
+// import "babel-polyfill";
+import $ from 'jquery';
 
 import dragOff from './modules/dragOff';
 import iMask from './modules/libs/iMask';
 import formSubmit from './modules/forms/submit/onSubmit';
 import magnificPopup from './modules/libs/magnificPopup/popups';
-import select2 from './modules/libs/select2';
-import agreement from './modules/agreement';
+import select from '../blocks/select/select';
+import agreement from '../blocks/agreement/agreement';
 import mobileNav from './modules/mobileNav';
-import inputs from './modules/inputs';
-import textareas from './modules/textareas';
+import input from '../blocks/input/input';
+import textareas from '../blocks/textarea/textarea';
+import sliders from './modules/libs/slickSlider/sliders/sliders';
 
 dragOff();
 iMask();
-formSubmit();
+formSubmit(); 
 agreement();
-inputs();
+input();
 textareas();
 
 $(document).ready(() => {
   magnificPopup();
-  select2();
+  select();
   mobileNav();
+  sliders();
 });

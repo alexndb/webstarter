@@ -1,0 +1,27 @@
+extends ../_main
+
+include ../../blocks/page-title/page-title
+
+include ../../blocks/header/header
+include ../../blocks/footer/footer
+
+include ../../blocks/block/block
+
+include ../../blocks/popup/popup
+include ../../blocks/popup-nav/popup-nav
+
+block title
+  +page-title('|', 'Главная')
+
+block header
+  +header()
+
+block content
+  +block()
+
+block footer
+  +footer()
+
+block hidden
+  +popup()
+  +popup-nav()

@@ -1,0 +1,7 @@
+{
+  "blocksDir": "./src/blocks",
+  "extensions": [
+    "pug",
+    "sass"
+  ]
+}

@@ -1,0 +1,15 @@
+mixin nav(mods, links)
+  -
+    var allMods = '';
+    if (typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' c-nav--' + modsList[i].trim();
+      }
+    }
+
+  +b.NAV.c-nav(class=`${allMods}`)
+    +e.UL.list
+      each href, title in links
+        +e.LI.item
+          +e.A.link(href=href)= title

@@ -1,0 +1,50 @@
+select
+  display: inline-block
+  width: 100%
+  font-size: $font-size-input
+  font-family: $font
+  border: 1px solid $color-input-border
+  padding: 13px 10px
+  cursor: pointer
+  color: $color-placeholder
+  appearance: none !important
+  &::-ms-expand
+    display: none
+
+.select2-container
+  width: 100% !important
+  .select2-selection--single
+    height: auto
+    border-color: $color-input-border
+    &.c-error
+      border-color: $color-error
+    .select2-selection__rendered
+      padding: 17px 25px 16px 10px
+      font-size: $font-size-input
+      line-height: 1
+    .select2-selection__placeholder
+      color: $color-placeholder
+
+.select2-container--focus
+  .select2-selection--single
+    border: 1px solid $color-placeholder
+    
+  .select2-selection--single.c-error
+    border: 1px solid $color-placeholder
+  
+.select2-container--default
+  .select2-selection--single
+    border-radius: 0
+    outline: none
+    .select2-selection__arrow
+      width: auto
+      height: 100%
+      b
+        margin: 0 10px 0 0
+        left: auto
+        right: 0
+        transform: translateY(-50%)
+
+.select2-results__option
+  font-size: $font-size-input
+  padding: 12px 10px

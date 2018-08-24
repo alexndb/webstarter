@@ -1,0 +1,9 @@
+include ../nav/nav
+
+mixin popup-nav()
+  #popup-nav.c-popup.c-popup-nav
+    .c-popup-inner
+      .c-popup-nav-top top
+      .c-popup-nav-middle
+        +nav('c-popup-nav', mainNav)
+      .c-popup-nav-bottom bottom

@@ -1,0 +1,6 @@
+mixin popup-gallery(items)
+  .js-popup-gallery
+    a(href='#') Открыть галерею
+    .js-popup-gallery-images
+      each item in items
+        a(href=item.img, title=item.title)

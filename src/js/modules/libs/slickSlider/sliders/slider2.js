@@ -1,3 +1,5 @@
+import $ from 'jquery';
+import 'slick-carousel/slick/slick';
 import {checkMinWidth, checkMaxWidth} from '../checkWidth';
 
 export default () => {

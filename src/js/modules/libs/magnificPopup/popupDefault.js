@@ -1,3 +1,5 @@
+import $ from 'jquery';
+import 'magnific-popup';
 import popupDefaultOptions from './options/popupDefaultOptions';
 import popupOpen from './popupOpen';
 

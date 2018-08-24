@@ -4,10 +4,16 @@ export default () => {
   return gulp.task(
     'default',
     gulp.series(
-      'appClean', 'cacheClear',
+      'clean:app',
+      'clean:cache',
+      'sprite:png',
       gulp.parallel(
-        'markup', 'styles', 'scripts', 'fonts',
-        gulp.series('imgClean', 'img'),
+        'markup',
+        'styles',
+        'scripts',
+        'fonts',
+        'img',
+        'sprite:svg',
         'assets'
       ),
       gulp.parallel('watch', 'browserSync')

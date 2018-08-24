@@ -1,0 +1,29 @@
+.c-popup-nav
+  max-width: 100%
+  .c-popup-inner
+    min-height: calc(100vh - 16px)
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    +bp(900)
+      min-height: calc(100vh - 12px)
+
+.c-popup-nav-middle
+  flex: auto
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  text-align: center
+
+.c-popup-nav-item
+  margin-bottom: 25px
+  &:last-child
+    margin-bottom: 0
+
+.c-popup-nav-item-link
+  +link(24px, $color--dark)
+  line-height: 1
+  text-transform: uppercase
+  font-family: $font-bold

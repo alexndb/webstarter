@@ -1,0 +1,14 @@
+mixin button(text, mods, jsClass)
+  -
+    var allMods = '';
+    if (typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' c-button--' + modsList[i].trim();
+      }
+    }
+    
+  if (attributes.href)
+    +b.A.c-button(class=`${allMods} ${jsClass}`)&attributes(attributes)= text
+  else
+    +b.BUTTON.c-button(class=`${allMods} ${jsClass}`)&attributes(attributes)= text
