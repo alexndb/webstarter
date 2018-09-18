@@ -6,34 +6,35 @@ import notifier from 'node-notifier';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 
 import {path} from '../../path';
+import NODE_ENV from '../../env';
 
 browserSync.create();
 
+const babelOptions = {
+  rules: [{
+    use: [{
+      loader: 'babel-loader',
+      query: {
+        presets: [
+          'env',
+          'stage-3'
+        ]
+      }
+    }]
+  }]
+};
+
 export default () => {
+  console.log(NODE_ENV)
   return gulp.task('scripts', () => {
     return gulp.src(path.js.src)
       .pipe(gulpWebpack({
-        devtool: 'eval',
-        // devtool: 'source-map',
-        module: {
-          rules: [{
-            use: [{
-              loader: 'babel-loader',
-              query: {
-                presets: [
-                  'env',
-                  'stage-3'
-                ]
-              }
-            }]
-          }]
-        },
+        devtool: NODE_ENV === 'production' ? 'source-map' : 'eval',
+        module: NODE_ENV === 'production' ? babelOptions : {},
         output: {
           filename: 'common.min.js'
         },
-        plugins: [new UglifyJsPlugin({
-          sourceMap: true
-        })]
+        plugins: NODE_ENV === 'production' ? [new UglifyJsPlugin({sourceMap: true})] : []
       }).on('error', (err) => {
         notifier.notify({
           title: 'JavaScript Error',

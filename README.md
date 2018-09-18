@@ -1,21 +1,23 @@
 # WebStarter
-My starting template for web
+Стартовый шаблон для веб разработки
 
-## Start instruction:
-1. install Node.js from https://nodejs.org/en/
-2. run npm install -g bower
-3. clone this template to project
-4. run npm i && bower i
-5. run gulp
+## Подготовка:
+1. Установить [Node.js](https://nodejs.org/en/)
+2. Установить [Git](https://git-scm.com/)
+3. `git clone https://github.com/alexndb/webstarter.git`
+4. `npm i`
 
-## Production instruction:
-run gulp build
+## Разработка:
+`npm run dev`
+
+## Продакшн:
+`npm run build`
 
 ## Создание нового блока
-node ws blockName extensions
+`node ws blockName extensions`
 
-1. blockName - имя создаваемого блока
-2. extensions - необходимые расширения файлов (js, img), если ничего не указывать - по дефолту берутся pug и sass из ws.config.json
+1. `blockName` - имя создаваемого блока
+2. `extensions` - необходимые расширения файлов (js, img), если ничего не указывать - по дефолту берутся pug и sass из ws.config.json
 
 ## Working files:
 ### Manage:
