@@ -4,6 +4,7 @@ import gulp from 'gulp';
 browserSync.create();
 
 import {APP_DIR} from '../../path';
+import config from '../../../ws.config.json';
 
 export default () => {
   return gulp.task('browserSync', () => {
@@ -11,11 +12,11 @@ export default () => {
      * proxy - отслеживает локальный сервер по указанному адресу
      * server - отслеживает статичную папку APP_DIR
      */
-    browserSync.init({
-      proxy: "workflow/webstarter/" + APP_DIR
-    });
     // browserSync.init({
-    //   server: ["./", APP_DIR]
+    //   proxy: `${config.proxy}/` + APP_DIR
     // });
+    browserSync.init({
+      server: ['./', APP_DIR]
+    });
   });
 };

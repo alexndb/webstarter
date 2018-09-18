@@ -1,4 +1,5 @@
 {
+  "proxy": "projectPath",
   "blocksDir": "./src/blocks",
   "extensions": [
     "pug",
