@@ -1,10 +1,10 @@
 import $ from 'jquery';
-import popupDefaultOptions from './libs/magnificPopup/options/popupDefaultOptions';
+import popupDefaultOptions from '../../js/modules/libs/magnificPopup/options/popupDefaultOptions';
 
 export default () => {
   let parent = $('.c-header .container');
   let btnToggle = `
-    <a href='#popup-nav' class='c-btn-toggle js-popup'>
+    <a href='#popup-nav' class='c-button--toggle'>
         <span></span>
         <span></span>
         <span></span>
@@ -13,7 +13,7 @@ export default () => {
   
   parent.append(btnToggle);
   
-  $('.c-btn-toggle').on('click', function () {
+  $('.c-button--toggle').on('click', function () {
     $.magnificPopup.open(
       Object.assign(
         popupDefaultOptions,

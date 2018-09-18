@@ -7,11 +7,14 @@
   background: none
   cursor: pointer
   user-select: none
+  
   &:hover,
   &:focus
     text-decoration: none
+    
     &:hover
       text-decoration: none
+  
   &:disabled
     opacity: 0.5
     cursor: not-allowed
@@ -21,14 +24,32 @@
     padding: 15px
     font-family: $font-bold
     +link($font-size, #000)
+    
     &:not(:disabled)
       &:hover
         background-color: lighten($color-accent, 3)
+  
+  &--toggle
+    width: 20px
+    display: none
+    
+    +bp($lg)
+      display: block
+    
+    span
+      display: block
+      height: 3px
+      background-color: $color--dark
+      margin-bottom: 3px
+      
+      &:last-child
+        margin-bottom: 0
 
 .c-btn-fileInput
   background-color: $color-input-border
   padding: 15px
   white-space: nowrap
   +link(14px, #000)
+  
   &:hover
     background-color: lighten($color-input-border, 3)
