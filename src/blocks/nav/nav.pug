@@ -4,11 +4,11 @@ mixin nav(mods, links)
     if (typeof(mods) !== 'undefined' && mods) {
       var modsList = mods.split(',');
       for (var i = 0; i < modsList.length; i++) {
-        allMods = allMods + ' c-nav--' + modsList[i].trim();
+        allMods = allMods + ' nav--' + modsList[i].trim();
       }
     }
 
-  +b.NAV.c-nav(class=`${allMods}`)
+  +b.NAV.nav(class=`${allMods}`)
     +e.UL.list
       each href, title in links
         +e.LI.item

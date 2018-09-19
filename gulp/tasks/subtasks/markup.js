@@ -8,6 +8,7 @@ import pugPHPFilter from 'pug-php-filter';
 import rename from 'gulp-rename';
 
 import {path} from '../../path';
+import NODE_ENV from '../../env';
 
 browserSync.create();
 
@@ -22,7 +23,7 @@ export default () => {
      */
     return gulp.src(path.pug.src)
       .pipe(pug({
-        pretty: '\t',
+        pretty: NODE_ENV === 'production' ? '\t' : false,
         locals: JSON.parse(fs.readFileSync(path.pug.data, 'utf8')),
         filters: {
           php: pugPHPFilter

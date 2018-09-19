@@ -1,4 +1,4 @@
-mixin slider(className, mods)
+mixin slider(mods, jsClass)
   -
     var allMods = '';
     if (typeof(mods) !== 'undefined' && mods) {
@@ -8,5 +8,5 @@ mixin slider(className, mods)
       }
     }
      
-  div(class=`${allMods}` + ` ${className}` + ` js-${className}`)&attributes(attributes)
+  +b.slider(class=`${allMods} ${jsClass}`)&attributes(attributes)
     block

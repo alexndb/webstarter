@@ -1,9 +1,9 @@
 export default () => {
-  let header = document.querySelector('.c-header');
+  let header = document.querySelector('.header');
   
   if (header) {
     let headerHeight = header.offsetHeight;
-    let stickyHeaderContainer = document.querySelector('.c-wrapper');
+    let stickyHeaderContainer = document.querySelector('.wrapper');
     let stickyHeader = stickyHeaderContainer.appendChild(header.cloneNode(true));
     
     stickyHeader.style.top = -headerHeight + 'px';

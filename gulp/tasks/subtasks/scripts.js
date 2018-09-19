@@ -23,18 +23,18 @@ const babelOptions = {
     }]
   }]
 };
+const condition = NODE_ENV === 'production';
 
 export default () => {
-  console.log(NODE_ENV)
   return gulp.task('scripts', () => {
     return gulp.src(path.js.src)
       .pipe(gulpWebpack({
-        devtool: NODE_ENV === 'production' ? 'source-map' : 'eval',
-        module: NODE_ENV === 'production' ? babelOptions : {},
+        devtool: condition ? false : 'eval',
+        module: condition ? babelOptions : {},
         output: {
           filename: 'common.min.js'
         },
-        plugins: NODE_ENV === 'production' ? [new UglifyJsPlugin({sourceMap: true})] : []
+        plugins: condition ? [new UglifyJsPlugin({sourceMap: false})] : []
       }).on('error', (err) => {
         notifier.notify({
           title: 'JavaScript Error',

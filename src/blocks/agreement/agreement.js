@@ -2,7 +2,7 @@ export default () => {
   let allCheckbox = document.querySelectorAll('input[name=agreement]');
   
   for (let [index, checkbox] of allCheckbox.entries()) {
-    let formBtn = checkbox.parentElement.parentElement.parentElement.querySelector('.c-button');
+    let formBtn = checkbox.parentElement.parentElement.parentElement.querySelector('.button');
     let checkAgreementStatus = (checkbox) => {
       if (!checkbox.checked) {
         formBtn.disabled = true;

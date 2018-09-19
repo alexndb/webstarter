@@ -1,9 +1,9 @@
 export default () => {
   let onScroll = () => {
-    let stickyHeaderHeight = $('.c-header.sticky').outerHeight() - 1;
+    let stickyHeaderHeight = $('.header.sticky').outerHeight() - 1;
     let scrollTop = $(document).scrollTop();
-    let linksDesktopNav = $('.c-header-nav .js-scroll');
-    let linksMobileNav = $('.c-popup-nav .js-scroll');
+    let linksDesktopNav = $('.header-nav .js-scroll');
+    let linksMobileNav = $('.popup-nav .js-scroll');
     let changeActiveLink = (links) => {
       links.each(function () {
         let hash = $(this).attr('href');
@@ -32,9 +32,9 @@ export default () => {
     $(document).off('scroll');
     
     let transitionTime = 900;
-    let stickyHeaderHeight = $('.c-header.sticky').outerHeight() - 1;
+    let stickyHeaderHeight = $('.header.sticky').outerHeight() - 1;
     
-    if ($(this).hasClass('c-btn-scroll-top')) {
+    if ($(this).hasClass('button--scroll-top')) {
       $('html, body').animate({
         scrollTop: 0
       }, transitionTime);
@@ -43,7 +43,7 @@ export default () => {
       let target = $(hash);
       
       if (target.length == 1) {
-        if ($(this).hasClass('c-popup-nav-item-link')) {
+        if ($(this).hasClass('nav__link')) {
           $.magnificPopup.close();
         }
         

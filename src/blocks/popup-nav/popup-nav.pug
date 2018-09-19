@@ -1,9 +1,9 @@
 include ../nav/nav
 
 mixin popup-nav()
-  #popup-nav.c-popup.c-popup-nav
-    .c-popup-inner
-      .c-popup-nav-top top
-      .c-popup-nav-middle
-        +nav('c-popup-nav', mainNav)
-      .c-popup-nav-bottom bottom
+  +b.popup.popup--nav#popup-nav
+    +e.inner
+      +e.top top
+      +e.middle
+        +nav('popup', mainNav)
+      +e.bottom bottom
