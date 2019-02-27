@@ -1,15 +1,5 @@
 textarea
-  outline: none
-  display: inline-block
-  width: 100%
+  @extend input[type=text]
   min-height: 100px
-  resize: none
+  resize: vertical
   vertical-align: top
-  font-size: $font-size--input
-  font-family: $font
-  padding: 13px 10px
-  border: 1px solid $color--input-border
-  +placeholder($color--placeholder)
-  
-  &.c-error
-    border-color: $color--error

@@ -1,11 +1,11 @@
 export default () => {
-  let btns = document.querySelectorAll('.js-showMoreText');
+  const btns = document.querySelectorAll('.js-showMoreText');
   
-  for (let btn of btns) {
-    let parent = btn.parentElement;
-    let textOriginalSelector = parent.querySelector('.c-block-type7-bottom-slider-slide-text');
-    let textOriginal = textOriginalSelector.innerText;
-    let textSliced = textOriginal.slice(0, 207) + '..';
+  for (const btn of btns) {
+    const parent = btn.parentElement;
+    const textOriginalSelector = parent.querySelector('.c-block-type7-bottom-slider-slide-text');
+    const textOriginal = textOriginalSelector.innerText;
+    const textSliced = textOriginal.slice(0, 207) + '..';
     
     textOriginalSelector.innerText = textSliced;
     

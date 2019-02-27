@@ -1,4 +1,6 @@
 mixin header()
   +b.HEADER.header
     .container
-      +e.H1.text #{projectName} Header
+      +logo('type1', 'https://picsum.photos/150/50/?random')
+      +title('h1', 'type1', `${projectName} header`)
+      +nav('type1', mainNav)

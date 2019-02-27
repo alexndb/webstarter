@@ -1,1 +1,0 @@
-export default /^[а-яА-ЯёЁa-zA-Z\s]+$/;

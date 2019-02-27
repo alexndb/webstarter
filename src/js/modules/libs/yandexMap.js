@@ -1,7 +1,7 @@
 export default () => {
   if (document.querySelectorAll('#map').length == 1) {
     ymaps.ready(function () {
-      let myMap = new ymaps.Map('map', {
+      const myMap = new ymaps.Map('map', {
           center: [59.908935, 30.378624],
           zoom: 15,
         }, {searchControlProvider: 'yandex#search'}),

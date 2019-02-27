@@ -1,15 +1,12 @@
-.nav
-  
-  &--popup
-    
-    .nav__item
+.nav_popup
+
+  .nav__item
+
+    &:not(last-child)
       margin-bottom: 25px
-      
-      &:last-child
-        margin-bottom: 0
-    
-    .nav__link
-      +link(24px, $color--dark)
-      line-height: 1
-      text-transform: uppercase
-      font-family: $font--bold
+
+  .nav__link
+    +link(24px, $color--dark)
+    line-height: 1
+    text-transform: uppercase
+    font-family: $font--bold

@@ -1,15 +1,15 @@
 export default () => {
-  let elements = [
-    '.c-block-type1-item-title'
+  const elements = [
+    '.item-title'
   ];
-  let matchHeight = (el) => {
+  const matchHeight = (el) => {
     el.matchHeight({
       byRow: true,
       property: 'min-height'
     });
   };
-  
-  $.each(elements, function () {
+
+  $.each(elements, function() {
     matchHeight($(this));
   })
 }

@@ -1,37 +1,12 @@
-include ../input/input
-include ../input-checkbox/input-checkbox
-include ../input-radio/input-radio
-include ../input-hidden/input-hidden
-include ../textarea/textarea
-include ../select/select
-include ../agreement/agreement
-include ../button/button
-
 mixin popup()
   +b.popup#popup
     +e.inner
-      +e.H2.title Заголовок попапа
+      +title('h2', 'popup', 'Заголовок попапа')
       form(enctype='multipart/form-data')
-        .form-item
-          +input('text', 'name', 'Имя', null, 'true', null)
-        .form-item
-          +input('text', 'email', 'Email', null, 'true', null)
-        .form-item
-          +input('tel', 'phone', 'Телефон', null, 'true', 'js-phoneMask')
-        .form-item
-          +textarea('text', 'Сообщение', 'true')
-        .form-item
-          +select('select', 'Выберите', select1, 'true', null)
-        .form-item
-          +input-checkbox('checkbox1-name', 'checkbox1-value', 'checkbox1', 'Метка чекбокса 1', 'checked')
-        .form-item
-          +input-checkbox('checkbox2-name', 'checkbox2-value', 'checkbox2', 'Метка чекбокса 2', null)
-        .form-item
-          +input-radio('radio-name', 'radio1-value', 'radio1', 'Метка радиокнопки 1', 'checked')
-        .form-item
-          +input-radio('radio-name', 'radio2-value', 'radio2', 'Метка радиокнопки 2', null)
-        //-.form-item
-        //-  +inputFile('file-name', 'true')
-        +input-hidden('form_name', 'Стандартная форма заявки', null)
+        .form-control
+          +input('text', 'name', 'Имя', 'true')(data-error-empty='Заполните поле', data-error-default='Только буквы', data-error-length='Минимальная длина 2 символа')
+        .form-control
+          +input('text', 'email', 'Email', 'true')(data-error-empty='Заполните поле', data-error-default='Формат youremail@example.ru')
+        +input-hidden('form_name', 'Стандартная форма заявки')
         +button('Отправить', 'accent')(type='submit')
         +agreement()

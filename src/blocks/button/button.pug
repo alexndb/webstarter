@@ -4,11 +4,11 @@ mixin button(text, mods)
     if (typeof(mods) !== 'undefined' && mods) {
       var modsList = mods.split(',');
       for (var i = 0; i < modsList.length; i++) {
-        allMods = allMods + ' button--' + modsList[i].trim();
+        allMods = allMods + ' _' + modsList[i].trim();
       }
     }
     
   if (attributes.href)
-    +b.A.button(class=`${allMods}`)&attributes(attributes)= text
+    +b.A(class=`button${allMods}`)&attributes(attributes)= text
   else
-    +b.BUTTON.button(class=`${allMods}`)&attributes(attributes)= text
+    +b.BUTTON(class=`button${allMods}`)&attributes(attributes)= text

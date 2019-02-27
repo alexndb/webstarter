@@ -7,7 +7,6 @@ import fonts from './gulp/tasks/subtasks/fonts';
 import img from './gulp/tasks/subtasks/img';
 import markup from './gulp/tasks/subtasks/markup';
 import scripts from './gulp/tasks/subtasks/scripts';
-import {spritePng, spriteSvg} from './gulp/tasks/subtasks/sprites';
 import styles from './gulp/tasks/subtasks/styles';
 
 import development from './gulp/tasks/default';
@@ -22,8 +21,6 @@ fonts();
 img();
 markup();
 scripts();
-spriteSvg();
-spritePng();
 styles();
 
 watch();

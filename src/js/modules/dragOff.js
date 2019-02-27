@@ -1,11 +1,11 @@
 export default () => {
-  let dragOff = (e) => {
-    for (e of document.querySelectorAll(e)) {
-      e.addEventListener('dragstart', (e) => {
+  const dragOff = (elements) => {
+    for (const element of document.querySelectorAll(elements)) {
+      element.addEventListener('dragstart', (e) => {
         e.preventDefault();
       });
     }
   };
-  
+
   dragOff('img');
 }

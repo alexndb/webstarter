@@ -17,26 +17,31 @@ h4,
 h5,
 h6
   font-weight: normal
+  color: inherit
+  margin: 0
+
+p
+  color: inherit
   margin: 0
 
 a
   text-decoration: none
-  display: inline-block
-  &:hover,
-  &:focus
-    text-decoration: none
-  &:focus
-    &:hover
-      text-decoration: none
 
-p
-  margin: 0
+  &:hover,
+  &:focus,
+  &:focus:hover
+    text-decoration: none
 
 ul,
 ol
   margin: 0
   padding: 0
   list-style-type: none
+
+br
+
+  +bp($md)
+    display: none
 
 img,
 svg
@@ -48,9 +53,7 @@ svg
   display: flex
   flex-direction: column
   justify-content: space-between
-  max-width: 1920px
   min-height: 100vh
-  margin: 0 auto
 
 .main
   flex: auto
@@ -64,5 +67,16 @@ svg
   position: relative
   z-index: 2
 
+.form-control
+  font-size: 0
+
 .hidden
   display: none
+
+.form-error-message
+  font-size: 10px
+  color: $color--error
+  position: relative
+  height: 0
+  left: 10px
+  top: -15px

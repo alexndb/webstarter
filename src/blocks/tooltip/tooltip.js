@@ -1,8 +1,16 @@
-import tippy from 'tippy.js';
+import tippy from 'tippy.js/dist/tippy.all';
 
 export default () => {
-  tippy('.tooltip', {
-    arrow: true,
-    maxWidth: '203px'
-  });
+  let tooltips = document.querySelectorAll('.tooltip');
+
+  if (tooltips) {
+    for (let tooltip of tooltips) {
+      tippy(tooltip, {
+        maxWidth: '250px',
+        arrow: true,
+        placement: 'bottom',
+        content: document.querySelector(tooltip.dataset.id)
+      });
+    }
+  }
 }

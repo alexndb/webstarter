@@ -6,9 +6,10 @@ export const path = {
     app: APP_DIR,
     watch: [
       SRC_DIR + '/blocks/**/*.pug',
-      SRC_DIR + '/pug/**/*.pug'
+      SRC_DIR + '/pug/**/*.pug',
+      'ws.config.json'
     ],
-    data: SRC_DIR + '/pug/_data/data.json'
+    data: 'ws.config.json'
   },
   sass: {
     src: SRC_DIR + '/sass/main.sass',
@@ -16,8 +17,7 @@ export const path = {
     watch: [
       SRC_DIR + '/blocks/**/*.sass',
       SRC_DIR + '/sass/**/*.sass'
-    ],
-    sprite: SRC_DIR + '/sass/_base'
+    ]
   },
   js: {
     src: SRC_DIR + '/js/common.js',
@@ -32,20 +32,7 @@ export const path = {
     app: APP_DIR + '/fonts'
   },
   img: {
-    src: [
-      SRC_DIR + '/blocks/**/img/*.*',
-      SRC_DIR + '/img/f*/*.*'
-    ],
+    src: SRC_DIR + '/blocks/**/img/*.*',
     app: APP_DIR + '/img'
-  },
-  sprites: {
-    svg: {
-      src: SRC_DIR + '/img/sprites/svg/*.svg',
-      app: APP_DIR + '/img/sprites'
-    },
-    png: {
-      src: SRC_DIR + '/img/sprites/png/*.png',
-      app: APP_DIR + '/img/sprites'
-    }
   }
 };

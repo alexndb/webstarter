@@ -1,12 +1,15 @@
 <?php
+session_start();
+$get = $_SESSION['get'];
+
 $project_name = 'yoursite.ru'; // site name
 $admins_emails = 'noz2008@gmail.com'; // your mails for messages, example 'email1@gmail.com, email2@gmail.com, ...'
 $mail_title = 'Новая заявка с сайта ' . $project_name; // form name
 $message = '<table style="width: 100%">' . $message . '</table>'; // message styles
 $c = true;
 
-foreach ($_POST as $key => $value) {
-  if ($value != '' && $key != 'project_name' && $key != 'admin_email') {
+foreach (array_merge ($_POST, $get) as $key => $value) {
+  if ($value != '' && $key != 'project_name' && $key != 'admin_email' && $key != 'agreement') {
     // russian language fields
     switch ($key) {
       case 'form_name':
@@ -26,6 +29,21 @@ foreach ($_POST as $key => $value) {
         continue;
       case 'select':
         $key = 'Пункт списка';
+        continue;
+      case 'utm_source':
+        $key = 'Источник рекламы';
+        continue;
+      case 'utm_medium':
+        $key = 'Тип рекламы';
+        continue;
+      case 'utm_campaign':
+        $key = 'Кампания';
+        continue;
+          case 'utm_term':
+        $key = 'Ключевая фраза';
+        continue;
+      case 'utm_content':
+        $key = 'Содержание';
         continue;
     }
 

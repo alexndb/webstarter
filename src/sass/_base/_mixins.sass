@@ -19,12 +19,14 @@
 =link($fz, $color)
   font-size: $fz
   color: $color
+
   &:hover,
   &:focus
     color: $color
 
 // overlay
 =overlay($color, $opa, $zindex)
+
   &::after
     content: ''
     display: block
@@ -45,29 +47,38 @@
   border-radius: 50%
 
 =placeholder($color)
+
   &::-webkit-input-placeholder
     color: $color
     opacity: 1
-    +dt(.3s)
+    +dt($transition)
+
   &::-moz-placeholder
     color: $color
     opacity: 1
-    +dt(.3s)
+    +dt($transition)
+
   &:-moz-placeholder
     color: $color
     opacity: 1
-    +dt(.3s)
+    +dt($transition)
+
   &:-ms-input-placeholder
     color: $color
     opacity: 1
-    +dt(.3s)
+    +dt($transition)
+
   &:focus
+
     &::-webkit-input-placeholder
       opacity: 0
+
     &::-moz-placeholder
       opacity: 0
+
     &:-moz-placeholder
       opacity: 0
+
     &:-ms-input-placeholder
       opacity: 0
 
@@ -79,6 +90,7 @@
 
 // media queries
 =bp($width)
+
   // breakpoint max-width
   @media only screen and (max-width: $width#{px})
     @content

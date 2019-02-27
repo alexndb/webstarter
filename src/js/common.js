@@ -1,27 +1,26 @@
 // import "babel-polyfill";
+import 'lazysizes/lazysizes';
 import $ from 'jquery';
 
 import dragOff from './modules/dragOff';
-import iMask from './modules/libs/iMask';
-import formSubmit from './modules/forms/submit/onSubmit';
-import magnificPopup from './modules/libs/magnificPopup/popups';
+import buttonToggle from '../blocks/button/button';
 import select from '../blocks/select/select';
+import withLabel from '../blocks/form-control-with-label/form-control-with-label';
+import slider from '../blocks/slider/slider';
 import agreement from '../blocks/agreement/agreement';
-import buttonToggle from '../blocks/button/button-toggle';
-import input from '../blocks/input/input';
-import textareas from '../blocks/textarea/textarea';
-import sliders from './modules/libs/slickSlider/sliders/sliders';
+import iMask from './modules/libs/iMask';
+import magnificPopup from './modules/libs/magnificPopup/popups';
+import formSubmit from './modules/forms/submit/onSubmit';
 
 dragOff();
-iMask();
-formSubmit(); 
+withLabel();
 agreement();
-input();
-textareas();
+iMask();
+formSubmit();
 
 $(document).ready(() => {
-  magnificPopup();
-  select();
   buttonToggle();
-  sliders();
+  slider();
+  select();
+  magnificPopup();
 });

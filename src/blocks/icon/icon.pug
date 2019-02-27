@@ -1,15 +1,11 @@
-mixin icon(name, type, mods)
+mixin icon(mods)
   -
     var allMods = '';
     if (typeof(mods) !== 'undefined' && mods) {
       var modsList = mods.split(',');
       for (var i = 0; i < modsList.length; i++) {
-        allMods = allMods + ' icon--' + modsList[i].trim();
+        allMods = allMods + ' _' + modsList[i].trim();
       }
     }
-
-  if (type === 'svg')
-    svg(class="icon icon--" + name + allMods)
-      use(xlink:href="./img/sprites/sprite.svg#" + name)
-  else if (type === 'png')
-    i(class="icon icon--" + name + allMods)
+    
+  +b.I(class=`icon${allMods}`)

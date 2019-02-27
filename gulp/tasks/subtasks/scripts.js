@@ -36,10 +36,11 @@ export default () => {
         },
         plugins: condition ? [new UglifyJsPlugin({sourceMap: false})] : []
       }).on('error', (err) => {
+        console.log(err);
         notifier.notify({
           title: 'JavaScript Error',
           message: err.message,
-          icon: nodePath.join('../' + __dirname, 'icons/js.png')
+          icon: nodePath.join(__dirname, 'icons/js.png')
         });
         this.end();
       }))

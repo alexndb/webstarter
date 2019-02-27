@@ -29,10 +29,11 @@ export default () => {
           php: pugPHPFilter
         }
       }).on('error', (err) => {
+        console.log(err);
         notifier.notify({
           title: 'Pug Error',
           message: err.message,
-          icon: nodePath.join('../' + __dirname, 'icons/pug.png')
+          icon: nodePath.join(__dirname, 'icons/pug.png')
         });
         this.end();
       }))

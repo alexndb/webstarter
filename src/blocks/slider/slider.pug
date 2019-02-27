@@ -4,9 +4,9 @@ mixin slider(mods, jsClass)
     if (typeof(mods) !== 'undefined' && mods) {
       var modsList = mods.split(',');
       for (var i = 0; i < modsList.length; i++) {
-        allMods = allMods + ' slider--' + modsList[i].trim();
+        allMods = allMods + ' _' + modsList[i].trim();
       }
     }
      
-  +b.slider(class=`${allMods} ${jsClass}`)&attributes(attributes)
+  +b(class=`slider${allMods} ${jsClass}`)&attributes(attributes)
     block

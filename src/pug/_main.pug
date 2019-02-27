@@ -1,11 +1,42 @@
 include ../../node_modules/bemto.pug/bemto
+include ../blocks/page-title/page-title
+include ../blocks/button/button
+include ../blocks/slider/slider
+include ../blocks/input/input
+include ../blocks/form-control-with-label/form-control-with-label
+include ../blocks/input-checkbox/input-checkbox
+include ../blocks/input-radio/input-radio
+include ../blocks/input-hidden/input-hidden
+include ../blocks/textarea/textarea
+include ../blocks/select/select
+include ../blocks/agreement/agreement
+include ../blocks/logo/logo
+include ../blocks/nav/nav
+include ../blocks/title/title
+include ../blocks/text/text
+include ../blocks/link/link
+include ../blocks/list/list
+include ../blocks/icon/icon
+include ../blocks/image/image
+include ../blocks/header/header
+include ../blocks/ui/ui
+include ../blocks/footer/footer
+include ../blocks/tooltip/tooltip
+include ../blocks/popup/popup
+include ../blocks/popup-nav/popup-nav
+include ../blocks/popup-success/popup-success
+
+//-:php
+//-  session_start();
+//-  $_SESSION['get'] = $_GET;
+//-block php
 
 doctype html
-html(lang='ru')
+html(lang=lang)
   head
     include _base/_meta
     block title
-    include _base/_favicon
+    include ../blocks/favicon/favicon
     include _base/_reboot
     include _base/_preloader
     include _base/_styles

@@ -21,10 +21,11 @@ export default () => {
     gulp.src(path.sass.src)
       .pipe(gulpIf(!condition, sourcemaps.init()))
       .pipe(sass().on('error', (err) => {
+        console.log(err);
         notifier.notify({
           title: 'Sass Error',
           message: err.message,
-          icon: nodePath.join('../' + __dirname, 'icons/sass.png')
+          icon: nodePath.join(__dirname, 'icons/sass.png')
         });
       }))
       .pipe(gulpIf(condition, autoprefixer({

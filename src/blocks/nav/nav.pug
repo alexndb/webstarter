@@ -4,12 +4,12 @@ mixin nav(mods, links)
     if (typeof(mods) !== 'undefined' && mods) {
       var modsList = mods.split(',');
       for (var i = 0; i < modsList.length; i++) {
-        allMods = allMods + ' nav--' + modsList[i].trim();
+        allMods = allMods + ' _' + modsList[i].trim();
       }
     }
 
-  +b.NAV.nav(class=`${allMods}`)
+  +b.NAV(class=`nav${allMods}`)
     +e.UL.list
-      each href, title in links
+      each link in links
         +e.LI.item
-          +e.A.link(href=href)= title
+          +e.A.link(href=link.href, target=link.target, class=link.scroll ? 'js-scroll' : '')= link.title

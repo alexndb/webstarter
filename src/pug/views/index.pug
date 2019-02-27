@@ -1,14 +1,8 @@
 extends ../_main
 
-include ../../blocks/page-title/page-title
-
-include ../../blocks/header/header
-include ../../blocks/footer/footer
-
-include ../../blocks/block/block
-
-include ../../blocks/popup/popup
-include ../../blocks/popup-nav/popup-nav
+//-block php
+//-  :php
+//-    $_SESSION['page'] = 'Главная';
 
 block title
   +page-title('|', 'Главная')
@@ -17,7 +11,7 @@ block header
   +header()
 
 block content
-  +block()
+  +ui()
 
 block footer
   +footer()
@@ -25,3 +19,4 @@ block footer
 block hidden
   +popup()
   +popup-nav()
+  +popup-success()

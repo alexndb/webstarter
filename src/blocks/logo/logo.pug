@@ -1,12 +1,12 @@
-mixin logo(img, mods)
+mixin logo(mods, img)
   -
     var allMods = '';
     if (typeof(mods) !== 'undefined' && mods) {
       var modsList = mods.split(',');
       for (var i = 0; i < modsList.length; i++) {
-        allMods = allMods + ' c-logo--' + modsList[i].trim();
+        allMods = allMods + ' logo_' + modsList[i].trim();
       }
     }
 
-  +b.A.logo(class=`${allMods}`, href='./')&attributes(attributes)
-    +e.img(src=img, alt=`${projectName}`)
+  +b.A(class=`logo${allMods}`, href='./')&attributes(attributes)
+    +e.img.lazyload(src=img, alt=`${projectName}`)

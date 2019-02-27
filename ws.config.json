@@ -1,4 +1,48 @@
 {
+  "lang": "ru",
+  "projectName": "WebStarter",
+  "mainNav": [
+    {
+      "title": "Главная",
+      "href": "#",
+      "target": "_self",
+      "scroll": true
+    },
+    {
+      "title": "Корзина",
+      "href": "#",
+      "target": "_self",
+      "scroll": true
+    },
+    {
+      "title": "Блог",
+      "href": "#",
+      "target": "_blank",
+      "scroll": false
+    }
+  ],
+  "select1": {
+    "": "",
+    "opt1": "Опция 1",
+    "opt2": "Опция 2",
+    "opt3": "Опция 3",
+    "opt4": "Опция 4",
+    "opt5": "Опция 5"
+  },
+  "gallery1": [
+    {
+      "img": "http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg",
+      "title": "title1"
+    },
+    {
+      "img": "http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg",
+      "title": "title2"
+    },
+    {
+      "img": "http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg",
+      "title": "title3"
+    }
+  ],
   "proxy": "projectPath",
   "blocksDir": "./src/blocks",
   "extensions": [

@@ -1,4 +1,7 @@
-mixin input-radio(name, value, id, label, checked)
-  input(type='radio', name=name, value=value, id=id, checked=checked)
-  label(for=id)
-    span= label
+mixin input-radio(name, label)
+  +b.input-radio
+    +e.LABEL.label
+      +e.INPUT.input(type='radio', name=name)&attributes(attributes)
+      +e.SPAN.trigger
+      if (label)
+        +e.SPAN.text= label
