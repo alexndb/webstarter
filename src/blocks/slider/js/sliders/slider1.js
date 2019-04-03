@@ -1,28 +1,24 @@
-import $ from 'jquery';
-import 'slick-carousel/slick/slick';
+import Swiper from 'swiper/dist/js/swiper'
 
 export default () => {
-  let slider = $('.js-slider1');
-  let sliderOptions = {
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: true,
-    dots: true,
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 2
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1
+  const sliders = document.querySelectorAll('.js-slider1')
+
+  if (sliders) {
+    for (let slider of sliders) {
+      const sliderOptions = {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: slider.querySelector('.swiper-button-next'),
+          prevEl: slider.querySelector('.swiper-button-prev')
+        },
+        pagination: {
+          el: slider.querySelector('.swiper-pagination'),
+          clickable: true
         }
       }
-    ]
-  };
 
-  slider.slick(sliderOptions);
+      new Swiper(slider, sliderOptions)
+    }
+  }
 }

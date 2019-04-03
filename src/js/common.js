@@ -1,5 +1,4 @@
-// import "@babel/polyfill"
-// import 'lazysizes/lazysizes'
+import '@babel/polyfill'
 import $ from 'jquery'
 
 import dragOff from './modules/dragOff'
@@ -17,10 +16,10 @@ withLabel()
 agreement()
 iMask()
 formSubmit()
+slider()
 
 $(document).ready(() => {
   buttonToggle()
-  slider()
   select()
   magnificPopup()
 })

@@ -2,11 +2,16 @@ mixin ui()
   +b.SECTION.ui
     .container
       +slider('type1', 'js-slider1')
-        .slide 1
-        .slide 2
-        .slide 3
-        .slide 4
-      +image('https://picsum.photos/300/300/?random', 'alt')
+        .swiper-wrapper
+          .swiper-slide 1
+          .swiper-slide 2
+          .swiper-slide 3
+          .swiper-slide 4
+          .swiper-slide 5
+        .swiper-pagination
+        .swiper-button-prev
+        .swiper-button-next
+      +image('https://picsum.photos/300/300', 'alt')
       +button('Кнопка-ссылка', 'accent')(href='#popup', class='js-popup')
       +button('Кнопка', 'accent')(type='button')
       +title('h1', 'type1', 'Title h1')

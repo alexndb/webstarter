@@ -44,8 +44,8 @@
     "lazysizes": "^4.1.5",
     "magnific-popup": "^1.1.0",
     "select2": "^4.0.6-rc.1",
-    "slick-carousel": "^1.8.1",
     "smooth-scroll": "git+https://github.com/cferdinandi/smooth-scroll.git",
-    "sticky-kit": "^1.1.3"
+    "sticky-kit": "^1.1.3",
+    "swiper": "^4.5.0"
   }
 }

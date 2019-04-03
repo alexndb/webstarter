@@ -1,19 +1,35 @@
-import $ from 'jquery';
-import 'slick-carousel/slick/slick';
-import {checkMinWidth, checkMaxWidth} from '../checkWidth';
+import Slider from '../Slider'
 
 export default () => {
-  let slider = $('.js-slider2');
-  let sliderOptions = {
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: true,
-    dots: true
-  };
+  const sliders = document.querySelectorAll('.js-slider2')
 
-  checkMinWidth(768, slider, sliderOptions);
+  if (sliders) {
+    const sliderCustomOptions = {
+      activeOn: 'mobile',
+      width: 768
+    }
 
-  $(window).on('resize', function() {
-    checkMinWidth(768, slider, sliderOptions);
-  });
+    for (let slider of sliders) {
+      const sliderOptions = {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: slider.querySelector('.swiper-button-next'),
+          prevEl: slider.querySelector('.swiper-button-prev')
+        },
+        pagination: {
+          el: slider.querySelector('.swiper-pagination'),
+          clickable: true
+        }
+      }
+
+      slider = new Slider(slider, sliderOptions, sliderCustomOptions)
+
+      slider.checkWidth()
+
+      window.addEventListener('resize', function() {
+        slider.checkWidth()
+      })
+    }
+  }
 }

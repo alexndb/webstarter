@@ -1,5 +1,5 @@
-import slider1 from './js/sliders/slider1';
+import slider1 from './js/sliders/slider1'
 
 export default () => {
-  slider1();
+  slider1()
 }

@@ -1,62 +1,15 @@
-.slick-dots
-  list-style-type: none
-  padding: 0
-  font-size: 0
-  text-align: center
+.slider
 
-  li
-    display: inline-block
-    margin: 0 5px
+  .swiper-button-prev,
+  .swiper-button-next,
+  .swiper-pagination
+    display: none
 
-    &.slick-active
+  &.swiper-container-initialized
 
-      button
-        background-color: $color--accent
+    .swiper-button-prev,
+    .swiper-button-next,
+    .swiper-pagination
+      display: block
 
-        &:hover
-          opacity: 1
-
-  button
-    font-size: 0
-    color: transparent
-    border-radius: 50%
-    padding: 0
-    width: 12px
-    height: 12px
-    border: 2px solid $color--accent
-    background: none
-    background-color: transparent
-    cursor: pointer
-    outline: none !important
-    +dt($transition)
-
-    &:hover
-      opacity: 0.7
-
-.slick-arrow
-  width: 20px
-  height: 20px
-  position: absolute
-  top: 50%
-  z-index: 10
-  transform: translate3d(0, -50%, 0)
-  border: none
-  background-color: $color--accent
-  background-repeat: no-repeat
-  background-position: 50%
-  font-size: 0
-  color: transparent
-  cursor: pointer
-  outline: none !important
-  +dt($transition)
-
-  &:hover
-    opacity: 0.7
-
-.slick-prev
-  left: 0
-//background-image: url(../img/icon/arrow-left.png)
-
-.slick-next
-  right: 0
-//background-image: url(../img/icon/arrow-right.png)
+.slider_type1
