@@ -1,5 +1,5 @@
-export const SRC_DIR = 'src';
-export const APP_DIR = 'app';
+export const SRC_DIR = 'src'
+export const APP_DIR = 'app'
 export const path = {
   pug: {
     src: SRC_DIR + '/pug/views/*.pug',
@@ -23,8 +23,8 @@ export const path = {
     src: SRC_DIR + '/js/common.js',
     app: APP_DIR + '/js',
     watch: [
-      SRC_DIR + '/blocks/**/*.js',
-      SRC_DIR + '/js/**/*.js'
+      SRC_DIR + '/blocks/**/**/*.js',
+      SRC_DIR + '/js/**/**/*.js'
     ]
   },
   fonts: {
@@ -35,4 +35,4 @@ export const path = {
     src: SRC_DIR + '/blocks/**/img/*.*',
     app: APP_DIR + '/img'
   }
-};
+}

@@ -24,6 +24,5 @@ scripts();
 styles();
 
 watch();
-
 development();
 production();

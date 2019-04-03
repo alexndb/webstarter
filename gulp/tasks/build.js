@@ -1,4 +1,4 @@
-import gulp from 'gulp';
+import gulp from 'gulp'
 
 export default () => {
   return gulp.task(
@@ -13,5 +13,5 @@ export default () => {
         'img',
         'assets'
       )
-    ));
+    ))
 };

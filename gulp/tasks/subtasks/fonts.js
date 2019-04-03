@@ -1,6 +1,6 @@
-import gulp from 'gulp';
+import gulp from 'gulp'
 
-import {path} from '../../path';
+import {path} from '../../path'
 
 export default () => {
   return gulp.task('fonts', (done) => {
@@ -8,7 +8,7 @@ export default () => {
      * Перемещает шрифты из папки src/fonts в папку app/fonts
      */
     gulp.src(path.fonts.src)
-      .pipe(gulp.dest(path.fonts.app));
-    done();
-  });
+      .pipe(gulp.dest(path.fonts.app))
+    done()
+  })
 };

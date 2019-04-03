@@ -3,18 +3,12 @@
     "dev": "gulp",
     "build": "set NODE_ENV=production && gulp build"
   },
-  "babel": {
-    "presets": [
-      "env",
-      "stage-3"
-    ]
-  },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-3": "^6.24.1",
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/register": "^7.4.0",
+    "babel-loader": "^8.0.5",
     "bemto.pug": "^2.1.0",
     "browser-sync": "^2.24.4",
     "del": "^3.0.0",
@@ -26,6 +20,7 @@
     "gulp-imagemin": "^4.1.0",
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.3.0",
+    "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
@@ -35,15 +30,14 @@
     "lazypipe": "^1.0.1",
     "node-notifier": "^5.2.1",
     "pug-php-filter": "0.0.1",
-    "uglifyjs-webpack-plugin": "^1.2.5",
     "vinyl-paths": "^2.1.0",
-    "webpack": "^4.12.0",
-    "webpack-stream": "^4.0.3",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-stream": "^5.2.1",
     "wiredep": "^4.0.0"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "gulp-replace": "^1.0.0",
+    "@babel/polyfill": "^7.4.3",
     "gumshoejs": "github:cferdinandi/gumshoe",
     "imask": "^3.4.0",
     "jquery": "^3.3.1",

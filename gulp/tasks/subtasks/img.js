@@ -1,16 +1,16 @@
-import gulp from 'gulp';
-import imagemin from 'gulp-imagemin';
-import mozjpeg from 'imagemin-mozjpeg';
-import pngquant from 'imagemin-pngquant';
+import gulp from 'gulp'
+import imagemin from 'gulp-imagemin'
+import mozjpeg from 'imagemin-mozjpeg'
+import pngquant from 'imagemin-pngquant'
 
-import {path} from '../../path';
-import NODE_ENV from "../../env";
-import gulpIf from "gulp-if";
-import browserSync from "browser-sync";
+import {path} from '../../path'
+import NODE_ENV from '../../env'
+import gulpIf from 'gulp-if'
+import browserSync from 'browser-sync'
 
-browserSync.create();
+browserSync.create()
 
-const condition = NODE_ENV === 'production';
+const isProduction = NODE_ENV === 'production'
 
 export default () => {
   return gulp.task('img', (done) => {
@@ -18,7 +18,7 @@ export default () => {
      * Оптимизирует и перемещает все изображения из папки src в папку app/img
      */
     gulp.src(path.img.src)
-      .pipe(gulpIf(condition, imagemin([
+      .pipe(gulpIf(isProduction, imagemin([
           mozjpeg(),
           pngquant(),
           imagemin.svgo(),
@@ -28,7 +28,7 @@ export default () => {
         }
       )))
       .pipe(gulp.dest(path.img.app))
-      .pipe(browserSync.stream());
-    done();
-  });
+      .pipe(browserSync.stream())
+    done()
+  })
 };

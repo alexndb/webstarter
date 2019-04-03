@@ -1,10 +1,10 @@
-import browserSync from 'browser-sync';
-import gulp from 'gulp';
+import browserSync from 'browser-sync'
+import gulp from 'gulp'
 
-browserSync.create();
+browserSync.create()
 
-import {APP_DIR} from '../../path';
-import config from '../../../ws.config.json';
+import {APP_DIR} from '../../path'
+import config from '../../../ws.config.json'
 
 export default () => {
   return gulp.task('browserSync', () => {
@@ -17,6 +17,6 @@ export default () => {
     // });
     browserSync.init({
       server: ['./', APP_DIR]
-    });
-  });
+    })
+  })
 };
