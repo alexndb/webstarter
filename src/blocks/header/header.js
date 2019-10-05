@@ -1,22 +1,27 @@
 export default () => {
-  let header = document.querySelector('.header');
+  const header = document.querySelector('.header')
 
   if (header) {
-    let headerHeight = header.offsetHeight;
-    let stickyHeaderContainer = document.querySelector('.wrapper');
-    let stickyHeader = stickyHeaderContainer.appendChild(header.cloneNode(true));
+    let headerHeight = header.offsetHeight
+    const stickyHeaderContainer = document.querySelector('body')
+    const stickyHeader = stickyHeaderContainer.insertAdjacentElement('afterbegin', header.cloneNode(true))
+    const setHeaderTopStyle = (value) => {
+      stickyHeader.style.top = `${value}px`
+    }
 
-    stickyHeader.style.top = -headerHeight + 'px';
-    stickyHeader.classList.add('sticky');
+    setHeaderTopStyle(-headerHeight)
+    stickyHeader.classList.add('sticky')
 
     window.addEventListener('scroll', () => {
+      headerHeight = header.offsetHeight
+
       if (window.pageYOffset > headerHeight) {
-        stickyHeader.classList.add('show');
-        stickyHeader.style.top = '0';
+        stickyHeader.classList.add('show')
+        setHeaderTopStyle('0')
       } else {
-        stickyHeader.classList.remove('show');
-        stickyHeader.style.top = -headerHeight + 'px';
+        stickyHeader.classList.remove('show')
+        setHeaderTopStyle(-headerHeight)
       }
-    });
+    })
   }
 }

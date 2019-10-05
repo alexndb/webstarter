@@ -1,0 +1,34 @@
+mixin input-text(props)
+  - const blockName = 'input-text'
+  - const {type, name, label, autocomplete, mods} = props
+  include ../../pug/allMods
+
+  if (type === 'textarea')
+    label.label-text-input
+      textarea(
+        name=name,
+        placeholder=' ',
+        autocomplete=autocomplete,
+        class=allMods
+      )&attributes(attributes)= value
+      .input-text__label= label
+  else
+    label.label-text-input
+      input(
+        type=type,
+        name=name,
+        placeholder=' ',
+        autocomplete=autocomplete,
+        class=allMods
+      )&attributes(attributes)
+      .input-text__label= label
+
+//- Вызов:
+
+  +input-text({
+    type: 'text',
+    name: 'name',
+    label: 'Имя',
+    autocomplete: 'off',
+    mods: 'textarea'
+  })

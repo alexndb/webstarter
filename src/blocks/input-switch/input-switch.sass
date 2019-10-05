@@ -1,0 +1,59 @@
+.input-switch
+  $color-silver: #c0c0c0
+  $font-size-input: 0.875rem
+
+  &__label
+    display: inline-flex
+    margin-bottom: 0
+    cursor: pointer
+    user-select: none
+
+  &__input
+    display: none
+
+    + .input-switch__trigger
+      display: flex
+      justify-content: center
+      align-items: center
+      flex-shrink: 0
+      width: 16px
+      height: 16px
+      border: 1px solid $color-silver
+      margin-top: 4px
+      margin-right: 6px
+
+      &::before
+        content: ''
+        opacity: 0
+        display: block
+        width: 80%
+        height: 80%
+        background-color: $color-silver
+        transition: opacity 0.2s ease
+
+    &[type='checkbox']
+
+      + .input-switch__trigger
+        border-radius: 3px
+
+        &::before
+          border-radius: 3px
+
+    &[type='radio']
+
+      + .input-switch__trigger
+        border-radius: 50%
+
+        &::before
+          border-radius: 50%
+
+    &:checked
+
+      + .input-switch__trigger
+
+        &::before
+          opacity: 1
+
+  &__text
+    font-size: $font-size-input
+    color: inherit

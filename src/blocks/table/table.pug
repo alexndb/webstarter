@@ -1,0 +1,41 @@
+mixin table(mods)
+  - const blockName = 'table'
+  include ../../pug/allMods
+
+  table(class=allMods)&attributes(attributes)
+    block
+
+mixin td(title)
+  td(data-title=title)
+    block
+
+//- Вызов:
+
+  +table('type1')
+    thead
+      tr
+        th Имя
+        th Фамилия
+        th Возраст
+    tbody
+      tr
+        +td('Имя')
+          | Аристарх
+        +td('Фамилия')
+          | Петров
+        +td('Возраст')
+          | 37
+      tr
+        +td('Имя')
+          | Игорь
+        +td('Фамилия')
+          | Фролов
+        +td('Возраст')
+          | 22
+      tr
+        +td('Имя')
+          | Валерий
+        +td('Фамилия')
+          | Жмышенко
+        +td('Возраст')
+          | 54

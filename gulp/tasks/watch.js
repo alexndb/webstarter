@@ -1,14 +1,15 @@
-import gulp from 'gulp'
+import {series, watch} from 'gulp'
+import createAllImportsFiles from './createAllImportsFiles'
+import {path, BLOCKS_DIR} from '../path'
 
-import {SRC_DIR, path} from '../path'
+const startWatch = (src, task) => {
+  watch(src, {events: 'all'}, series(task))
+}
 
-export default () => {
-  return gulp.task('watch', () => {
-    gulp.watch(path.pug.watch, gulp.series('markup'))
-    gulp.watch(path.sass.watch, gulp.series('styles'))
-    gulp.watch(path.js.watch, gulp.series('scripts'))
-    gulp.watch(path.img.src, gulp.series('img'))
-    gulp.watch(path.fonts.src, gulp.series('fonts'))
-    gulp.watch(SRC_DIR + '/*.*', gulp.series('assets'))
-  })
-};
+export default function watcher() {
+  for (const pathItem of Object.values(path)) {
+    startWatch(pathItem.watch, pathItem.task)
+  }
+  watch(`${BLOCKS_DIR}/**`, {events: 'add'}, series(createAllImportsFiles))
+  watch(`${BLOCKS_DIR}/**`, {events: 'unlink'}, series(createAllImportsFiles))
+}

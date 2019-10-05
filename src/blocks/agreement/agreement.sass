@@ -1,6 +1,12 @@
 .agreement
   margin-top: 20px
 
+  .input-switch__label
+    margin-right: 6px
+
+  .input-switch__input + .input-switch__trigger
+    margin-right: 0
+
   &__inner
     display: flex
 
@@ -9,12 +15,13 @@
     align-items: center
 
   &__text
-    font-size: 11px
+    font-size: 0.688rem
     line-height: 1.2
-    color: $color--dark
+    color: inherit
 
   &__link
-    +link(11px, $color--dark)
+    +link-color(inherit)
+    font-size: 0.6875rem
     text-decoration: underline
 
     &:hover

@@ -1,11 +1,9 @@
 mixin icon(mods)
-  -
-    var allMods = '';
-    if (typeof(mods) !== 'undefined' && mods) {
-      var modsList = mods.split(',');
-      for (var i = 0; i < modsList.length; i++) {
-        allMods = allMods + ' _' + modsList[i].trim();
-      }
-    }
-    
-  +b.I(class=`icon${allMods}`)
+  - const blockName = 'icon'
+  include ../../pug/allMods
+
+  i(class=allMods)
+
+//- Вызов:
+
+  +icon('type1')

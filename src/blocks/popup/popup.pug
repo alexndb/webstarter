@@ -1,12 +1,4 @@
-mixin popup()
-  +b.popup#popup
-    +e.inner
-      +title('h2', 'popup', 'Заголовок попапа')
-      form(enctype='multipart/form-data')
-        .form-control
-          +input('text', 'name', 'Имя', 'true')(data-error-empty='Заполните поле', data-error-default='Только буквы', data-error-length='Минимальная длина 2 символа')
-        .form-control
-          +input('text', 'email', 'Email', 'true')(data-error-empty='Заполните поле', data-error-default='Формат youremail@example.ru')
-        +input-hidden('form_name', 'Стандартная форма заявки')
-        +button('Отправить', 'accent')(type='submit')
-        +agreement()
+mixin popup
+  .popup#popup
+    .popup__inner
+      | popup content

@@ -1,2 +1,11 @@
-mixin input-hidden(name, value)
+mixin input-hidden(props)
+  - const {name, value} = props
+
   input(type='hidden', name=name, value=value)&attributes(attributes)
+
+//- Вызов:
+
+  +input-hidden({
+    name: 'form_name',
+    value: 'Стандартная форма заявки'
+  })

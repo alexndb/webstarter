@@ -1,52 +1,27 @@
+@import '../../node_modules/choices.js/src/styles/choices'
+
 select
   display: none
 
-.select2-container .select2-selection--single
-  height: auto
+.choices
+  $color-white: #fff
+  $color-persimmon: #ff6347
+  $color-silver: #c0c0c0
+  $color-black: #000
+  $font-size-input: 0.875rem
 
-.select2-container .select2-selection--single.error
-  border-color: $color--error
+  margin-bottom: 0
+  font-size: $font-size-input
 
-.select2-container .select2-selection--single .select2-selection__rendered
-  padding: 18px 25px 17px 10px
+  &__inner
+    padding-left: 6px
+    border: 1px solid $color-silver
+    background-color: $color-white
+    border-radius: 0
 
-.select2-container--default .select2-selection--single
-  border: 1px solid $color--input-border
-  border-radius: 0
-  outline: none
+    &.error
+      border-color: $color-persimmon
 
-.select2-container--default .select2-selection--single .select2-selection__rendered
-  line-height: 1
-  font-size: $font-size--input
-  color: $color--input-text
-
-.select2-container--default .select2-selection--single .select2-selection__arrow
-  width: auto
-  height: 100%
-  top: 0
-  right: 0
-
-.select2-container--default .select2-selection--single .select2-selection__arrow b
-  left: auto
-  right: 0
-  margin-top: 0
-  margin-left: 0
-  margin-right: 10px
-  transform: translate3d(0, -50%, 0)
-
-.select2-container--default .select2-selection--single .select2-selection__arrow b
-  border-color: $color--input-border transparent transparent transparent
-
-.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b
-  border-color: transparent transparent $color--input-border transparent
-
-.select2-dropdown
-  border: 1px solid $color--input-border
-  border-radius: 0
-
-.select2-results__option
-  padding: 10px
-  font-size: $font-size--input
-
-.select2-container--default .select2-selection--single .select2-selection__placeholder
-  color: $color--placeholder
+  &__placeholder
+    opacity: 1
+    color: $color-silver

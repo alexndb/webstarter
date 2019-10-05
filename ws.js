@@ -1,66 +1,66 @@
-const fs = require('fs');
-const config = require('./ws.config.json');
+const fs = require('fs')
 
-const wsLog = (msg) => {
-  // выводит сообщения от имени WS
-  console.log(`[WS] ${msg}`);
-};
+const config = {
+  blocksDir: './src/blocks',
+  extensions: [
+    'pug',
+    'sass'
+  ]
+}
 
-// Создает файл с указанным именем, расширением и конткнтом
+const wsLog = msg => {
+  console.log(`[WS] ${msg}`) // eslint-disable-line no-console
+}
+
 const createFile = (name, extension, content) => {
-  fs.writeFile(`${config.blocksDir}/${name}/${name}.${extension}`, content, (err) => {
+  fs.writeFile(`${config.blocksDir}/${name}/${name}.${extension}`, content, err => {
     if (err) {
       throw err
     } else {
-      wsLog(`"${name}/${name}.${extension}" успешно создан`);
+      wsLog(`"${name}/${name}.${extension}" успешно создан`)
     }
-  });
-};
+  })
+}
 
-const cb = (blockName) => {
-
+const createBlock = (blockName) => {
   if (blockName === undefined) {
-    wsLog(`Укажите название блока`);
+    wsLog('Укажите название блока')
   } else {
-    // let arr = [1, 1, 2, 2, 3, 3];
-    // let deduped = [...new Set(arr)] // [1, 2, 3]
-    let extensions = config.extensions.concat(process.argv.slice(3));
-    // let deduped = [...new Set(config.extensions.concat(process.argv.slice(3)))];
+    const extensions = [
+      ...config.extensions,
+      ...process.argv.slice(3)
+    ]
 
-    fs.mkdir(`${config.blocksDir}/${blockName}`, (err) => {
-      if (err) {
-        wsLog(`Такой блок уже существует`);
+    fs.mkdir(`${config.blocksDir}/${blockName}`, errBlockDir => {
+      if (errBlockDir) {
+        wsLog('Такой блок уже существует')
       } else {
-        wsLog(`Создаю блок "${blockName}"`);
-        for (let [index, extension] of extensions.entries()) {
-          let blockContent;
+        wsLog(`Создаю блок "${blockName}"`)
+        for (const extension of extensions) {
+          let blockContent
 
           if (extension === 'pug') {
-            blockContent = `mixin ${blockName}()`;
-            createFile(blockName, extension, blockContent);
+            blockContent = `mixin ${blockName}()\n  .${blockName} ${blockName}`
+            createFile(blockName, extension, blockContent)
           } else if (extension === 'sass') {
-            blockContent = `.${blockName}`;
-            createFile(blockName, extension, blockContent);
+            blockContent = `.${blockName}\n  `
+            createFile(blockName, extension, blockContent)
           } else if (extension === 'js') {
-            blockContent = `const element = document.querySelector('.${blockName}');\n\nelement.addEventListener('click', () => {\n  console.log('click on ${blockName}')\n});`;
-            createFile(blockName, extension, blockContent);
+            blockContent = `export default () => {\n  const element = document.querySelector('.${blockName}')\n\n  element.addEventListener('click', () => {\n    console.log('click on ${blockName}') // eslint-disable-line no-console\n  })\n}`
+            createFile(blockName, extension, blockContent)
           } else if (extension === 'img') {
-            // blockContent = `const element = document.querySelector('.${blockName}');\n\nelement.addEventListener('click', () => {\n  console.log('click on ${blockName}')\n});`;
-            // createFile(blockName, extension, blockContent);
-
-
-            fs.mkdir(`${config.blocksDir}/${blockName}/${extension}`, (err) => {
-              if (err) {
-                wsLog(`Такая папка уже существует`);
+            fs.mkdir(`${config.blocksDir}/${blockName}/${extension}`, errImgDir => {
+              if (errImgDir) {
+                wsLog('Такая папка уже существует')
               } else {
-                wsLog(`"${blockName}/${extension}/" успешно создан`);
+                wsLog(`"${blockName}/${extension}/" успешно создан`)
               }
-            });
+            })
           }
         }
       }
-    });
+    })
   }
-};
+}
 
-cb(process.argv[2]);
+createBlock(process.argv[2])

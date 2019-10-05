@@ -1,10 +1,7 @@
 mixin agreement()
-  +b.agreement
-    +e.inner
-      +input-checkbox('agreement', null)
-      +e.content
-        +e.P.text Выбирая эту опцию, Вы даете свое согласие на использование Ваших контактных данных со стороны сайта в соответствии с положениями документа 
-          +e.A.link(href='#popup-privacy').js-popup Marketing Consent Statement
-          | . сайт использует предоставленные здесь данные в соответствии с 
-          +e.A.link(href='#popup-privacy').js-popup Положением о конфиденциальности
-          | .
+  .agreement
+    .agreement__inner
+      +input-switch('checkbox', 'agreement', null)
+      .agreement__content
+        p.agreement__text Выбирая эту опцию, Вы даете свое согласие на использование Ваших контактных данных со стороны сайта в соответствии с положениями документа 
+          a.agreement__link(href='#href') Marketing Consent Statement

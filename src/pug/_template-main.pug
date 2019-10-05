@@ -1,0 +1,25 @@
+include ./allBlocksImports
+
+block php
+  //- :php
+    //- session_start();
+    //- $_SESSION['get'] = $_GET;
+
+doctype html
+html(lang=lang)
+  head
+    include meta
+    block title
+    +favicon()
+    include preloader
+    include reboot
+    include styles
+  body
+    block header
+    block aside
+    main.main
+      block main
+    block footer
+    .hidden
+      block hidden
+    include scripts

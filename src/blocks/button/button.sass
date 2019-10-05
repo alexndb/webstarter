@@ -1,43 +1,37 @@
 .button
+  $color-black: #000
+  $color-web-orange: #f1ad00
+  $color-selective-yellow: #ffba0c
+  $color-silver: #c0c0c0
+
   display: inline-flex
-  align-items: center
   justify-content: center
-  text-align: center
-  line-height: 1
-  border: none
+  align-items: center
+  border: 0
   background: none
+  line-height: 1
   cursor: pointer
-  outline: none !important
   user-select: none
-  +dt($transition)
+
+  &:focus
+    outline: 0
 
   &:disabled
-    opacity: 0.5
+    border: 2px solid $color-silver
+    background-color: transparent
+    color: $color-silver
     cursor: not-allowed
 
-  &_accent
-    background-color: $color--accent
+    &:hover
+      background-color: transparent
+      color: $color-silver
+
+  &--accent
+    +link-color($color-black)
     padding: 15px
-    font-family: $font--bold
-    +link($font-size, $color--dark)
+    background-color: $color-web-orange
+    font-size: 1rem
+    transition: background-color 0.2s ease
 
-    &:not(:disabled)
-
-      &:hover
-        background-color: lighten($color--accent, 3)
-
-  &_toggle
-    width: 20px
-    display: none
-
-    +bp($lg)
-      display: block
-
-    span
-      display: block
-      height: 3px
-      background-color: $color--dark
-      margin-bottom: 3px
-
-      &:last-child
-        margin-bottom: 0
+    &:hover
+      background-color: $color-selective-yellow

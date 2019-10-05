@@ -1,31 +1,28 @@
+@import '../../node_modules/magnific-popup/src/css/main'
+
 .popup
+  $color-white: #fff
+
   position: relative
-  max-width: 500px
   width: 100%
+  max-width: 500px
   margin: 0 auto
 
-  .form-control
-    margin-bottom: 15px
-
   &__inner
-    background-color: $color--light
-    padding: 30px 25px
     position: relative
+    padding: 30px 25px
+    background-color: $color-white
 
-  &__title
-    font-size: 24px
-    margin-bottom: 20px
-
-button.mfp-close
+.mfp-close
+  display: inline-block
   width: auto
   height: auto
+  padding: 6px 12px
   line-height: 1
-  padding: 6px 12px !important
-  display: inline-block
 
 .mfp-fade.mfp-bg
   opacity: 0
-  transition: all 0.3s ease-in-out
+  transition: opacity 0.3s ease-in-out
 
 .mfp-fade.mfp-bg.mfp-ready
   opacity: 0.8
@@ -35,13 +32,10 @@ button.mfp-close
 
 .mfp-fade.mfp-wrap .mfp-content
   opacity: 0
-  +dt($transition)
+  transition: opacity 0.2s ease
 
 .mfp-fade.mfp-wrap.mfp-ready .mfp-content
   opacity: 1
 
 .mfp-fade.mfp-wrap.mfp-removing .mfp-content
   opacity: 0
-
-.js-popup-gallery-images
-  display: none

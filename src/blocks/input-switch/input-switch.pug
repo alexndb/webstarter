@@ -1,0 +1,12 @@
+mixin input-switch(type, name, label)
+  .input-switch
+    label.input-switch__label
+      input.input-switch__input(type=type, name=name)&attributes(attributes)
+      span.input-switch__trigger
+      if (label)
+        span.input-switch__text= label
+
+//- Вызов:
+
+  +input-switch('checkbox', 'name', 'label')(checked)
+  +input-switch('radio', 'name', 'label')

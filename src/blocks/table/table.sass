@@ -1,0 +1,62 @@
+.table
+  $cell-padding: 15px
+  $cell-padding-mobile: 10px
+  $color-tbody: #6e6f70
+  $color-tr-border: #e5e5e5
+  $color-tr-bg: #f9f9f9
+
+  width: 100%
+  font-size: 0.9375rem
+
+  +bp($lg)
+    font-size: 0.875rem
+
+  thead
+
+    +bp($lg)
+      display: none
+
+    th
+      font-weight: normal
+
+  th,
+  td
+    padding: $cell-padding
+
+    +bp($lg)
+      padding: 0 $cell-padding-mobile $cell-padding-mobile
+
+  tbody
+    color: $color-tbody
+
+    td
+
+      +bp($lg)
+        display: block
+
+        &::before
+          content: attr(data-title)
+          display: block
+          padding: $cell-padding-mobile
+          margin-right: -$cell-padding-mobile
+          margin-bottom: $cell-padding-mobile
+          margin-left: -$cell-padding-mobile
+          background-color: $color-tr-bg
+          font-weight: 700
+
+    tr
+
+      +bp($lg)
+        overflow: hidden
+        display: block
+        border: 1px solid $color-tr-border
+        border-radius: 10px
+
+        &:not(:last-child)
+          margin-bottom: 20px
+
+      &:nth-child(odd)
+        background-color: $color-tr-bg
+
+        +bp($lg)
+          background-color: transparent

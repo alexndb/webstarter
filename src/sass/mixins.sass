@@ -1,0 +1,81 @@
+@function col-calc($this-col, $all-cols, $col-gap)
+  @return calc(100% / #{$all-cols} * #{$this-col} - #{$col-gap * 2})
+
+=row($col-gap)
+  display: flex
+  flex-wrap: wrap
+  margin-right: -$col-gap
+  margin-left: -$col-gap
+
+=col($this-col, $all-cols, $col-gap, $row-gap: null)
+  flex-basis: col-calc($this-col, $all-cols, $col-gap)
+  width: 100%
+  max-width: col-calc($this-col, $all-cols, $col-gap)
+  margin: 0 $col-gap $row-gap
+
+=fxw($width)
+  flex-basis: $width
+  width: 100%
+  max-width: $width
+
+=link-color($color)
+  color: $color
+
+  &:hover,
+  &:focus
+    color: $color
+
+=overlay($color, $opa, $zindex)
+
+  &::after
+    content: ''
+    opacity: $opa
+    display: block
+    position: absolute
+    z-index: $zindex
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: $color
+
+=round($diameter)
+  overflow: hidden
+  width: $diameter
+  height: $diameter
+  border-radius: 50%
+
+=triangle($width, $height, $color, $direction)
+  width: 0
+  height: 0
+  border-style: solid
+
+  @if $direction == top
+    border-width: 0 $width / 2 $height
+    border-color: transparent transparent $color
+  @if $direction == top-right
+    border-width: 0 $width $height 0
+    border-color: transparent $color transparent transparent
+  @if $direction == right
+    border-width: $height / 2 0 $height / 2 $width
+    border-color: transparent transparent transparent $color
+  @if $direction == bottom-right
+    border-width: 0 0 $height $width
+    border-color: transparent transparent $color
+  @if $direction == bottom
+    border-width: $height $width / 2 0
+    border-color: $color transparent transparent
+  @if $direction == bottom-left
+    border-width: $height 0 0 $width
+    border-color: transparent transparent transparent $color
+  @if $direction == left
+    border-width: $height / 2 $width $height / 2 0
+    border-color: transparent $color transparent transparent
+  @if $direction == top-left
+    border-width: $height $width 0 0
+    border-color: $color transparent transparent
+
+=bp($res)
+
+  @media (max-width: $res)
+    @content

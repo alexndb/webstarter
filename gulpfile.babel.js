@@ -1,28 +1,43 @@
-'use strict';
+import {parallel, series} from 'gulp'
+import createAllImportsFiles from './gulp/tasks/createAllImportsFiles'
+import {cleanApp, cleanCache} from './gulp/tasks/clean'
+import markup from './gulp/tasks/markup'
+import {stylesLint, styles} from './gulp/tasks/styles'
+import scripts from './gulp/tasks/scripts'
+import fonts from './gulp/tasks/fonts'
+import images from './gulp/tasks/images'
+import assets from './gulp/tasks/assets'
+import watcher from './gulp/tasks/watch'
+import bSync from './gulp/tasks/browserSync'
 
-import assets from './gulp/tasks/subtasks/assets';
-import browserSync from './gulp/tasks/subtasks/browserSync';
-import {cleanApp, cleanCache} from './gulp/tasks/subtasks/clean';
-import fonts from './gulp/tasks/subtasks/fonts';
-import img from './gulp/tasks/subtasks/img';
-import markup from './gulp/tasks/subtasks/markup';
-import scripts from './gulp/tasks/subtasks/scripts';
-import styles from './gulp/tasks/subtasks/styles';
+const mainTasks = (() => parallel(markup, styles, scripts, fonts, images, assets))()
 
-import development from './gulp/tasks/default';
-import production from './gulp/tasks/build';
-import watch from './gulp/tasks/watch';
+exports.cleanApp = cleanApp
+exports.cleanCache = cleanCache
+exports.markup = markup
+exports.stylesLint = stylesLint
+exports.styles = styles
+exports.scripts = scripts
+exports.fonts = fonts
+exports.images = images
+exports.assets = assets
+exports.watcher = watcher
+exports.bSync = bSync
+exports.createAllImportsFiles = createAllImportsFiles
 
-assets();
-browserSync();
-cleanApp();
-cleanCache();
-fonts();
-img();
-markup();
-scripts();
-styles();
+exports.default = series(
+  cleanApp,
+  cleanCache,
+  createAllImportsFiles,
+  mainTasks,
+  parallel(
+    watcher,
+    bSync
+  )
+)
 
-watch();
-development();
-production();
+exports.build = series(
+  cleanApp,
+  createAllImportsFiles,
+  mainTasks
+)

@@ -1,0 +1,37 @@
+{
+  "lang": "ru",
+  "projectName": "WebStarter",
+  "mainNav": [
+    {
+      "title": "Главная",
+      "href": "/",
+      "target": "_self",
+      "scroll": false
+    },
+    {
+      "title": "Корзина",
+      "href": "#",
+      "target": "_self",
+      "scroll": true
+    },
+    {
+      "title": "О компании",
+      "href": "#",
+      "target": "_self",
+      "scroll": true
+    },
+    {
+      "title": "Блог",
+      "href": "#",
+      "target": "_blank",
+      "scroll": false
+    }
+  ],
+  "selectOptions": {
+    "Опция 1": "Опция 1",
+    "Опция 2": "Опция 2",
+    "Опция 3": "Опция 3",
+    "Опция 4": "Опция 4",
+    "Опция 5": "Опция 5"
+  }
+}

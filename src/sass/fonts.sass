@@ -1,0 +1,23 @@
+// 100 Тонкий (Волосяной) Thin (Hairline)
+// 200 Дополнительный светлый (Сверхсветлый) Extra Light (Ultra Light)
+// 300 Светлый Light
+// 400 Нормальный Normal
+// 500 Средний Medium
+// 600 Полужирный Semi Bold (Demi Bold)
+// 700 Жирный Bold
+// 800 Дополнительный жирный (Сверхжирный) Extra Bold (Ultra Bold)
+// 900 Черный (Густой) Black (Heavy)
+
+=font-face($font-family, $file-path, $weight: normal, $style: normal)
+  @font-face
+    font-family: $font-family
+    font-style: $style
+    font-weight: $weight
+    src: url('../fonts/#{$file-path}.woff2') format('woff2')
+
++font-face('Roboto', roboto300, 300)
++font-face('Roboto', roboto400, 400)
++font-face('Roboto', roboto500, 500)
++font-face('Roboto', roboto700, 700)
+
+$font: 'Roboto', 'Helvetica', 'Arial', sans-serif

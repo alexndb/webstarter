@@ -1,18 +1,24 @@
 .tooltip
-  border-radius: 50%
-  overflow: hidden
-  cursor: help
+  display: inline-flex
 
-.tippy-tooltip
-  background-color: rgba(0, 0, 0, 0.733)
-  padding: 10px 10px 15px
-  text-align: left
+  &__element
+    cursor: help
 
-.tippy-popper[x-placement^=top]
-  
-  .tippy-arrow
-    border-top-color: rgba(0, 0, 0, 0.733)
+  &__content
+    display: none
 
-.tippy-content
-  font-size: 11px
-  line-height: (14/11)
+.tippy-popper
+  $background-color: rgba(0, 0, 0, 0.733)
+
+  &[x-placement^='bottom'] .tippy-arrow
+    border-bottom-color: $background-color
+
+  .tippy-tooltip
+    padding: 0
+    background-color: $background-color
+    text-align: left
+
+  .tippy-content
+    padding: 10px 10px 15px
+    font-size: 0.6875rem
+    line-height: 0.875rem

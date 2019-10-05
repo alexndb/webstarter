@@ -1,2 +1,12 @@
-mixin image(src, alt)
-  +b.IMG.lazyload(src=src, alt=alt)
+mixin image(props)
+  - const {src, alt, cover} = props
+
+  img.lazyload(class=cover ? 'image--cover' : false, src=src, alt=alt)
+
+//- Вызов:
+
+  +image({
+    src: 'https://picsum.photos/id/10/300/300',
+    alt: 'alt',
+    cover: true
+  })

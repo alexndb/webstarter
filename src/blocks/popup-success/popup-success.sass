@@ -1,11 +1,24 @@
-.popup_success
+.popup-success
+  $color-white: #fff
+
+  position: relative
+  width: 100%
+  max-width: 500px
+  margin: 0 auto
   text-align: center
 
-  button.mfp-close
-    display: none
+  &__inner
+    position: relative
+    padding: 30px 25px
+    background-color: $color-white
 
-  .text
+  &__title
+    margin-bottom: 10px
+    font-weight: 500
+    font-size: 1.625rem
+
+  &__text
     max-width: 290px
     margin: 0 auto
-    font-size: 18px
-    line-height: 1.4
+    font-size: 1rem
+    line-height: 135%

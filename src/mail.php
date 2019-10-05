@@ -2,15 +2,14 @@
 session_start();
 $get = $_SESSION['get'];
 
-$project_name = 'yoursite.ru'; // site name
-$admins_emails = 'noz2008@gmail.com'; // your mails for messages, example 'email1@gmail.com, email2@gmail.com, ...'
-$mail_title = 'Новая заявка с сайта ' . $project_name; // form name
-$message = '<table style="width: 100%">' . $message . '</table>'; // message styles
+$project_name = 'yoursite.ru';
+$admins_emails = 'email@example.com'; // 'email1@gmail.com, email2@gmail.com, ...'
+$mail_title = 'Новая заявка с сайта ' . $project_name;
+$message = '<table style="width: 100%">' . $message . '</table>';
 $c = true;
 
-foreach (array_merge ($_POST, $get) as $key => $value) {
+foreach(array_merge($_POST, $get) as $key => $value) {
   if ($value != '' && $key != 'project_name' && $key != 'admin_email' && $key != 'agreement') {
-    // russian language fields
     switch ($key) {
       case 'form_name':
         $key = 'Идентификатор фомы';
@@ -55,8 +54,7 @@ foreach (array_merge ($_POST, $get) as $key => $value) {
   }
 }
 
-function adopt($text)
-{
+function adopt($text) {
   return '=?UTF-8?B?' . Base64_encode($text) . '?=';
 }
 

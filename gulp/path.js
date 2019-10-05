@@ -1,38 +1,66 @@
+import markup from './tasks/markup'
+import {styles} from './tasks/styles'
+import scripts from './tasks/scripts'
+import img from './tasks/images'
+import fonts from './tasks/fonts'
+import assets from './tasks/assets'
+
 export const SRC_DIR = 'src'
 export const APP_DIR = 'app'
+export const BLOCKS_DIR = `${SRC_DIR}/blocks`
 export const path = {
-  pug: {
-    src: SRC_DIR + '/pug/views/*.pug',
+  markup: {
+    src: `${SRC_DIR}/views/*.pug`,
     app: APP_DIR,
     watch: [
-      SRC_DIR + '/blocks/**/*.pug',
-      SRC_DIR + '/pug/**/*.pug',
-      'ws.config.json'
+      `${SRC_DIR}/views/*.pug`,
+      `${SRC_DIR}/blocks/**/*.pug`,
+      `${SRC_DIR}/pug/**/*.pug`,
+      `${SRC_DIR}/pug/locals.json`
     ],
-    data: 'ws.config.json'
+    data: `${SRC_DIR}/pug/locals.json`,
+    task: markup
   },
-  sass: {
-    src: SRC_DIR + '/sass/main.sass',
-    app: APP_DIR + '/css',
+  styles: {
+    src: `${SRC_DIR}/sass/main.sass`,
+    app: `${APP_DIR}/css`,
     watch: [
-      SRC_DIR + '/blocks/**/*.sass',
-      SRC_DIR + '/sass/**/*.sass'
-    ]
+      `${SRC_DIR}/blocks/**/*.sass`,
+      `${SRC_DIR}/sass/**/*.sass`
+    ],
+    task: styles
   },
-  js: {
-    src: SRC_DIR + '/js/common.js',
-    app: APP_DIR + '/js',
+  scripts: {
+    src: `${SRC_DIR}/js/common.js`,
+    app: `${APP_DIR}/js`,
     watch: [
-      SRC_DIR + '/blocks/**/**/*.js',
-      SRC_DIR + '/js/**/**/*.js'
-    ]
+      `${SRC_DIR}/blocks/**/**/*.js`,
+      `${SRC_DIR}/js/**/**/*.js`
+    ],
+    task: scripts
   },
   fonts: {
-    src: SRC_DIR + '/fonts/**/*.*',
-    app: APP_DIR + '/fonts'
+    src: `${SRC_DIR}/fonts/**/*.*`,
+    app: `${APP_DIR}/fonts`,
+    watch: `${SRC_DIR}/fonts/**/*.*`,
+    task: fonts
   },
-  img: {
-    src: SRC_DIR + '/blocks/**/img/*.*',
-    app: APP_DIR + '/img'
+  images: {
+    src: `${SRC_DIR}/blocks/**/img/*.*`,
+    app: `${APP_DIR}/img`,
+    watch: `${SRC_DIR}/blocks/**/img/*.*`,
+    task: img
+  },
+  assets: {
+    src: [
+      `${SRC_DIR}/*.*`,
+      `${SRC_DIR}/.htaccess`
+    ],
+    app: APP_DIR,
+    watch: [
+      `${SRC_DIR}/*.*`,
+      `${SRC_DIR}/.htaccess`
+    ],
+    task: assets
   }
 }

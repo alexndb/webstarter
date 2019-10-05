@@ -1,25 +1,11 @@
-import '@babel/polyfill'
-import $ from 'jquery'
+import 'lazysizes'
+import 'whatwg-fetch'
+import objectFitImages from 'object-fit-images'
+import dragOff from './dragOff'
+import smoothScroll from './smoothScroll'
+import allBlocksImports from './allBlocksImports'
 
-import dragOff from './modules/dragOff'
-import buttonToggle from '../blocks/button/button'
-import select from '../blocks/select/select'
-import withLabel from '../blocks/form-control-with-label/form-control-with-label'
-import slider from '../blocks/slider/slider'
-import agreement from '../blocks/agreement/agreement'
-import iMask from './modules/libs/iMask'
-import magnificPopup from './modules/libs/magnificPopup/popups'
-import formSubmit from './modules/forms/submit/onSubmit'
-
+objectFitImages()
 dragOff()
-withLabel()
-agreement()
-iMask()
-formSubmit()
-slider()
-
-$(document).ready(() => {
-  buttonToggle()
-  select()
-  magnificPopup()
-})
+smoothScroll()
+allBlocksImports()

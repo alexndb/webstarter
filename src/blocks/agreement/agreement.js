@@ -1,17 +1,19 @@
 export default () => {
-  let allCheckboxAgreement = document.querySelectorAll('input[name=agreement]');
+  const allCheckboxAgreement = document.querySelectorAll('input[name=agreement]')
 
-  for (let checkbox of allCheckboxAgreement) {
-    let formBtn = checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector('.button');
+  for (const checkbox of allCheckboxAgreement) {
+    const formBtn = checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector('.button')
 
-    let checkAgreementStatus = (checkbox) => {
-      formBtn.disabled = !checkbox.checked;
-    };
+    const checkAgreementStatus = (currentCheckbox) => {
+      if (formBtn) {
+        formBtn.disabled = !currentCheckbox.checked
+      }
+    }
 
-    checkAgreementStatus(checkbox);
+    checkAgreementStatus(checkbox)
 
-    checkbox.addEventListener('change', function() {
-      checkAgreementStatus(this);
-    });
+    checkbox.addEventListener('change', (e) => {
+      checkAgreementStatus(e.target)
+    })
   }
 }

@@ -1,12 +1,12 @@
 .header
-  background-color: #ccc
 
-//&.sticky
-//  position: fixed
-//  left: 0
-//  width: 100%
-//  opacity: 0
-//  +dt($transition)
-//
-//  &.show
-//    opacity: 1
+  &.sticky
+    opacity: 0
+    position: fixed
+    z-index: 1000
+    left: 0
+    width: 100%
+    transition: top, opacity 0.2s ease
+
+    &.show
+      opacity: 1

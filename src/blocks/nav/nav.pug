@@ -1,15 +1,13 @@
-mixin nav(mods, links)
-  -
-    var allMods = '';
-    if (typeof(mods) !== 'undefined' && mods) {
-      var modsList = mods.split(',');
-      for (var i = 0; i < modsList.length; i++) {
-        allMods = allMods + ' _' + modsList[i].trim();
-      }
-    }
+mixin nav(mods, links, activeLink)
+  - const blockName = 'nav'
+  include ../../pug/allMods
 
-  +b.NAV(class=`nav${allMods}`)
-    +e.UL.list
+  nav(class=allMods)
+    ul.nav__list
       each link in links
-        +e.LI.item
-          +e.A.link(href=link.href, target=link.target, class=link.scroll ? 'js-scroll' : '')= link.title
+        li.nav__item
+          a.nav__link(href=link.href, target=link.target, class=`${link.scroll ? 'js-scroll' : ''} ${link.href === activeLink ? 'nav__link--active' : ''}`)= link.title
+
+//- Вызов:
+
+  +nav('type1', mainNav)

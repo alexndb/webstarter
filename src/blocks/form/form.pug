@@ -1,0 +1,10 @@
+mixin form(mods)
+  - const blockName = 'form'
+  include ../../pug/allMods
+
+  form(class=allMods)&attributes(attributes)
+    block
+
+//- Вызов:
+
+  +form('type1')

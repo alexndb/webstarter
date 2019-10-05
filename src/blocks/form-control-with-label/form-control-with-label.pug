@@ -1,9 +1,0 @@
-mixin input-with-label(type, name, label, validate)
-  .with-label
-    input(type=type, name=name, data-validate=validate, autocomplete='off')&attributes(attributes)
-    label= label
-
-mixin textarea-with-label(name, label, validate, value)
-  .with-label
-    textarea(name=name, data-validate=validate, autocomplete='off')&attributes(attributes)= value
-    label= label

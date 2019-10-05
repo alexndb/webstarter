@@ -1,19 +1,30 @@
-import NODE_ENV from './gulp/env'
-
-const babelOptions = {
-  rules: [{
-    use: [{
-      loader: 'babel-loader'
-    }]
-  }]
-}
-const isProduction = NODE_ENV === 'production'
+import path from 'path'
+import {isProduction} from './gulp/env'
 
 export default {
   mode: isProduction ? 'production' : 'development',
-  devtool: isProduction ? false : 'eval',
-  module: isProduction ? babelOptions : {},
+  entry: {
+    main: './src/js/common.js'
+  },
   output: {
-    filename: 'bundle.js'
-  }
+    path: path.resolve(__dirname, './app/js'),
+    filename: '[name].bundle.js'
+  },
+  module: {
+    rules: [{
+      use: [
+        {
+          loader: 'babel-loader'
+        },
+        {
+          loader: 'eslint-loader'
+        }
+      ]
+    }]
+  },
+  performance: {
+    maxAssetSize: 512000,
+    maxEntrypointSize: 512000
+  },
+  devtool: isProduction ? false : 'eval'
 }

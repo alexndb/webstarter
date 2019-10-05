@@ -1,12 +1,34 @@
-.nav_popup
+.nav
+  $color-aside-link-hover: rgba(0, 0, 0, 0.05)
 
-  .nav__item
+  &__list
+    margin-right: -10px
+    margin-left: -10px
 
-    &:not(last-child)
-      margin-bottom: 25px
+  &__item
+    margin: 0 10px
 
-  .nav__link
-    +link(24px, $color--dark)
-    line-height: 1
-    text-transform: uppercase
-    font-family: $font--bold
+  &__link
+    +link-color(inherit)
+    font-size: 1rem
+
+  &--aside
+
+    .nav__list
+      margin: 0
+
+    .nav__item
+      margin: 0
+
+    .nav__link
+      +link-color(inherit)
+      display: block
+      padding: 15px 20px
+      font-weight: 700
+      font-size: 0.875rem
+      line-height: 130%
+      transition: background-color 0.2s ease
+
+      &--active,
+      &:hover
+        background-color: $color-aside-link-hover

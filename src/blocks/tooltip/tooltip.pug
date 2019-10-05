@@ -1,3 +1,19 @@
-mixin tooltip(id)
-  +b.tooltip(data-id=id)
-    +icon('helper')
+mixin tooltip()
+  .tooltip
+    block
+
+mixin tooltip-element()
+  .tooltip__element
+    block
+
+mixin tooltip-content()
+  .tooltip__content
+    block
+
+//- Вызов:
+
+  +tooltip()
+    +tooltip-element()
+      | Наведите курсор
+    +tooltip-content()
+      | Контент всплывающей подсказки

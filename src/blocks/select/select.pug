@@ -1,4 +1,9 @@
-mixin select(name, placeholder, options, validate)
-  select(name=name, data-placeholder=placeholder, data-validate=validate)&attributes(attributes)
+mixin select(name, placeholder, options)
+  select(name=name)&attributes(attributes)
+    option(placeholder)= placeholder
     each text, value in options
       option(value=value)= text
+
+//- Вызов:
+
+  +select('name', 'Выберите', select)
