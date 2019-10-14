@@ -15,6 +15,7 @@
     "force-element-nesting": 0,
     "final-newline": 0,
     "leading-zero": 0,
+    "nesting-depth": 3,
     "no-color-literals": 0,
     "property-sort-order": [
       1,
