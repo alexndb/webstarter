@@ -4,22 +4,20 @@ mixin input-text(props)
   include ../../pug/allMods
 
   if (type === 'textarea')
-    label.label-text-input
-      textarea(
+    label.input-text(class=allMods)
+      textarea.input-text__input(
         name=name,
         placeholder=' ',
-        autocomplete=autocomplete,
-        class=allMods
+        autocomplete=autocomplete
       )&attributes(attributes)= value
       .input-text__label= label
   else
-    label.label-text-input
-      input(
+    label.input-text(class=allMods)
+      input.input-text__input(
         type=type,
         name=name,
         placeholder=' ',
-        autocomplete=autocomplete,
-        class=allMods
+        autocomplete=autocomplete
       )&attributes(attributes)
       .input-text__label= label
 

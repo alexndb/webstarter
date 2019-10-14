@@ -1,82 +1,72 @@
-=placeholder($color)
-
-  &::placeholder
-    opacity: 1
-    color: $color
-    transition: opacity 0.2s ease
-
-  &:focus
-
-    &::placeholder
-      opacity: 0
-
 .input-text
-  $color-black: #000
-  $color-persimmon: #ff6347
   $color-silver: #c0c0c0
   $font-size-input: 0.875rem
 
-  width: 100%
-  padding: 15px 10px
-  border: 1px solid $color-silver
-  outline: none
-  font-family: $font
-  font-size: $font-size-input
-  line-height: 1
-  color: $color-black
+  overflow: hidden
+  display: block
+  position: relative
 
-  &:focus,
-  &.not-placeholder-shown
+  &__input
+    width: 100%
+    outline: none
+    line-height: 1
 
-    + .input-text__label
-      opacity: 0
+    &:focus,
+    &.not-placeholder-shown
 
-  &.error
-    border-color: $color-persimmon
+      + .input-text__label
+        opacity: 0
+
+    &.error
+      border-color: #ff6347
 
   &__label
     display: flex
     position: absolute
     top: 0
-    left: 10px
     height: 100%
-    margin-bottom: 0
-    font-family: $font
-    font-weight: normal
-    font-size: $font-size-input
     line-height: 1
-    color: $color-silver
     transition-property: top, opacity, font-size
-    transition-duration: 0.2s
+    transition-duration: .2s
     transition-timing-function: ease
     cursor: text
     user-select: none
 
+  input + .input-text__label
+    align-items: center
+
+  textarea + .input-text__label
+    padding-top: 15px
+
   &--textarea
-    min-height: 100px
-    resize: vertical
-    vertical-align: top
+
+    .input-text__input
+      min-height: 100px
+      resize: vertical
+      vertical-align: top
 
   &--with-floating-label
 
-    &:focus,
-    &.not-placeholder-shown
-      padding-top: 17px
-      padding-bottom: 13px
+    .input-text__input
 
-      + .input-text__label
-        opacity: 1
-        top: -12px
-        font-size: 0.625rem
+      &:focus,
+      &.not-placeholder-shown
+        padding-top: 17px
+        padding-bottom: 13px
 
-input + .input-text__label
-  align-items: center
+        + .input-text__label
+          opacity: 1
+          top: -12px
+          font-size: 0.625rem
 
-textarea + .input-text__label
-  padding-top: 15px
+  &--type1
 
-.label-text-input
-  overflow: hidden
-  display: block
-  position: relative
-  margin-bottom: 0
+    .input-text__input
+      padding: 15px 10px
+      border: 1px solid $color-silver
+      font-size: $font-size-input
+
+    .input-text__label
+      left: 10px
+      font-size: $font-size-input
+      color: $color-silver

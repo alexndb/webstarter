@@ -2,7 +2,7 @@ import IMask from 'imask'
 
 export default () => {
   const phoneInputs = document.querySelectorAll('[type=tel]')
-  const inputs = document.querySelectorAll('.input-text')
+  const inputs = document.querySelectorAll('.input-text input, .input-text textarea')
 
   if (phoneInputs) {
     for (const input of phoneInputs) {
