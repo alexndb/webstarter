@@ -60,8 +60,6 @@ Starter kit for web development (HTML/CSS/JS)
 
 `src/sass/fonts.sass` - подключение шрифтов
 
-`src/sass/libs.sass` - подключение стилей для сторонних библиотек
-
 `src/sass/main.sass` - главный файл, аккумулирующий в себе подключения всех стилевых файлов
 
 `src/sass/mixins.sass` - стилевые миксины
