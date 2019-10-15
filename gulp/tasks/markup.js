@@ -25,7 +25,7 @@ export default function markup(cb) {
 
   src(path.markup.src)
     .pipe(plumber({
-      errorHandler: err => errorHandler(err, 'Pug', 'pug.png')
+      errorHandler: err => errorHandler(err)
     }))
     .pipe(pug(config.localServer.active ? pugPHPConfig : pugDefaultConfig))
     .pipe(gulpIf(config.localServer.active,

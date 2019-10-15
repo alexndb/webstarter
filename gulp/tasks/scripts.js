@@ -10,7 +10,7 @@ import {path} from '../path'
 export default function scripts() {
   return src(path.scripts.src)
     .pipe(plumber({
-      errorHandler: err => errorHandler(err, 'Javascript', 'js.png')
+      errorHandler: err => errorHandler(err)
     }))
     .pipe(gulpWebpack(webpackConfig, webpack))
     .pipe(dest(path.scripts.app))

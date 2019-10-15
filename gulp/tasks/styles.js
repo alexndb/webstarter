@@ -48,7 +48,7 @@ export function styles(cb) {
 
   src(path.styles.src)
     .pipe(plumber({
-      errorHandler: err => errorHandler(err, 'Sass', 'sass.png')
+      errorHandler: err => errorHandler(err)
     }))
     .pipe(gulpIf(isDevelopment, sourcemaps.init()))
     .pipe(sass())
