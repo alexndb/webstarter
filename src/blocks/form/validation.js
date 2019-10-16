@@ -1,5 +1,3 @@
-import $ from 'jquery'
-
 export default class Validation {
   constructor(form, options) {
     this.form = form
@@ -26,7 +24,7 @@ export default class Validation {
     }
 
     if (formControl.tagName === 'SELECT') {
-      pattern = formControl.selectedIndex === 0
+      pattern = !formControl.classList.contains('is-selected')
     }
 
     return pattern
@@ -108,19 +106,21 @@ export default class Validation {
     this.form.badForm = true
     errorTextElement.classList.add('form__error-message')
     errorTextElement.innerText = title
-    formControl.classList.add('error')
     if (formControl.nextElementSibling.classList.contains('input-text__label')) {
+      formControl.classList.add('error')
       formControl.nextElementSibling.insertAdjacentElement('afterend', errorTextElement)
     } else {
-      formControl.insertAdjacentElement('afterend', errorTextElement)
+      formControl.parentElement.classList.add('error')
+      formControl.parentElement.insertAdjacentElement('afterend', errorTextElement)
     }
   }
 
   removeError = (formControl) => {
-    const error = formControl.parentElement.querySelector('.form__error-message')
+    const error = formControl.closest('.form__control').querySelector('.form__error-message')
 
     if (error) {
       formControl.classList.remove('error')
+      formControl.parentElement.classList.remove('error')
       if (typeof error.remove === 'function') {
         error.remove()
       } else {
@@ -136,8 +136,13 @@ export default class Validation {
         this.checkError(formControl)
 
         if (formControl.tagName === 'SELECT') {
-          $(formControl).on('select2:select', (e) => {
+          formControl.addEventListener('choice', (e) => {
             this.removeError(formControl)
+            if (e.detail.choice.placeholder) {
+              formControl.classList.remove('is-selected')
+            } else {
+              formControl.classList.add('is-selected')
+            }
           })
         }
 
