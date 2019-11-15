@@ -12,7 +12,7 @@ foreach(array_merge($_POST, $get) as $key => $value) {
   if ($value != '' && $key != 'project_name' && $key != 'admin_email' && $key != 'agreement') {
     switch ($key) {
       case 'form_name':
-        $key = 'Идентификатор фомы';
+        $key = 'Идентификатор формы';
         continue;
       case 'name':
         $key = 'Имя';
