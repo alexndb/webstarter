@@ -24,7 +24,7 @@ Starter kit for web development (HTML/CSS/JS)
 
 [sass](https://sass-lang.com/) - для работы со стилями(синтаксис sass)
 
-[babel](https://babeljs.io), [webpack](https://webpack.js.org/) для со скриптами. Используются es-модули, можно пользоваться самым свежим синтаксисом
+[babel](https://babeljs.io), [webpack](https://webpack.js.org/) для работы со скриптами. Используются es-модули, можно пользоваться самым свежим синтаксисом
 
 Вся работа осуществляется в папке `src`
 
