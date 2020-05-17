@@ -11,7 +11,7 @@ export default class Validation {
     digits: /^\d+$/,
     letters: /^[а-яА-ЯёЁa-zA-Z\s]+$/,
     email: /^[a-zA-Z0-9._-]{2,100}@[a-z0-9_-]{2,100}\.[a-z]{2,10}$/,
-    phone: /^\+\d\s\d{3}\s\d{3}\s\d{4}$/
+    phone: /^\+\d{11,20}$/
   }
 
   testPattern = (formControl, patternName) => !this.patterns[patternName].test(formControl.value)
@@ -36,8 +36,8 @@ export default class Validation {
         phone: {
           pattern: this.testPattern(formControl, 'phone'),
           text: {
-            ru: 'Формат +9 999 999 9999',
-            en: 'Format +9 999 999 9999'
+            ru: '11-20 цифр',
+            en: '11-20 digits'
           }
         },
         email: {
@@ -116,17 +116,21 @@ export default class Validation {
   }
 
   removeError = (formControl) => {
-    const error = formControl.closest('.form__control').querySelector('.form__error-message')
+    const formControlHTMLElement = formControl.closest('.form__control')
 
-    if (error) {
-      formControl.classList.remove('error')
-      formControl.parentElement.classList.remove('error')
-      if (typeof error.remove === 'function') {
-        error.remove()
-      } else {
-        error.parentNode.removeChild(error)
+    if (formControlHTMLElement) {
+      const error = formControlHTMLElement.querySelector('.form__error-message')
+
+      if (error) {
+        formControl.classList.remove('error')
+        formControl.parentElement.classList.remove('error')
+        if (typeof error.remove === 'function') {
+          error.remove()
+        } else {
+          error.parentNode.removeChild(error)
+        }
+        this.form.badForm = false
       }
-      this.form.badForm = false
     }
   }
 

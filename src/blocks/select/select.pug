@@ -1,9 +1,18 @@
-mixin select(name, placeholder, options)
+mixin select(name, placeholder, selectName)
+  -
+    const select = {
+      selectDefault: [
+        {value: 'option1', text: 'Опция 1'},
+        {value: 'option2', text: 'Опция 2'},
+        {value: 'option3', text: 'Опция 3'}
+      ]
+    }
+
   select(name=name)&attributes(attributes)
     option(placeholder)= placeholder
-    each text, value in options
-      option(value=value)= text
+    each option in select[selectName]
+      option(value=option.value)= option.text
 
 //- Вызов:
 
-  +select('name', 'Выберите', selectOptions)
+  +select('name', 'Выберите', 'selectDefault')

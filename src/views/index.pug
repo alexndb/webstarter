@@ -1,15 +1,21 @@
 extends ../pug/_template-main
 
+block vars
+  - const pageName = 'main page'
+  - const description = pageName
+  - const keywords = pageName
+
 block php
-  //- :php
-    //- $_SESSION['page'] = 'Main';
+  //- | <?php
+  //- |   $_SESSION['page'] = '#{pageName}';
+  //- | ?>
 
 block meta
-  meta(name='description' content=projectName)
-  meta(name='keywords' content=projectName)
+  meta(name='description' content=description)
+  meta(name='keywords' content=keywords)
 
 block title
-  +page-title('|', 'Main')
+  title= pageName
 
 block header
 
@@ -21,4 +27,4 @@ block main
 block footer
 
 block hidden
-  +popup-success()
+  +popup-success

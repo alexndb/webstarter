@@ -8,7 +8,7 @@ const startWatch = (src, task) => {
 
 export default function watcher() {
   for (const pathItem of Object.values(path)) {
-    startWatch(pathItem.watch, pathItem.task)
+    startWatch(pathItem.watch || pathItem.src, pathItem.task)
   }
   watch(`${BLOCKS_DIR}/**`, {events: 'add'}, series(createAllImportsFiles))
   watch(`${BLOCKS_DIR}/**`, {events: 'unlink'}, series(createAllImportsFiles))

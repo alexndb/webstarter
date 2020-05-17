@@ -12,6 +12,7 @@ import sourcemaps from 'gulp-sourcemaps'
 import sass from 'gulp-sass'
 import sassLint from 'gulp-sass-lint'
 import nodeSass from 'node-sass'
+// import postcssModules from 'postcss-modules'
 import {path} from '../path'
 import {isDevelopment} from '../env'
 import errorHandler from '../errorHandler'
@@ -28,6 +29,9 @@ export function stylesLint(cb) {
 
 export function styles(cb) {
   const commonPlugins = [
+    // postcssModules({
+    //   generateScopedName: '[folder]__[name]_[local]_[hash:base64:5]'
+    // }),
     autoprefixer({
       grid: true
     }),

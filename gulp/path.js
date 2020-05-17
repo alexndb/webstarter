@@ -15,10 +15,8 @@ export const path = {
     watch: [
       `${SRC_DIR}/views/*.pug`,
       `${SRC_DIR}/blocks/**/*.pug`,
-      `${SRC_DIR}/pug/**/*.pug`,
-      `${SRC_DIR}/pug/locals.json`
+      `${SRC_DIR}/pug/**/*.pug`
     ],
-    data: `${SRC_DIR}/pug/locals.json`,
     task: markup
   },
   styles: {
@@ -34,21 +32,19 @@ export const path = {
     src: `${SRC_DIR}/js/common.js`,
     app: `${APP_DIR}/js`,
     watch: [
-      `${SRC_DIR}/blocks/**/**/*.js`,
-      `${SRC_DIR}/js/**/**/*.js`
+      `${SRC_DIR}/blocks/**/*.js`,
+      `${SRC_DIR}/js/**/*.js`
     ],
     task: scripts
   },
   fonts: {
     src: `${SRC_DIR}/fonts/**/*.*`,
     app: `${APP_DIR}/fonts`,
-    watch: `${SRC_DIR}/fonts/**/*.*`,
     task: fonts
   },
   images: {
-    src: `${SRC_DIR}/blocks/**/img/*.*`,
+    src: `${SRC_DIR}/blocks/**/*.+(png|jpg|svg|gif|ico)`,
     app: `${APP_DIR}/img`,
-    watch: `${SRC_DIR}/blocks/**/img/*.*`,
     task: img
   },
   assets: {
@@ -57,10 +53,6 @@ export const path = {
       `${SRC_DIR}/.htaccess`
     ],
     app: APP_DIR,
-    watch: [
-      `${SRC_DIR}/*.*`,
-      `${SRC_DIR}/.htaccess`
-    ],
     task: assets
   }
 }

@@ -1,5 +1,23 @@
 import path from 'path'
+import TerserWebpackPlugin from 'terser-webpack-plugin'
 import {isProduction} from './gulp/env'
+
+const optimization = () => {
+  const config = {
+    minimize: true,
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
+
+  if (isProduction) {
+    config.minimizer = [
+      new TerserWebpackPlugin()
+    ]
+  }
+
+  return config
+}
 
 export default {
   mode: isProduction ? 'production' : 'development',
@@ -12,6 +30,7 @@ export default {
   },
   module: {
     rules: [{
+      exclude: /node_modules/,
       use: [
         {
           loader: 'babel-loader'
@@ -22,6 +41,7 @@ export default {
       ]
     }]
   },
+  optimization: optimization(),
   performance: {
     maxAssetSize: 512000,
     maxEntrypointSize: 512000

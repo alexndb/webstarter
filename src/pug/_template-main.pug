@@ -1,12 +1,14 @@
 include ./allBlocksImports
 
+block vars
 block php
-  //- :php
-    //- session_start();
-    //- $_SESSION['get'] = $_GET;
+  //- | <?php
+  //- |   session_start();
+  //- |   $_SESSION['get'] = $_GET;
+  //- | ?>
 
 doctype html
-html(lang=lang)
+html(lang='ru')
   head
     include meta
     block meta

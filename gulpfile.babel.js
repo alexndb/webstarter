@@ -10,7 +10,7 @@ import assets from './gulp/tasks/assets'
 import watcher from './gulp/tasks/watch'
 import bSync from './gulp/tasks/browserSync'
 
-const mainTasks = (() => parallel(markup, styles, scripts, fonts, images, assets))()
+const mainTasks = (() => series(styles, markup, parallel(scripts, fonts, images, assets)))()
 
 exports.cleanApp = cleanApp
 exports.cleanCache = cleanCache

@@ -7,7 +7,7 @@ export default () => {
   if (phoneInputs) {
     for (const input of phoneInputs) {
       new IMask(input, {
-        mask: '+{0} 000 000 0000',
+        mask: '+00000000000000000000',
         lazy: true,
         placeholderChar: '_'
       })
