@@ -12,15 +12,16 @@ import sourcemaps from 'gulp-sourcemaps'
 import sass from 'gulp-sass'
 import sassLint from 'gulp-sass-lint'
 import nodeSass from 'node-sass'
+import rename from 'gulp-rename'
 // import postcssModules from 'postcss-modules'
-import {path} from '../path'
-import {isDevelopment} from '../env'
-import errorHandler from '../errorHandler'
+import {
+  projectPath, errorHandler, isDevelopment, currentHash
+} from '../ws.config'
 
 sass.compiler = nodeSass
 
 export function stylesLint(cb) {
-  src(path.styles.watch)
+  src(projectPath.styles.watch)
     .pipe(sassLint())
     .pipe(sassLint.format())
     .pipe(sassLint.failOnError())
@@ -50,15 +51,20 @@ export function styles(cb) {
 
   stylesLint(cb)
 
-  src(path.styles.src)
+  src(projectPath.styles.src)
     .pipe(plumber({
       errorHandler: err => errorHandler(err)
     }))
     .pipe(gulpIf(isDevelopment, sourcemaps.init()))
     .pipe(sass())
     .pipe(postcss(isDevelopment ? postCSSDevPlugins : postCSSProdPlugins))
-    .pipe(gulpIf(isDevelopment, sourcemaps.write('./')))
-    .pipe(dest(path.styles.app))
+    .pipe(gulpIf(isDevelopment, sourcemaps.write('./', {
+      sourceMappingURL: (file) => `${file.relative}.${currentHash}.map`
+    })))
+    .pipe(rename(currentPath => {
+      currentPath.basename += `.${currentHash}`
+    }))
+    .pipe(dest(projectPath.styles.app))
     .pipe(browserSync.reload({stream: true}))
   cb()
 }

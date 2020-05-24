@@ -1,6 +1,6 @@
 import cache from 'gulp-cache'
 import del from 'del/index'
-import {APP_DIR} from '../path'
+import {APP_DIR} from '../ws.config'
 
 export function cleanCache(cb) {
   cache.clearAll()

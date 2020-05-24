@@ -1,16 +1,18 @@
 import {parallel, series} from 'gulp'
-import createAllImportsFiles from './gulp/tasks/createAllImportsFiles'
-import {cleanApp, cleanCache} from './gulp/tasks/clean'
-import markup from './gulp/tasks/markup'
-import {stylesLint, styles} from './gulp/tasks/styles'
-import scripts from './gulp/tasks/scripts'
-import fonts from './gulp/tasks/fonts'
-import images from './gulp/tasks/images'
-import assets from './gulp/tasks/assets'
-import watcher from './gulp/tasks/watch'
-import bSync from './gulp/tasks/browserSync'
+import {cleanApp, cleanCache} from './gulp/clean'
+import markup from './gulp/markup'
+import {stylesLint, styles} from './gulp/styles'
+import scripts from './gulp/scripts'
+import fonts from './gulp/fonts'
+import images from './gulp/images'
+import assets from './gulp/assets'
+import watcher from './gulp/watch'
+import bSync from './gulp/browserSync'
 
-const mainTasks = (() => series(styles, markup, parallel(scripts, fonts, images, assets)))()
+const mainTasks = (() => series(
+  styles, markup,
+  parallel(scripts, fonts, images, assets)
+))()
 
 exports.cleanApp = cleanApp
 exports.cleanCache = cleanCache
@@ -23,12 +25,10 @@ exports.images = images
 exports.assets = assets
 exports.watcher = watcher
 exports.bSync = bSync
-exports.createAllImportsFiles = createAllImportsFiles
 
 exports.default = series(
   cleanApp,
   cleanCache,
-  createAllImportsFiles,
   mainTasks,
   parallel(
     watcher,
@@ -38,6 +38,5 @@ exports.default = series(
 
 exports.build = series(
   cleanApp,
-  createAllImportsFiles,
   mainTasks
 )

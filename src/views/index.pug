@@ -1,5 +1,10 @@
 extends ../pug/_template-main
 
+include ../pug/styles
+include ../pug/scripts
+include ../blocks/favicon/favicon
+include ../blocks/popup-success/popup-success
+
 block vars
   - const pageName = 'main page'
   - const description = pageName
@@ -13,6 +18,9 @@ block php
 block meta
   meta(name='description' content=description)
   meta(name='keywords' content=keywords)
+
+block styles
+  +styles(['index'])
 
 block title
   title= pageName
@@ -28,3 +36,6 @@ block footer
 
 block hidden
   +popup-success
+
+block scripts
+  +scripts(['index'])

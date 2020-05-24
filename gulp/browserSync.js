@@ -1,11 +1,12 @@
 import browserSync from 'browser-sync'
-import {APP_DIR} from '../path'
-import config from '../../ws.config'
+import compression from 'compression'
+import {APP_DIR, localServer} from '../ws.config'
 
 browserSync.create()
 
 export default function bSync() {
   const commonOptions = {
+    middleware: [compression()],
     notify: false,
     snippetOptions: {
       rule: {
@@ -15,9 +16,9 @@ export default function bSync() {
     }
   }
 
-  if (config.localServer.active) {
+  if (localServer.active) {
     browserSync.init({
-      proxy: `${config.localServer.proxy}/${APP_DIR}`,
+      proxy: `${localServer.proxy}/${APP_DIR}`,
       ...commonOptions
     })
   } else {

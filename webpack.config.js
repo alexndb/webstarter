@@ -1,6 +1,5 @@
-import path from 'path'
 import TerserWebpackPlugin from 'terser-webpack-plugin'
-import {isProduction} from './gulp/env'
+import {isProduction, currentHash} from './ws.config'
 
 const optimization = () => {
   const config = {
@@ -21,12 +20,8 @@ const optimization = () => {
 
 export default {
   mode: isProduction ? 'production' : 'development',
-  entry: {
-    main: './src/js/common.js'
-  },
   output: {
-    path: path.resolve(__dirname, './app/js'),
-    filename: '[name].bundle.js'
+    filename: () => `[name].${currentHash}.js`
   },
   module: {
     rules: [{
@@ -41,7 +36,7 @@ export default {
       ]
     }]
   },
-  optimization: optimization(),
+  // optimization: optimization(),
   performance: {
     maxAssetSize: 512000,
     maxEntrypointSize: 512000

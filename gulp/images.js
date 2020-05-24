@@ -5,11 +5,10 @@ import rename from 'gulp-rename'
 import imagemin from 'gulp-imagemin'
 import mozjpeg from 'imagemin-mozjpeg'
 import pngquant from 'imagemin-pngquant/index'
-import {path} from '../path'
-import {isProduction} from '../env'
+import {projectPath, isProduction} from '../ws.config'
 
 export default function images(cb) {
-  src(path.images.src)
+  src(projectPath.images.src)
     .pipe(gulpIf(isProduction, imagemin(
       [
         mozjpeg(),
@@ -24,7 +23,7 @@ export default function images(cb) {
     .pipe(rename(currentPath => {
       currentPath.dirname = currentPath.dirname.replace('\\img', '')
     }))
-    .pipe(dest(path.images.app))
+    .pipe(dest(projectPath.images.app))
   browserSync.reload()
   cb()
 }
