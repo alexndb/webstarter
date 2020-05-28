@@ -1,20 +1,22 @@
 import SmoothScroll from 'smooth-scroll/dist/smooth-scroll.polyfills'
 import Gumshoe from 'gumshoejs/dist/gumshoe'
+
 import {asideClose} from '../blocks/aside/aside'
 
-export default () => {
+export default (() => {
+  const stickyElements = ['header.sticky']
   const scrollLinksSelector = '.js-scroll'
   const links = document.querySelectorAll(scrollLinksSelector)
 
-  const getStickyHeaderHeight = () => {
-    const stickyHeader = document.querySelector('.header.sticky')
-    let stickyHeaderheight = 0
+  const getStickyElementHeight = (selector) => {
+    const stickyElement = document.querySelector(selector)
+    let stickyElementheight = 0
 
-    if (stickyHeader) {
-      stickyHeaderheight = stickyHeader.offsetHeight - 1
+    if (stickyElement) {
+      stickyElementheight = stickyElement.offsetHeight - 1
     }
 
-    return stickyHeaderheight
+    return stickyElementheight
   }
 
   const checkBlockExist = () => {
@@ -31,18 +33,16 @@ export default () => {
 
   if (links.length && checkBlockExist()) {
     for (const link of links) {
-      link.addEventListener('click', () => {
-        asideClose()
-      })
+      link.addEventListener('click', asideClose)
     }
 
     new SmoothScroll(scrollLinksSelector, {
       updateURL: false,
-      offset: getStickyHeaderHeight
+      offset: getStickyElementHeight(stickyElements[0])
     })
 
     new Gumshoe(scrollLinksSelector, {
-      offset: getStickyHeaderHeight
+      offset: getStickyElementHeight(stickyElements[0])
     })
   }
-}
+})()
