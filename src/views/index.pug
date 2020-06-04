@@ -5,6 +5,11 @@ include ../pug/scripts
 include ../blocks/favicon/favicon
 include ../blocks/popup-success/popup-success
 
+//- controls
+//- include ../blocks/select/select
+
+//- include ../blocks/image/image
+
 block vars
   - const pageName = 'main page'
   - const description = pageName
@@ -12,6 +17,8 @@ block vars
 
 block php
   //- | <?php
+  //- |   session_start();
+  //- |   $_SESSION['get'] = $_GET;
   //- |   $_SESSION['page'] = '#{pageName}';
   //- | ?>
 

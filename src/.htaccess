@@ -1,3 +1,15 @@
+RewriteEngine on
+
+# SetEnvIf X-Forwarded-Proto https SERVER_PORT=443
+# SetEnvIf X-Forwarded-Proto https HTTPS=on
+# RewriteCond %{HTTP_HOST} !^localhost [NC]
+# RewriteCond %{HTTP:HTTPS} !=on [NC]
+# RewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
 <ifModule mod_expires.c>
   # Add correct content-type for fonts & SVG
   AddType application/font-woff2 .woff2

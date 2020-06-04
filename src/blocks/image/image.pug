@@ -1,7 +1,7 @@
 mixin image(props)
   - const {src, alt, cover} = props
 
-  img.lazyload(class=cover ? 'image--cover' : false, src=src, alt=alt)
+  img.lazyload(class=cover ? 'image--cover' : false, data-src=src, alt=alt || 'alt')&attributes(attributes)
 
 //- Вызов:
 

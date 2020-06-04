@@ -60,7 +60,7 @@ export const projectPath = {
 }
 
 export const localServer = {
-  active: true,
+  active: false,
   changeViewsExtToPHP: false,
   proxy: 'webstarter'
 }

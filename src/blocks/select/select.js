@@ -1,15 +1,16 @@
 import Choices from 'choices.js'
 
-export default () => {
+export default (() => {
   const selects = document.querySelectorAll('select')
 
   if (selects.length) {
-    new Choices('select', {
-      searchEnabled: false,
-      itemSelectText: ''
-    })
-
     for (const select of selects) {
+      new Choices(select, {
+        searchEnabled: false,
+        itemSelectText: '',
+        shouldSort: false
+      })
+
       select.addEventListener('choice', (e) => {
         if (e.detail.choice.placeholder) {
           e.target.classList.remove('is-selected')
@@ -19,4 +20,4 @@ export default () => {
       })
     }
   }
-}
+})()

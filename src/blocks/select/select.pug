@@ -1,18 +1,35 @@
-mixin select(name, placeholder, selectName)
+mixin select(props)
   -
+    const {name, placeholder, options} = props
     const select = {
-      selectDefault: [
-        {value: 'option1', text: 'Опция 1'},
-        {value: 'option2', text: 'Опция 2'},
-        {value: 'option3', text: 'Опция 3'}
+      selectDefaultOptions: [
+        {
+          //- disabled: true,
+          value: 'option1',
+          text: 'Опция 1'
+        },
+        {
+          //- selected: true,
+          value: 'option2',
+          text: 'Опция 2'
+        },
+        {
+          value: 'option3',
+          text: 'Опция 3'
+        }
       ]
     }
 
   select(name=name)&attributes(attributes)
     option(placeholder)= placeholder
-    each option in select[selectName]
-      option(value=option.value)= option.text
+    each option in select[options]
+      - const {value, disabled, selected, text} = option
+      option(value=value, disabled=disabled, selected=selected)= text
 
 //- Вызов:
 
-  +select('name', 'Выберите', 'selectDefault')
+  +select({
+    name: 'name',
+    placeholder: 'Выберите',
+    options: 'selectDefaultOptions'
+  })
