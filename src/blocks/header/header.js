@@ -1,6 +1,6 @@
 import {asideOpen} from '../aside/aside'
 
-export default () => {
+export default (() => {
   const header = document.querySelector('.header')
 
   if (header) {
@@ -31,4 +31,4 @@ export default () => {
       }
     })
   }
-}
+})()

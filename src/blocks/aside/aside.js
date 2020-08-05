@@ -17,7 +17,7 @@ const asideClose = () => {
   }
 }
 
-export default () => {
+export default (() => {
   if (aside) {
     const asideBg = aside.querySelector('.aside__bg')
     const asideOpenButton = document.querySelector('.js-aside-open')
@@ -34,7 +34,7 @@ export default () => {
       asideOpenButton.addEventListener('click', asideOpen)
     }
   }
-}
+})()
 
 export {
   asideOpen,

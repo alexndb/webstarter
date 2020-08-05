@@ -1,4 +1,4 @@
-export default () => {
+export default (() => {
   const allCheckboxAgreement = document.querySelectorAll('input[name=agreement]')
 
   for (const checkbox of allCheckboxAgreement) {
@@ -16,4 +16,4 @@ export default () => {
       checkAgreementStatus(e.target)
     })
   }
-}
+})()

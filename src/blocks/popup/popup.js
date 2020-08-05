@@ -23,7 +23,7 @@ const popupClose = () => {
   $.magnificPopup.close()
 }
 
-export default () => {
+export default (() => {
   const popupLinks = document.querySelectorAll('.js-popup')
   const popupVideoLinks = document.querySelectorAll('.js-popup-video')
 
@@ -37,7 +37,7 @@ export default () => {
       type: 'iframe'
     })
   }
-}
+})()
 
 export {
   popupOpen,

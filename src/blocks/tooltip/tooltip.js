@@ -1,6 +1,6 @@
 import tippy from 'tippy.js'
 
-export default () => {
+export default (() => {
   const tooltips = document.querySelectorAll('.tooltip')
 
   if (tooltips) {
@@ -13,4 +13,4 @@ export default () => {
       })
     }
   }
-}
+})()

@@ -1,6 +1,6 @@
 import IMask from 'imask'
 
-export default () => {
+export default (() => {
   const phoneInputs = document.querySelectorAll('[type=tel]')
   const inputs = document.querySelectorAll('.input-text input, .input-text textarea')
 
@@ -30,4 +30,4 @@ export default () => {
       element.addEventListener('blur', checkStatus)
     }
   }
-}
+})()

@@ -1,3 +1,4 @@
+import path from 'path'
 import crypto from 'crypto'
 import markup from './gulp/markup'
 import {styles} from './gulp/styles'
@@ -62,7 +63,7 @@ export const projectPath = {
 export const localServer = {
   active: false,
   changeViewsExtToPHP: false,
-  proxy: 'webstarter'
+  proxy: path.basename(process.cwd())
 }
 
 export const errorHandler = err => {

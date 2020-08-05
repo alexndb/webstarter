@@ -51,7 +51,7 @@ class FormService {
   }
 }
 
-export default () => {
+export default (() => {
   new FormService('form', {
     lang: 'ru',
     validation: {
@@ -71,4 +71,4 @@ export default () => {
       }
     }
   })
-}
+})()
