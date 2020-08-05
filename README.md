@@ -28,7 +28,7 @@ Starter kit for web development (HTML/CSS/JS)
 
 Вся работа осуществляется в папке `src`
 
-`src/blocks` - в данной папке хранятся все блоки, используемые на сайте, создать новый блок можно командой из раздела "Создание нового блока" ниже. При создании нового блока или его отдельных файлов, сборка автоматически добавляет все связанные pug, sass, js файлы в общие файлы allBlocksImports.pug, allBlocksImports.sass, allBlocksImports.js, подключать вручную ничего не требуется, картинки так же обрабатываются автоматически
+`src/blocks` - в данной папке хранятся все блоки, используемые на сайте, создать новый блок можно командой из раздела "Создание нового блока" ниже.
 
 `src/blocks/blockName` - индивидуальная папка блока `blockName`, в ней хранятся: разметка, стили, логика, изображения, используемые в данном блоке
 
@@ -44,23 +44,15 @@ Starter kit for web development (HTML/CSS/JS)
 
 `src/js` - все модули js, не относящиеся к конкретному блоку
 
-`src/js/allBlocksImports.js` - автоматически собирает скрипты всех блоков, имеющих `blockName.js` и экспортирует их
-
 `src/js/common.js` - главный фаил с подключением всех используемых скриптов
 
-`src/pug` - шаблоны страниц, переменные, используемые в разметке(`locals.json`) и вспомогательные файлы для работы с `.pug`
-
-`src/js/allBlocksImports.pug` - автоматически собирает разметку всех блоков, имеющих `blockName.pug`
+`src/pug` - шаблоны страниц и вспомогательные файлы для работы с `.pug`
 
 `src/sass` - файлы для работы со стилями `.sass`
-
-`src/sass/allBloksImports.sass` - автоматически собирает стили всех блоков, имеющих `blockName.sass`
 
 `src/sass/base.sass` - базовые стили
 
 `src/sass/fonts.sass` - подключение шрифтов
-
-`src/sass/main.sass` - главный файл, аккумулирующий в себе подключения всех стилевых файлов
 
 `src/sass/mixins.sass` - стилевые миксины
 
@@ -82,12 +74,16 @@ Starter kit for web development (HTML/CSS/JS)
 ## Вставка PHP в PUG файлы
 
 1. Поставить значение `localServer.active: true` в файле `ws.config.js`
-2. Папка проекта должна лежать в корне локального сервера, имя папки должно соответствовать `localServer.proxy` в файле `ws.config.js`
+2. Поставить значение `localServer.changeViewsExtToPHP: true` в файле `ws.config.js`
+3. Папка проекта должна лежать в корне локального сервера
 
 ```php
-h1.example
-  :php
-    echo 'Hello world!';
+block php
+  <?php
+    session_start();
+    $_SESSION['get'] = $_GET;
+    $_SESSION['page'] = '#{pageName}';
+  ?>
 ```
 
 ## Gulp tasks
@@ -103,10 +99,6 @@ h1.example
 ### `clean`
 
 Удаляет папку `APP_DIR`, очищает кэш браузера
-
-### `createAllImportsFiles`
-
-Автоматически генерирует файлы импортов(pug, sass, js) для всех блоков из папки `src/blocks`
 
 ### `fonts`
 
