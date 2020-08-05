@@ -40,7 +40,7 @@ const createBlock = (blockName) => {
           let blockContent
 
           if (extension === 'pug') {
-            blockContent = `mixin ${blockName}()\n  .${blockName} ${blockName}`
+            blockContent = `mixin ${blockName}\n  .${blockName} ${blockName}`
             createFile(blockName, extension, blockContent)
           } else if (extension === 'sass') {
             blockContent = `.${blockName}\n  `

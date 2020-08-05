@@ -1,12 +1,16 @@
 mixin image(props)
-  - const {src, alt, cover} = props
+  - const {src, alt, cover, lazy} = props
 
-  img.lazyload(class=cover ? 'image--cover' : false, data-src=src, alt=alt || 'alt')&attributes(attributes)
+  if (lazy)
+    img.lazyload(class=cover ? 'image--cover' : false, data-src=src, alt=alt || 'alt')&attributes(attributes)
+  else
+    img(class=cover ? 'image--cover' : false, src=src, alt=alt || 'alt')&attributes(attributes)
 
 //- Вызов:
 
   +image({
     src: 'https://picsum.photos/id/10/300/300',
     alt: 'alt',
-    cover: true
+    cover: true,
+    lazy: true
   })
