@@ -13,7 +13,6 @@ import sass from 'gulp-sass'
 import sassLint from 'gulp-sass-lint'
 import nodeSass from 'node-sass'
 import rename from 'gulp-rename'
-// import postcssModules from 'postcss-modules'
 import {
   projectPath, errorHandler, isDevelopment, currentHash
 } from '../ws.config'
@@ -30,9 +29,6 @@ export function stylesLint(cb) {
 
 export function styles(cb) {
   const commonPlugins = [
-    // postcssModules({
-    //   generateScopedName: '[folder]__[name]_[local]_[hash:base64:5]'
-    // }),
     autoprefixer({
       grid: true
     }),
