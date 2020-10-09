@@ -53,7 +53,7 @@ class FormService {
 
 export default (() => {
   new FormService('form', {
-    lang: 'ru',
+    lang: document.documentElement.lang,
     validation: {
       name: {
         required: true,
