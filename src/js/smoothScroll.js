@@ -4,7 +4,7 @@ import Gumshoe from 'gumshoejs/dist/gumshoe'
 import {asideClose} from '../blocks/aside/aside'
 
 export default (() => {
-  const stickyElements = ['header.sticky']
+  const stickyElements = ['header.sticky', 'aside']
   const scrollLinksSelector = '.js-scroll'
   const links = document.querySelectorAll(scrollLinksSelector)
 
@@ -41,8 +41,10 @@ export default (() => {
       offset: getStickyElementHeight(stickyElements[0])
     })
 
-    new Gumshoe(scrollLinksSelector, {
-      offset: getStickyElementHeight(stickyElements[0])
-    })
+    for (const item of stickyElements) {
+      new Gumshoe(`${item} ${scrollLinksSelector}`, {
+        offset: getStickyElementHeight(stickyElements[0])
+      })
+    }
   }
 })()
