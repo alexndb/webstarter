@@ -17,7 +17,7 @@ export default function images(cb) {
         imagemin.gifsicle()
       ],
       {
-        verbose: true
+        // verbose: true
       }
     )))
     .pipe(rename(currentPath => {
