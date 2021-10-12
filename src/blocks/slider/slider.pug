@@ -2,7 +2,7 @@ mixin slider(mods, props)
   - const blockName = 'slider'
   include ../../pug/allMods
 
-  .swiper-container(class=`${allMods} ${props.jsClass}`)&attributes(attributes)
+  .swiper(class=`${allMods} ${props.jsClass}`)&attributes(attributes)
     .swiper-wrapper
       block
     if (props.pagination)

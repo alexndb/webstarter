@@ -9,15 +9,15 @@ import postcss from 'gulp-postcss'
 import objectFitImages from 'postcss-object-fit-images'
 import sortCSSmq from 'sort-css-media-queries'
 import sourcemaps from 'gulp-sourcemaps'
-import sass from 'gulp-sass'
+import dartSass from 'sass'
+import gulpSass from 'gulp-sass'
 import sassLint from 'gulp-sass-lint'
-import nodeSass from 'node-sass'
 import rename from 'gulp-rename'
 import {
   projectPath, errorHandler, isDevelopment, currentHash
 } from '../ws.config'
 
-sass.compiler = nodeSass
+const sass = gulpSass(dartSass)
 
 export function stylesLint(cb) {
   src(projectPath.styles.watch)

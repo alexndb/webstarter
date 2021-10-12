@@ -7,12 +7,14 @@ const asideOpen = (e) => {
     e.preventDefault()
     document.body.style.overflow = 'hidden'
     aside.classList.add('aside--active')
+    aside.style.opacity = '1'
   }
 }
 
 const asideClose = () => {
   if (aside) {
     aside.classList.remove('aside--active')
+    aside.style.opacity = '0'
     document.body.style.overflow = ''
   }
 }

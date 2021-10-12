@@ -1,9 +1,8 @@
-import Swiper, {Navigation, Pagination} from 'swiper'
-
-Swiper.use([Navigation, Pagination])
+import Swiper, {Navigation, Pagination} from 'swiper' // eslint-disable-line import/no-unresolved
 
 export default (() => {
   const setNav = (slider) => ({
+    modules: [Navigation, Pagination],
     navigation: {
       nextEl: slider.querySelector('.swiper-button-next'),
       prevEl: slider.querySelector('.swiper-button-prev')
@@ -33,7 +32,7 @@ export default (() => {
         if (destroyResolution) {
           let sliderInstance
           const detectActive = () => {
-            const swiperIsInitialized = slider.classList.contains('swiper-container-initialized')
+            const swiperIsInitialized = slider.classList.contains('swiper-initialized')
 
             if (responsiveMethod === 'from-min-to-max') {
               if (window.innerWidth <= destroyResolution && !swiperIsInitialized) {
@@ -72,7 +71,7 @@ export default (() => {
         spaceBetween: 20
       },
       640: {
-        destroy: true
+        // destroy: true
       }
     },
     ...setNav(slider)
