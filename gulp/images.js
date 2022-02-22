@@ -2,7 +2,7 @@ import browserSync from 'browser-sync'
 import {src, dest} from 'gulp'
 import gulpIf from 'gulp-if'
 import rename from 'gulp-rename'
-import imagemin from 'gulp-imagemin'
+import imagemin, {gifsicle, svgo} from 'gulp-imagemin'
 import mozjpeg from 'imagemin-mozjpeg'
 import pngquant from 'imagemin-pngquant/index'
 import {projectPath, isProduction} from '../ws.config'
@@ -13,8 +13,8 @@ export default function images(cb) {
       [
         mozjpeg(),
         pngquant(),
-        imagemin.svgo(),
-        imagemin.gifsicle()
+        svgo(),
+        gifsicle()
       ],
       {
         // verbose: true

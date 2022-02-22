@@ -1,3 +1,5 @@
+import ESLintPlugin from 'eslint-webpack-plugin'
+import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 import TerserWebpackPlugin from 'terser-webpack-plugin'
 import {isProduction, currentHash} from './ws.config'
 
@@ -29,9 +31,6 @@ export default {
       use: [
         {
           loader: 'babel-loader'
-        },
-        {
-          loader: 'eslint-loader'
         }
       ]
     }]
@@ -41,5 +40,9 @@ export default {
     maxAssetSize: 512000,
     maxEntrypointSize: 512000
   },
+  plugins: [
+    new ESLintPlugin(),
+    new FriendlyErrorsWebpackPlugin()
+  ],
   devtool: isProduction ? false : 'eval'
 }
