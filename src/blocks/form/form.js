@@ -1,4 +1,6 @@
-import {popupOpen, popupClose} from '../popup/popup'
+/* eslint-disable class-methods-use-this */
+import {popupOpen} from '../popup/popup'
+import {phoneMaskedInputInstances} from '../input-text/input-text'
 import Validation from './validation'
 
 class FormService {
@@ -7,6 +9,7 @@ class FormService {
 
     for (const form of document.querySelectorAll(selector)) {
       this.onSubmit(form)
+      this.onClear(form)
     }
   }
 
@@ -18,6 +21,25 @@ class FormService {
 
       if (!form.badForm) {
         this.onFetch(form)
+      }
+    })
+  }
+
+  onClear = (form) => {
+    form.addEventListener('reset', () => {
+      const fileInputPreview = form.querySelector('.input-file__preview')
+
+      for (const input of form.querySelectorAll('input, textarea')) {
+        input.classList.remove('not-placeholder-shown')
+      }
+
+      phoneMaskedInputInstances?.forEach(instance => {
+        instance.value = ''
+      })
+
+      if (fileInputPreview) {
+        fileInputPreview.innerHTML = ''
+        fileInputPreview.previousElementSibling.textContent = 'Прикрепить файл'
       }
     })
   }
@@ -43,10 +65,10 @@ class FormService {
   onFetch = (form) => {
     this.fetchStart(form, 'mail.php', () => {
       popupOpen('popup-success')
-      setTimeout(() => {
-        form.reset()
-        popupClose()
-      }, 5000)
+      form.reset()
+      // setTimeout(() => {
+      //   popupClose()
+      // }, 5000)
     })
   }
 }
