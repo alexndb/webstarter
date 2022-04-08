@@ -1,5 +1,5 @@
 import ESLintPlugin from 'eslint-webpack-plugin'
-import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
+import FriendlyErrorsWebpackPlugin from '@soda/friendly-errors-webpack-plugin'
 import TerserWebpackPlugin from 'terser-webpack-plugin'
 import {isProduction, currentHash} from './ws.config'
 
