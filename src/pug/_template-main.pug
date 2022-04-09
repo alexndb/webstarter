@@ -1,3 +1,4 @@
+include ../pug/blocks
 block vars
 block php
 doctype html
@@ -17,7 +18,7 @@ html(lang='ru')
     main.main
       block main
     block footer
-    .hidden
+    .hidden(hidden)
       block hidden
     block scripts
     //- script(src='sw.js' defer)

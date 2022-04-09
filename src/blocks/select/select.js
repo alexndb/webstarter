@@ -5,11 +5,12 @@ export default (() => {
 
   if (selects.length) {
     for (const select of selects) {
-      new Choices(select, {
+      const choicesInstance = new Choices(select, {
         searchEnabled: false,
         itemSelectText: '',
         shouldSort: false
       })
+      select.choicesInstance = choicesInstance
 
       select.addEventListener('choice', (e) => {
         if (e.detail.choice.placeholder) {

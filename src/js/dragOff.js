@@ -1,9 +1,13 @@
 export default (() => {
   const selectors = ['img']
 
-  for (const selector of selectors) {
-    for (const element of document.querySelectorAll(selector)) {
-      element.addEventListener('dragstart', e => e.preventDefault())
+  selectors.forEach(selector => {
+    const elements = document.querySelectorAll(selector)
+
+    if (elements) {
+      elements.forEach(element => {
+        element.addEventListener('dragstart', e => e.preventDefault())
+      })
     }
-  }
+  })
 })()

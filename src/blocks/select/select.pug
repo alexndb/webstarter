@@ -1,6 +1,5 @@
-mixin select(props)
+mixin select({name, placeholder, options})
   -
-    const {name, placeholder, options} = props
     const select = {
       selectDefaultOptions: [
         {
@@ -29,7 +28,7 @@ mixin select(props)
 //- Вызов:
 
   +select({
-    name: 'name',
+    name: 'select',
     placeholder: 'Выберите',
     options: 'selectDefaultOptions'
   })

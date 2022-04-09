@@ -1,0 +1,80 @@
+// sass-lint:disable force-attribute-nesting no-qualifying-elements force-pseudo-nesting
+input[type='file']
+  display: none
+
+.input-file__drop
+  display: flex
+  justify-content: center
+  align-items: center
+  position: relative
+  padding: 10px
+  border: 4px dashed #c0c0c0
+  margin-top: 40px
+  background-color: rgba(255, 255, 255, 0.3)
+  font-weight: 700
+  font-size: 14px
+  line-height: 1
+  white-space: nowrap
+  cursor: pointer
+
+  &::before
+    content: ''
+    width: 19px
+    height: 19px
+    margin-right: 10px
+    background-image: url('../img/input-file/plus.svg')
+    background-position: 50%
+    background-repeat: no-repeat
+
+.input-file__drop.drop-active::before
+  content: 'Drop files here'
+  display: flex
+  justify-content: center
+  align-items: center
+  position: fixed
+  z-index: 1100
+  top: 10px
+  left: 10px
+  width: calc(100% - 20px)
+  height: calc(100vh - 20px)
+  border: 5px dashed #00bfff
+  background-color: #fff
+  font-weight: 700
+  font-size: 36px
+  color: #00bfff
+
+.input-file__preview
+  overflow: hidden
+  display: flex
+  flex-wrap: wrap
+  padding-top: 10px
+  margin: 0 -5px
+
+.input-file__preview-item
+  display: flex
+  align-items: flex-end
+  width: 70px
+  height: 70px
+  padding: 1px
+  margin: 0 5px 10px
+  background-color: #f7f7f7
+  background-position: 50%
+  background-size: cover
+  font-size: 10px
+  line-height: 1
+  color: #000
+  border-radius: 3px
+
+.input-file__preview-item > div
+  width: 100%
+  padding: 5px
+  background-color: rgba(255, 255, 255, 0.7)
+  color: #000
+  border-radius: 0 0 3px 3px
+
+.input-file__preview-item div > div
+  margin-bottom: 2px
+  line-height: 1
+
+.input-file__preview-item div > div:last-child
+  margin-bottom: 0

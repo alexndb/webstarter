@@ -1,10 +1,88 @@
-mixin form(mods)
-  - const blockName = 'form'
+mixin form({id, name, mods, fields, button})
+  -
+    const blockName = 'form'
+    const fieldsList = {
+      name: {
+        type: 'text',
+        name: 'name',
+        label: 'Имя',
+        autocomplete: 'off',
+        mods: 'type1'
+      },
+      phone: {
+        type: 'tel',
+        name: 'phone',
+        label: 'Телефон',
+        autocomplete: 'off',
+        mods: 'type1'
+      },
+      email: {
+        type: 'text',
+        name: 'email',
+        label: 'Email',
+        autocomplete: 'off',
+        mods: 'type1'
+      },
+      file: {
+        type: 'file',
+        name: 'file'
+      },
+      select: {
+        type: 'select',
+        name: 'select',
+        placeholder: 'Выберите',
+        options: 'selectDefaultOptions'
+      },
+      checkbox: {
+        type: 'checkbox',
+        name: 'checkbox',
+        label: 'label checkbox'
+      },
+      radio: {
+        type: 'radio',
+        name: 'radio',
+        label: 'label radio'
+      }
+    }
   include ../../pug/allMods
 
-  form(class=allMods)&attributes(attributes)
-    block
+  form(class=allMods, id=id)&attributes(attributes)
+    button(type='reset') clear form
+    each field in fields
+      .form__control
+        if (fieldsList[field].type === 'text' || fieldsList[field].type === 'tel')
+          +input-text(fieldsList[field])
+        if (fieldsList[field].type === 'select')
+          +select(fieldsList[field])
+        if (fieldsList[field].type === 'file')
+          +input-file(fieldsList[field])
+        if (fieldsList[field].type === 'checkbox')
+          +input-switch(fieldsList[field])
+        if (fieldsList[field].type === 'radio')
+          +input-switch(fieldsList[field])
+    +input-hidden({
+      name: 'form_name',
+      value: name
+    })
+    +button(button.text, button.mods)(type='submit')
 
 //- Вызов:
 
-  +form('type1')
+  +form({
+    id: 'form-id',
+    name: 'form-name',
+    mods: 'type1',
+    fields: [
+      'name',
+      'phone',
+      'email',
+      'file',
+      'select',
+      'checkbox',
+      'radio'
+    ],
+    button: {
+      mods: 'accent',
+      text: 'Отправить'
+    }
+  })

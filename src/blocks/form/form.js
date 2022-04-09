@@ -1,6 +1,4 @@
-/* eslint-disable class-methods-use-this */
 import {popupOpen} from '../popup/popup'
-import {phoneMaskedInputInstances} from '../input-text/input-text'
 import Validation from './validation'
 
 class FormService {
@@ -27,39 +25,46 @@ class FormService {
 
   onClear = (form) => {
     form.addEventListener('reset', () => {
-      const fileInputPreview = form.querySelector('.input-file__preview')
+      const inputs = form.querySelectorAll('input, textarea')
+      const selects = form.querySelectorAll('select')
 
-      for (const input of form.querySelectorAll('input, textarea')) {
-        input.classList.remove('not-placeholder-shown')
+      if (inputs) {
+        for (const input of inputs) {
+          input.classList.remove('not-placeholder-shown')
+
+          if (input.type === 'file') {
+            input.clear()
+          }
+
+          if (input.iMaskInstance) {
+            input.iMaskInstance.value = ''
+          }
+        }
       }
 
-      phoneMaskedInputInstances?.forEach(instance => {
-        instance.value = ''
-      })
-
-      if (fileInputPreview) {
-        fileInputPreview.innerHTML = ''
-        fileInputPreview.previousElementSibling.textContent = 'Прикрепить файл'
+      if (selects) {
+        for (const select of selects) {
+          const {choicesInstance} = select
+          choicesInstance.setChoiceByValue(choicesInstance._placeholderValue)
+        }
       }
     })
   }
 
-  fetchStart = (form, url, cb) => {
-    fetch(url, {
-      method: 'POST',
-      body: new FormData(form)
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Запрос отклонен со статусом ${response.status}`)
-        } else {
-          return response
-        }
+  fetchStart = async (form, url, cb) => {
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: new FormData(form)
       })
-      .then(cb())
-      .catch(err => {
-        throw new Error(err.message)
-      })
+
+      if (!response.ok) {
+        throw new Error(`${response.status} ${response.statusText}`)
+      }
+      cb()
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 
   onFetch = (form) => {

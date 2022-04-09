@@ -1,4 +1,4 @@
-import Swiper, {Navigation, Pagination} from 'swiper' // eslint-disable-line import/no-unresolved
+import Swiper, {Navigation, Pagination} from 'swiper'
 
 export default (() => {
   const setNav = (slider) => ({

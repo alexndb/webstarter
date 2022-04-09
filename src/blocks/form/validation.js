@@ -19,6 +19,10 @@ export default class Validation {
   testRequired = (formControl) => {
     let pattern
 
+    if (formControl.tagName === 'INPUT' && formControl.type === 'file') {
+      pattern = formControl.files.length
+    }
+
     if (formControl.tagName === 'INPUT' || formControl.tagName === 'TEXTAREA') {
       pattern = formControl.value === ''
     }
@@ -106,7 +110,8 @@ export default class Validation {
     this.form.badForm = true
     errorTextElement.classList.add('form__error-message')
     errorTextElement.innerText = title
-    if (formControl.nextElementSibling.classList.contains('input-text__label')) {
+
+    if (formControl?.nextElementSibling?.classList.contains('input-text__label')) {
       formControl.classList.add('error')
       formControl.nextElementSibling.insertAdjacentElement('afterend', errorTextElement)
     } else {
@@ -152,6 +157,11 @@ export default class Validation {
 
         formControl.addEventListener('keyup', () => {
           this.removeError(formControl)
+        })
+
+        formControl.addEventListener('change', () => {
+          this.removeError(formControl)
+          this.checkError(formControl)
         })
 
         formControl.addEventListener('blur', () => {

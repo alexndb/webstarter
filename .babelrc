@@ -3,9 +3,9 @@
     [
       "@babel/preset-env",
       {
-        "debug": false,
+        // "debug": true,
         "corejs": {
-          "version": "3.12.1",
+          "version": "3.21.1",
           "proposals": true
         },
         "loose": true,

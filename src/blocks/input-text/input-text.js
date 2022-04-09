@@ -1,7 +1,5 @@
 import IMask from 'imask'
 
-const phoneMaskedInputInstances = []
-
 export default (() => {
   const phoneInputs = document.querySelectorAll('[type=tel]')
   const inputs = document.querySelectorAll('.input-text input, .input-text textarea')
@@ -13,7 +11,7 @@ export default (() => {
         lazy: true,
         placeholderChar: '_'
       })
-      phoneMaskedInputInstances.push(phoneMask)
+      input.iMaskInstance = phoneMask
     }
   }
 
@@ -34,7 +32,3 @@ export default (() => {
     }
   }
 })()
-
-export {
-  phoneMaskedInputInstances
-}

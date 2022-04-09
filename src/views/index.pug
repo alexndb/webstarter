@@ -2,13 +2,10 @@ extends ../pug/_template-main
 
 include ../pug/styles
 include ../pug/scripts
-include ../blocks/favicon/favicon
-include ../blocks/popup-success/popup-success
-//- include ../blocks/select/select
-//- include ../blocks/image/image
 
 block vars
-  - const pageName = 'main page'
+  - const page = 'index'
+  - const title = 'main page'
   - const description = pageName
   - const keywords = pageName
 
@@ -16,7 +13,7 @@ block php
   //- | <?php
   //- |   session_start();
   //- |   $_SESSION['get'] = $_GET;
-  //- |   $_SESSION['page'] = '#{pageName}';
+  //- |   $_SESSION['page'] = '#{title}';
   //- | ?>
 
 block meta
@@ -24,10 +21,10 @@ block meta
   meta(name='keywords' content=keywords)
 
 block styles
-  +styles(['index'])
+  +styles([page])
 
 block title
-  title= pageName
+  title= title
 
 block header
 
@@ -42,4 +39,4 @@ block hidden
   +popup-success
 
 block scripts
-  +scripts(['index'])
+  +scripts([page])

@@ -1,4 +1,4 @@
-mixin input-switch(type, name, label)
+mixin input-switch({type, name, label})
   .input-switch
     label.input-switch__label
       input.input-switch__input(type=type, name=name)&attributes(attributes)
@@ -8,5 +8,14 @@ mixin input-switch(type, name, label)
 
 //- Вызов:
 
-  +input-switch('checkbox', 'name', 'label')(checked)
-  +input-switch('radio', 'name', 'label')
+  +input-switch({
+    type: 'checkbox',
+    name: 'name',
+    label: 'label'
+  })(checked)
+
+  +input-switch({
+    type: 'radio',
+    name: 'name',
+    label: 'label'
+  })
