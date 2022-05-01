@@ -4,7 +4,7 @@ import 'whatwg-fetch'
 import objectFitImages from 'object-fit-images'
 
 import '../dragOff'
-import '../smoothScroll'
+// import '../smoothScroll'
 
 // import '../../blocks/agreement/agreement'
 // import '../../blocks/aside/aside'

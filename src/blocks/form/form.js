@@ -1,4 +1,4 @@
-import {popupOpen} from '../popup/popup'
+import MicroModal from 'micromodal'
 import Validation from './validation'
 
 class FormService {
@@ -69,10 +69,14 @@ class FormService {
 
   onFetch = (form) => {
     this.fetchStart(form, 'mail.php', () => {
-      popupOpen('popup-success')
+      MicroModal.show('popup-success', {
+        disableScroll: true,
+        awaitOpenAnimation: true,
+        awaitCloseAnimation: true
+      })
       form.reset()
       // setTimeout(() => {
-      //   popupClose()
+      //   MicroModal.close('popup-success')
       // }, 5000)
     })
   }

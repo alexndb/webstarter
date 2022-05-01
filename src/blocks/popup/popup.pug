@@ -1,4 +1,52 @@
-mixin popup
-  .popup#popup
-    .popup__inner
-      | popup content
+mixin popup-close-btn
+  button.popup__close(title='Закрыть (Esc)' tabindex='-1' data-micromodal-close) ✕
+
+mixin popup({id, type, title, text, src})
+  .popup.micromodal-fade(
+    id=id,
+    class=type ? `popup--${type}` : '',
+    aria-hidden='true'
+  )
+    .popup__overlay(data-micromodal-close)
+      if (type === 'img')
+        .popup__container
+          +popup-close-btn
+          .popup__inner
+            img(
+              src="",
+              alt=""
+            )
+            .popup__img-description
+      else
+        .popup__container
+          .popup__inner
+            +popup-close-btn
+            if (type === 'iframe')
+              iframe(
+                src=src
+                frameborder='0'
+                allowfullscreen
+              )
+            else
+              if (title)
+                h2.popup__title !{title}
+              if (text)
+                p.popup__text !{text}
+
+//- Вызов:
+
+//- button(data-micromodal-trigger='popup-id')
+
+//- button(
+//-   data-micromodal-trigger='popup-img',
+//-   data-src='https://images.pexels.com/photos/4460483/pexels-photo-4460483.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+//-   data-description=''
+//- )
+
+//- +popup({
+//-   id: 'popup-id',
+//-   type: 'popup-type', : success, iframe, img
+//-   title: 'popup-title',
+//-   text: 'popup-text',
+//-   src: 'iframe-src' // if type === iframe
+//- })

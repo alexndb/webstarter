@@ -35,8 +35,13 @@ block main
 
 block footer
 
-block hidden
-  +popup-success
+block popups
+  //- +popup({
+  //-   id: 'popup-success',
+  //-   type: 'success',
+  //-   title: 'Спасибо за заявку!',
+  //-   text: 'Наш менеджер свяжется с вами в ближайшее время'
+  //- })
 
 block scripts
   +scripts([page])

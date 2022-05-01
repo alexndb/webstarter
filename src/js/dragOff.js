@@ -5,9 +5,9 @@ export default (() => {
     const elements = document.querySelectorAll(selector)
 
     if (elements) {
-      elements.forEach(element => {
+      for (const element of elements) {
         element.addEventListener('dragstart', e => e.preventDefault())
-      })
+      }
     }
   })
 })()
