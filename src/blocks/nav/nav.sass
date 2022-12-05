@@ -21,6 +21,11 @@
     .nav__item
       margin: 0
 
+      &.active
+
+        .nav__link
+          background-color: $color-aside-link-hover
+
     .nav__link
       +link-color(inherit)
       display: block
@@ -30,6 +35,5 @@
       line-height: 130%
       transition: background-color 0.2s ease
 
-      &--active,
       &:hover
         background-color: $color-aside-link-hover

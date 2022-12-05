@@ -4,12 +4,12 @@ import 'whatwg-fetch'
 import objectFitImages from 'object-fit-images'
 
 import '../dragOff'
-// import '../smoothScroll'
 
 // import '../../blocks/agreement/agreement'
 // import '../../blocks/aside/aside'
 // import '../../blocks/form/form'
 // import '../../blocks/header/header'
+// import '../smoothScroll'
 // import '../../blocks/input-file/input-file'
 // import '../../blocks/input-text/input-text'
 // import '../../blocks/popup/popup'

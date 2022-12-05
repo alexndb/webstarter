@@ -1,6 +1,4 @@
-import SmoothScroll from 'smooth-scroll/dist/smooth-scroll.polyfills'
-import Gumshoe from 'gumshoejs/dist/gumshoe'
-
+import Gumshoe from 'gumshoejs'
 import {asideClose} from '../blocks/aside/aside'
 
 export default (() => {
@@ -13,7 +11,7 @@ export default (() => {
     let stickyElementheight = 0
 
     if (stickyElement) {
-      stickyElementheight = stickyElement.offsetHeight - 1
+      stickyElementheight = stickyElement.offsetHeight
     }
 
     return stickyElementheight
@@ -23,7 +21,9 @@ export default (() => {
     let blockExist = false
 
     for (const link of links) {
-      if (link.attributes.href.value !== '#' && document.querySelector(link.attributes.href.value)) {
+      const hash = link.attributes.href.value
+
+      if (hash !== '#' && document.querySelector(hash)) {
         blockExist = true
       }
     }
@@ -33,13 +33,13 @@ export default (() => {
 
   if (links.length && checkBlockExist()) {
     for (const link of links) {
-      link.addEventListener('click', asideClose)
-    }
+      link.addEventListener('click', () => {
+        const block = document.querySelector(link.attributes.href.value)
 
-    new SmoothScroll(scrollLinksSelector, {
-      updateURL: false,
-      offset: getStickyElementHeight(stickyElements[0])
-    })
+        asideClose()
+        block.style.scrollMarginTop = `${getStickyElementHeight(stickyElements[0])}px`
+      })
+    }
 
     for (const item of stickyElements) {
       new Gumshoe(`${item} ${scrollLinksSelector}`, {
