@@ -1,11 +1,11 @@
 <?php
 session_start();
-$get = $_SESSION['get'];
+$get = $_SESSION['get'] || [];
 
 $project_name = 'yoursite.ru';
 $admins_emails = 'email@example.com'; // 'email1@gmail.com, email2@gmail.com, ...'
 $mail_title = 'Новая заявка с сайта ' . $project_name;
-$message = '<table style="width: 100%">' . $message . '</table>';
+$message = '<table style="width: 100%">';
 $c = true;
 
 foreach(array_merge($_POST, $get) as $key => $value) {
@@ -53,6 +53,8 @@ foreach(array_merge($_POST, $get) as $key => $value) {
       </tr>";
   }
 }
+
+$message .= '</table>'
 
 function adopt($text) {
   return '=?UTF-8?B?' . Base64_encode($text) . '?=';
