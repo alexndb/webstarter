@@ -1,7 +1,11 @@
 mixin agreement
   .agreement
     .agreement__inner
-      +input-switch('checkbox', 'agreement', null)
+      +input-switch({
+        type: 'checkbox',
+        name: 'agreement',
+        label: ''
+      })
       .agreement__content
         p.agreement__text Выбирая эту опцию, Вы даете свое согласие на использование Ваших контактных данных со стороны сайта в соответствии с положениями документа 
           a.agreement__link(href='#href') Marketing Consent Statement

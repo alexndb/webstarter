@@ -1,6 +1,6 @@
 {
   "name": "webstarter",
-  "version": "3.12.1",
+  "version": "3.12.2",
   "description": "Starter kit for web development",
   "author": "Aleksandr Seryakov",
   "license": "WTFPL",
@@ -50,7 +50,7 @@
     "gulp-sass-lint": "^1.4.0",
     "gulp-sourcemaps": "^3.0.0",
     "imagemin-mozjpeg": "^9.0.0",
-    "imagemin-pngquant": "^5.0.1",
+    "imagemin-pngquant": "^9.0.2",
     "postcss": "^8.4.19",
     "postcss-object-fit-images": "^1.1.2",
     "sass": "^1.56.1",
