@@ -6,6 +6,7 @@ import scripts from './gulp/scripts'
 import img from './gulp/images'
 import fonts from './gulp/fonts'
 import assets from './gulp/assets'
+import assetsPHPMailer from './gulp/assetsPHPMailer'
 
 export const SRC_DIR = 'src'
 export const APP_DIR = 'app'
@@ -57,6 +58,11 @@ export const projectPath = {
     ],
     app: APP_DIR,
     task: assets
+  },
+  assetsPHPMailer: {
+    src: `${SRC_DIR}/PHPMailer/src/*.php`,
+    app: `${APP_DIR}/PHPMailer/src`,
+    task: assetsPHPMailer
   }
 }
 

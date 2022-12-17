@@ -7,21 +7,24 @@ mixin form({id, name, mods, fields, button})
         name: 'name',
         label: 'Имя',
         autocomplete: 'off',
-        mods: 'type1'
+        mods: 'type1',
+        value: 'test'
       },
       phone: {
         type: 'tel',
         name: 'phone',
         label: 'Телефон',
         autocomplete: 'off',
-        mods: 'type1'
+        mods: 'type1',
+        value: '71234567890'
       },
       email: {
         type: 'text',
         name: 'email',
         label: 'Email',
         autocomplete: 'off',
-        mods: 'type1'
+        mods: 'type1',
+        value: 'test@test.test'
       },
       file: {
         type: 'file',
@@ -51,7 +54,10 @@ mixin form({id, name, mods, fields, button})
     each field in fields
       .form__control
         if (fieldsList[field].type === 'text' || fieldsList[field].type === 'tel')
-          +input-text(fieldsList[field])
+          if (fieldsList[field].value)
+            +input-text(fieldsList[field])(value=fieldsList[field].value)
+          else
+            +input-text(fieldsList[field])
         if (fieldsList[field].type === 'select')
           +select(fieldsList[field])
         if (fieldsList[field].type === 'file')

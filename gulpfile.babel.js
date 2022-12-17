@@ -6,12 +6,13 @@ import scripts from './gulp/scripts'
 import fonts from './gulp/fonts'
 import images from './gulp/images'
 import assets from './gulp/assets'
+import assetsPHPMailer from './gulp/assetsPHPMailer'
 import watcher from './gulp/watch'
 import bSync from './gulp/browserSync'
 
 const mainTasks = (() => series(
   styles, markup,
-  parallel(scripts, fonts, images, assets)
+  parallel(scripts, fonts, images, assets, assetsPHPMailer)
 ))()
 
 exports.cleanApp = cleanApp
@@ -23,6 +24,7 @@ exports.scripts = scripts
 exports.fonts = fonts
 exports.images = images
 exports.assets = assets
+exports.assetsPHPMailer = assetsPHPMailer
 exports.watcher = watcher
 exports.bSync = bSync
 

@@ -4,7 +4,7 @@ Starter kit for web development (HTML/CSS/JS)
 
 ## Подготовка
 
-1. Установить [Node.js](https://nodejs.org/en/) версии 12+
+1. Установить [Node.js](https://nodejs.org/en/) версии 18+
 2. Установить [Git](https://git-scm.com/)
 3. `git clone https://github.com/alexndb/webstarter.git`
 4. `npm i`
