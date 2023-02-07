@@ -1,10 +1,11 @@
 mixin image(props)
   - const {src, alt, cover, lazy} = props
+  - const srcWithHash = `${src}${currentHash ? `?v=${currentHash}` : ''}`
 
   if (lazy)
-    img.lazyload(class=cover ? 'image--cover' : false, data-src=src, alt=alt || 'alt')&attributes(attributes)
+    img.lazyload(class=cover ? 'image--cover' : false, data-src=srcWithHash, alt=alt || 'alt')&attributes(attributes)
   else
-    img(class=cover ? 'image--cover' : false, src=src, alt=alt || 'alt')&attributes(attributes)
+    img(class=cover ? 'image--cover' : false, src=srcWithHash, alt=alt || 'alt')&attributes(attributes)
 
 //- Вызов:
 

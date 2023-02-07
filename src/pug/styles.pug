@@ -1,3 +1,3 @@
 mixin styles(hrefArr)
   each href in hrefArr
-    link(rel='stylesheet', href=`css/${href}.${currentHash}.css`)
+    link(rel='stylesheet', href=`css/${href}.css${currentHash ? `?v=${currentHash}` : ''}`)

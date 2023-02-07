@@ -44,7 +44,7 @@ Starter kit for web development (HTML/CSS/JS)
 
 `src/js` - все модули js, не относящиеся к конкретному блоку
 
-`src/js/common.js` - главный фаил с подключением всех используемых скриптов
+`src/js/pages/{pageName}.js` - главные файлы с подключением всех используемых скриптов для каждой отдельной страницы
 
 `src/pug` - шаблоны страниц и вспомогательные файлы для работы с `.pug`
 
@@ -58,9 +58,11 @@ Starter kit for web development (HTML/CSS/JS)
 
 `src/sass/variables.sass` - стилевые переменные
 
-`src/views/pageName.pug` - папка со страницами сайта
+`src/views/{pageName}.pug` - папка со страницами сайта
 
-`src/.htaccess` - задает кэширование на сервере
+`src/.htaccess` - настройки сервера Apache
+
+`src/PHPMailer` - файлы PHPMailer
 
 `src/mail.php` - обрабатывает и отправляет заявки из форм на почту
 
@@ -73,8 +75,8 @@ Starter kit for web development (HTML/CSS/JS)
 
 ## Вставка PHP в PUG файлы
 
-1. Поставить значение `localServer.active: true` в файле `ws.config.js`
-2. Поставить значение `localServer.changeViewsExtToPHP: true` в файле `ws.config.js`
+1. Поставить значение `localServer.active: true` в файле `./bundler/config.js`
+2. Поставить значение `localServer.changeViewsExtToPHP: true` в файле `./bundler/config.js`
 3. Папка проекта должна лежать в корне локального сервера
 
 ```php
@@ -90,11 +92,11 @@ block php
 
 ### `assets`
 
-Перемещает все файлы из корня папки `SRC_DIR` и файл `.htaccess` в корень папки `APP_DIR`
+Перемещает все файлы из корня папки `SRC_DIR`, файл `.htaccess` и папку PHPMailer в корень папки `APP_DIR`
 
 ### `browserSync`
 
-В зависимости от настроек `ws.config.js => localServer`, запускает локальный PHP сервер(например [Open Server](https://ospanel.io/)) или следит за HTML статикой
+В зависимости от настроек `./bundler/config.js => localServer`, запускает локальный PHP сервер(например [Open Server](https://ospanel.io/)) или следит за HTML статикой
 
 ### `clean`
 
@@ -110,7 +112,7 @@ block php
 
 ### `markup`
 
-Генерирует разметку из PUG в HTML/PHP, зависит от опиции `ws.config.js => localServer.active`, позволяет писать вставки PHP кода в PUG
+Генерирует разметку из PUG в HTML/PHP, зависит от опиции `./bundler/config.js => localServer.active`, позволяет писать вставки PHP кода в PUG
 
 ### `scripts`
 

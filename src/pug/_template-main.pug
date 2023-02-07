@@ -1,4 +1,6 @@
 include ../pug/blocks
+include ../pug/styles
+include ../pug/scripts
 block vars
 block php
 doctype html
@@ -6,7 +8,6 @@ html(lang='ru')
   head
     include meta
     block meta
-    //- include pwa
     +favicon
     include preloader
     include reboot
@@ -20,4 +21,3 @@ html(lang='ru')
     block footer
     block popups
     block scripts
-    //- script(src='sw.js' defer)

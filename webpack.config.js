@@ -1,7 +1,7 @@
 import ESLintPlugin from 'eslint-webpack-plugin'
 import FriendlyErrorsWebpackPlugin from '@soda/friendly-errors-webpack-plugin'
 import TerserWebpackPlugin from 'terser-webpack-plugin'
-import {isProduction, currentHash} from './ws.config'
+import {isProduction} from './bundler/config.js'
 
 const optimization = () => {
   const config = {
@@ -23,7 +23,7 @@ const optimization = () => {
 export default {
   mode: isProduction ? 'production' : 'development',
   output: {
-    filename: () => `[name].${currentHash}.js`
+    filename: () => '[name].js'
   },
   module: {
     rules: [{

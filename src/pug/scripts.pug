@@ -1,3 +1,4 @@
 mixin scripts(srcArr)
   each src in srcArr
-    script(src=`js/${src}.${currentHash}.js` defer)
+    script(src=`js/${src}.js${currentHash ? `?v=${currentHash}` : ''}` defer)
+  //- script(src=`sw.js${currentHash ? `?v=${currentHash}` : ''}` defer)
