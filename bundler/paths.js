@@ -15,7 +15,7 @@ const BLOCKS_DIR = `${SRC_DIR}/blocks`
 const VIEWS_DIR = `${SRC_DIR}/views`
 const projectPaths = {
   markup: {
-    src: `${SRC_DIR}/views/*.pug`,
+    src: `${VIEWS_DIR}/*.pug`,
     app: APP_DIR,
     watch: [
       `${VIEWS_DIR}/*.pug`,

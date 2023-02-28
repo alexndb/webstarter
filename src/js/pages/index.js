@@ -1,10 +1,5 @@
-import 'lazysizes'
-import 'lazysizes/plugins/unveilhooks/ls.unveilhooks.js'
-import 'whatwg-fetch'
-import objectFitImages from 'object-fit-images'
-
+import '../lazyload.js'
 import '../dragOff.js'
-
 // import '../../blocks/agreement/agreement.js'
 // import '../../blocks/aside/aside.js'
 // import '../../blocks/form/form.js'
@@ -16,5 +11,3 @@ import '../dragOff.js'
 // import '../../blocks/select/select.js'
 // import '../../blocks/slider/slider.js'
 // import '../../blocks/tooltip/tooltip.js'
-
-objectFitImages()

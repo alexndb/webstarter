@@ -1,5 +1,5 @@
 import MicroModal from 'micromodal'
-import Validation from './validation'
+import Validation from './validation.js'
 
 class FormService {
   constructor(selector, options) {
@@ -69,6 +69,16 @@ class FormService {
 
   onFetch = (form) => {
     this.fetchStart(form, 'mail.php', () => {
+      const allPopups = document.querySelectorAll('.popup')
+
+      if (allPopups.length) {
+        allPopups.forEach(popup => {
+          if (popup.classList.contains('is-open')) {
+            popup.querySelector('.popup__close').click()
+          }
+        })
+      }
+
       MicroModal.show('popup-success', {
         disableScroll: true,
         awaitOpenAnimation: true,

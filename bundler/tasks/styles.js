@@ -6,7 +6,6 @@ import cssnano from 'cssnano'
 import mqpacker from 'css-mqpacker'
 import plumber from 'gulp-plumber'
 import postcss from 'gulp-postcss'
-import objectFitImages from 'postcss-object-fit-images'
 import sortCSSmq from 'sort-css-media-queries'
 import sourcemaps from 'gulp-sourcemaps'
 import dartSass from 'sass'
@@ -31,8 +30,7 @@ function styles(cb) {
   const commonPlugins = [
     autoprefixer({
       grid: true
-    }),
-    objectFitImages()
+    })
   ]
   const postCSSDevPlugins = [
     ...commonPlugins
