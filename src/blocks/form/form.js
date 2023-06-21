@@ -81,6 +81,7 @@ class FormService {
 
       MicroModal.show('popup-success', {
         disableScroll: true,
+        disableFocus: true,
         awaitOpenAnimation: true,
         awaitCloseAnimation: true
       })
