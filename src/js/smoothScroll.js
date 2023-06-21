@@ -1,5 +1,5 @@
 import Gumshoe from 'gumshoejs'
-import {asideClose} from '../blocks/aside/aside'
+import {asideClose} from '../blocks/aside/aside.js'
 
 export default (() => {
   const stickyElements = ['header.sticky', 'aside']
@@ -17,16 +17,7 @@ export default (() => {
     return stickyElementheight
   }
 
-  const checkBlockExist = link => {
-    const {hash} = link
-    let blockExist = false
-
-    if (hash !== '#' && hash !== '' && document.querySelector(hash)) {
-      blockExist = true
-    }
-
-    return blockExist
-  }
+  const checkBlockExist = ({hash}) => hash !== '#' && hash !== '' && !!document.querySelector(hash)
 
   if (links.length) {
     for (const link of links) {
