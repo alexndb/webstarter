@@ -1,30 +1,31 @@
 import MicroModal from 'micromodal'
 
 export default (() => {
-  const initiators = document.querySelectorAll('[data-micromodal-trigger]')
-
-  if (initiators.length) {
-    initiators.forEach(initiator => {
-      const {src, description, micromodalTrigger} = initiator.dataset
-
-      initiator.addEventListener('click', () => {
-        const img = document.querySelector(`#${micromodalTrigger} img`)
-        if (img) {
-          img.src = src
-        }
-
-        if (description) {
-          const descriptionElement = document.querySelector(`#${micromodalTrigger} .popup__img-description`)
-          descriptionElement.textContent = description
-        }
-      })
-    })
-  }
-
   const defaultOptions = {
     disableScroll: true,
+    disableFocus: true,
     awaitOpenAnimation: true,
     awaitCloseAnimation: true,
+    onShow: (modal, trigger, event) => {
+      event.preventDefault()
+      const {href} = trigger
+      const {description} = trigger.dataset
+      const img = modal.querySelector('img')
+      const iframe = modal.querySelector('iframe')
+
+      if (img) {
+        img.src = href
+      }
+
+      if (iframe) {
+        iframe.src = href
+      }
+
+      if (description) {
+        const descriptionElement = modal.querySelector('.popup__img-description')
+        descriptionElement.textContent = description
+      }
+    },
     onClose: modal => {
       const iframe = modal.querySelector('iframe')
 
