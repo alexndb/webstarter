@@ -17,28 +17,27 @@ export default (() => {
     return stickyElementheight
   }
 
-  const checkBlockExist = () => {
+  const checkBlockExist = link => {
+    const {hash} = link
     let blockExist = false
 
-    for (const link of links) {
-      const hash = link.attributes.href.value
-
-      if (hash !== '#' && document.querySelector(hash)) {
-        blockExist = true
-      }
+    if (hash !== '#' && hash !== '' && document.querySelector(hash)) {
+      blockExist = true
     }
 
     return blockExist
   }
 
-  if (links.length && checkBlockExist()) {
+  if (links.length) {
     for (const link of links) {
-      link.addEventListener('click', () => {
-        const block = document.querySelector(link.attributes.href.value)
+      if (checkBlockExist(link)) {
+        link.addEventListener('click', () => {
+          const block = document.querySelector(link.hash)
 
-        asideClose()
-        block.style.scrollMarginTop = `${getStickyElementHeight(stickyElements[0])}px`
-      })
+          asideClose()
+          block.style.scrollMarginTop = `${getStickyElementHeight(stickyElements[0])}px`
+        })
+      }
     }
 
     for (const item of stickyElements) {
