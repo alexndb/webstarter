@@ -1,4 +1,5 @@
-import Swiper, {Navigation, Pagination} from 'swiper'
+import Swiper from 'swiper'
+import {Navigation, Pagination} from 'swiper/modules'
 
 export default (() => {
   const setNav = (slider) => ({
