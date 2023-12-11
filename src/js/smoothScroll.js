@@ -1,22 +1,11 @@
-import Gumshoe from 'gumshoejs'
+// import Gumshoe from 'gumshoejs'
 import {asideClose} from '../blocks/aside/aside.js'
 
 export default (() => {
-  const stickyElements = ['header.sticky', 'aside']
+  const stickyElements = ['header.sticky']
   const scrollLinksSelector = '.js-scroll'
   const links = document.querySelectorAll(scrollLinksSelector)
-
-  const getStickyElementHeight = (selector) => {
-    const stickyElement = document.querySelector(selector)
-    let stickyElementheight = 0
-
-    if (stickyElement) {
-      stickyElementheight = stickyElement.offsetHeight
-    }
-
-    return stickyElementheight
-  }
-
+  const getStickyElementHeight = selector => document.querySelector(selector)?.getBoundingClientRect().height || 0
   const checkBlockExist = ({hash}) => hash !== '#' && hash !== '' && !!document.querySelector(hash)
 
   if (links.length) {
@@ -31,10 +20,10 @@ export default (() => {
       }
     }
 
-    for (const item of stickyElements) {
-      new Gumshoe(`${item} ${scrollLinksSelector}`, {
-        offset: getStickyElementHeight(stickyElements[0])
-      })
-    }
+    // for (const item of stickyElements) {
+    //   new Gumshoe(`${item} ${scrollLinksSelector}`, {
+    //     offset: getStickyElementHeight(stickyElements[0])
+    //   })
+    // }
   }
 })()

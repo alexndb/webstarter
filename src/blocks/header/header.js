@@ -1,18 +1,18 @@
-import {asideOpen} from '../aside/aside'
+import {asideOpen} from '../aside/aside.js'
 
 export default (() => {
   const header = document.querySelector('.header')
 
   if (header) {
-    let headerHeight = header.offsetHeight
+    const headerHeight = () => header?.getBoundingClientRect().height || 0
     const stickyHeaderContainer = document.querySelector('body')
     const stickyHeader = stickyHeaderContainer.insertAdjacentElement('afterbegin', header.cloneNode(true))
     const stickyHeaderBurger = stickyHeader.querySelector('.js-aside-open')
-    const setHeaderTopStyle = (value) => {
+    const setHeaderTopStyle = value => {
       stickyHeader.style.top = `${value}px`
     }
 
-    setHeaderTopStyle(-headerHeight)
+    setHeaderTopStyle(-headerHeight())
     stickyHeader.classList.add('sticky')
 
     if (stickyHeaderBurger) {
@@ -20,14 +20,12 @@ export default (() => {
     }
 
     window.addEventListener('scroll', () => {
-      headerHeight = header.offsetHeight
-
-      if (window.pageYOffset > headerHeight) {
+      if (window.scrollY > headerHeight()) {
         stickyHeader.classList.add('show')
-        setHeaderTopStyle('0')
+        setHeaderTopStyle(0)
       } else {
         stickyHeader.classList.remove('show')
-        setHeaderTopStyle(-headerHeight)
+        setHeaderTopStyle(-headerHeight())
       }
     })
   }

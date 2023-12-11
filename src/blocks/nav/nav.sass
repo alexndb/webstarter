@@ -1,39 +1,4 @@
 .nav
-  $color-aside-link-hover: rgba(0, 0, 0, 0.05)
-  overflow: hidden
-
-  &__list
-    margin-right: -10px
-    margin-left: -10px
-
-  &__item
-    margin: 0 10px
 
   &__link
     +link-color(inherit)
-    font-size: 1rem
-
-  &--aside
-
-    .nav__list
-      margin: 0
-
-    .nav__item
-      margin: 0
-
-      &.active
-
-        .nav__link
-          background-color: $color-aside-link-hover
-
-    .nav__link
-      +link-color(inherit)
-      display: block
-      padding: 15px 20px
-      font-weight: 700
-      font-size: 0.875rem
-      line-height: 130%
-      transition: background-color 0.2s ease
-
-      &:hover
-        background-color: $color-aside-link-hover
