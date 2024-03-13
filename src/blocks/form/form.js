@@ -53,6 +53,12 @@ class FormService {
 
   fetchStart = async (form, url, cb) => {
     try {
+      const btnSubmit = form.querySelector('button[type=submit]')
+
+      if (btnSubmit) {
+        btnSubmit.disabled = true
+      }
+
       const response = await fetch(url, {
         method: 'POST',
         body: new FormData(form)
@@ -61,7 +67,12 @@ class FormService {
       if (!response.ok) {
         throw new Error(`${response.status} ${response.statusText}`)
       }
+
       cb()
+
+      if (btnSubmit) {
+        btnSubmit.disabled = false
+      }
     } catch (error) {
       throw new Error(error)
     }

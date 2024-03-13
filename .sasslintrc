@@ -17,6 +17,7 @@
     "leading-zero": 0,
     "nesting-depth": 3,
     "no-color-literals": 0,
+    "no-misspelled-properties": 0,
     "property-sort-order": [
       1,
       {
@@ -58,6 +59,7 @@
           "grid-template-rows",
           "grid-template",
           "grid",
+          "gap",
           "position",
           "z-index",
           "top",
