@@ -11,7 +11,7 @@ import {isProduction} from '../config.js'
 const {src, dest} = gulp
 
 export default function images(cb) {
-  src(projectPaths.images.src)
+  src(projectPaths.images.src, {encoding: false})
     .pipe(gulpIf(isProduction, imagemin(
       [
         imageminMozjpeg(),

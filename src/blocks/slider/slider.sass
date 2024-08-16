@@ -3,14 +3,9 @@
 
 .slider
 
-  .swiper-button-prev,
-  .swiper-button-next,
-  .swiper-pagination
-    display: none
-
-  &.swiper-initialized
+  &:not(.swiper-initialized)
 
     .swiper-button-prev,
     .swiper-button-next,
     .swiper-pagination
-      display: block
+      display: none
